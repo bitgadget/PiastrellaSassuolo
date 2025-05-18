@@ -32,11 +32,24 @@ export default function LastraCeramicaLanding() {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [modalProdotto, setModalProdotto] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 5000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Blocca lo scroll quando la modale prodotto è aperta
+  useEffect(() => {
+    if (modalProdotto) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalProdotto]);
 
   if (loading) {
     return (
@@ -293,12 +306,13 @@ export default function LastraCeramicaLanding() {
           ].map((prod, i) => (
             <motion.div
               key={prod.title}
-              className="group border border-neutral-200 rounded-2xl p-0 bg-white hover:shadow-xl hover:border-black transition overflow-hidden flex flex-col"
+              className="group border border-neutral-200 rounded-2xl p-0 bg-white hover:shadow-xl hover:border-black transition overflow-hidden flex flex-col cursor-pointer"
               variants={stagger}
               initial="hidden"
               whileInView="visible"
               custom={i + 1}
               viewport={{ once: true }}
+              onClick={() => setModalProdotto(prod)}
             >
               <div className="h-48 bg-neutral-100 flex items-center justify-center overflow-hidden relative">
                 <img
@@ -330,6 +344,7 @@ export default function LastraCeramicaLanding() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
+                  onClick={e => e.stopPropagation()}
                 >
                   Richiedi disponibilità
                 </a>
@@ -337,16 +352,44 @@ export default function LastraCeramicaLanding() {
             </motion.div>
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
-          <a
-            href="https://wa.me/393493061878"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
+        {modalProdotto && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            onClick={() => setModalProdotto(null)}
+            style={{ overscrollBehavior: "contain" }}
           >
-            Richiedi disponibilità
-          </a>
-        </div>
+            <div
+              className="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl relative"
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-3 right-4 text-2xl text-black font-bold"
+                onClick={() => setModalProdotto(null)}
+                type="button"
+                aria-label="Chiudi"
+              >
+                &times;
+              </button>
+              <img
+                src={modalProdotto.img}
+                alt={modalProdotto.title}
+                className="w-full h-64 object-contain mb-4 rounded"
+              />
+              <h4 className="text-xl font-bold mb-2">{modalProdotto.title}</h4>
+              <p className="text-neutral-700 mb-2">{modalProdotto.desc}</p>
+              <div className="text-black font-bold mb-1">{modalProdotto.prezzo} €/mq</div>
+              <div className="text-xs text-neutral-500 mb-4">{modalProdotto.quantita} disponibili</div>
+              <a
+                href="https://wa.me/393493061878"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
+              >
+                Richiedi disponibilità
+              </a>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Vantaggi */}

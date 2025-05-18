@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes neon-blink {
+  0%, 100% {
+    opacity: 1;
+    color: #eaff00;
+    filter: drop-shadow(0 0 8px #eaff00) drop-shadow(0 0 24px #eaff00);
+  }
+  50% {
+    opacity: 0.6;
+    color: #eaff00;
+    filter: drop-shadow(0 0 2px #eaff00) drop-shadow(0 0 8px #eaff00);
+  }
+}
+
+.neon-blink {
+  animation: neon-blink 1.8s infinite alternate;
+}

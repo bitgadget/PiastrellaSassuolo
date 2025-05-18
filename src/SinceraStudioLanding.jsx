@@ -274,7 +274,7 @@ export default function LastraCeramicaLanding() {
         </motion.h3>
         <div className="flex justify-center mb-6">
           <span className="inline-block bg-green-600 text-white text-lg font-bold px-6 py-2 rounded-full shadow">
-            Tutte le piastrelle</br>
+            Tutte le piastrelle<br />
             sotto i 10 €/mq
           </span>
         </div>

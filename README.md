@@ -1,4 +1,4 @@
-# Sincera Studio – Demo Site
+# Lastra Ceramica – Demo Site
 
 Vite + React + Tailwind CSS + Framer Motion
 

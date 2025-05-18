@@ -162,16 +162,16 @@ export default function LastraCeramicaLanding() {
             animate="visible"
             custom={1}
           >
-            Piastrelle a stock
+            Tutto sotto i 10 €/mq
           </motion.h2>
           <motion.p
-            className="mt-4 text-4xl md:text-5xl text-white font-semibold drop-shadow max-w-prose mx-auto"
+            className="mt-4 text-3xl md:text-4xl text-white font-semibold drop-shadow max-w-prose mx-auto"
             variants={stagger}
             initial="hidden"
             animate="visible"
             custom={2}
           >
-            direttamente dalla fabbrica
+            Piastrelle italiane in pronta consegna, direttamente dalla fabbrica
           </motion.p>
           <motion.div
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
@@ -215,7 +215,7 @@ export default function LastraCeramicaLanding() {
           custom={2}
           viewport={{ once: true }}
         >
-          LASTRA CERAMICA nasce per offrire piastrelle di alta qualità a prezzi di fabbrica. Lavoriamo direttamente con i migliori produttori italiani per garantire stock sempre aggiornati, consegne rapide e consulenza professionale. Siamo un punto di riferimento per privati e professionisti che cercano affidabilità, trasparenza e un servizio su misura.
+          LASTRA CERAMICA nasce per offrire piastrelle di alta qualità a prezzi di fabbrica, tutte sotto i 10 €/mq. Lavoriamo direttamente con i migliori produttori italiani per garantire stock sempre aggiornati, consegne rapide e consulenza professionale.
         </motion.p>
         <div className="grid md:grid-cols-3 gap-8 text-left">
           <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
@@ -256,6 +256,11 @@ export default function LastraCeramicaLanding() {
         >
           Prodotti in pronta consegna
         </motion.h3>
+        <div className="flex justify-center mb-6">
+          <span className="inline-block bg-green-600 text-white text-lg font-bold px-6 py-2 rounded-full shadow">
+            Tutte le piastrelle sotto i 10 €/mq!
+          </span>
+        </div>
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
@@ -279,7 +284,7 @@ export default function LastraCeramicaLanding() {
               desc: "Color rovere naturale, bordo rettificato.",
               img: "/prodotti/legno-20x120.png",
               badge: "Novità",
-              prezzo: "14,00",
+              prezzo: "9,00",
               quantita: "150 mq",
             },
           ].map((prod, i) => (

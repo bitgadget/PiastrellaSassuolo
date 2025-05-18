@@ -31,6 +31,7 @@ const stagger = {
 export default function LastraCeramicaLanding() {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 5000);
@@ -70,6 +71,7 @@ export default function LastraCeramicaLanding() {
         <div className="flex items-center gap-3">
           <img src="/logo.png" alt="Lastra Ceramica logo" className="h-10 w-auto" />
         </div>
+        {/* Menu desktop */}
         <nav className="hidden md:flex gap-10 text-sm">
           <a href="#prodotti" className="hover:text-black transition">
             Prodotti
@@ -84,12 +86,57 @@ export default function LastraCeramicaLanding() {
             Contatti
           </a>
         </nav>
+        {/* Desktop */}
         <a
-          href="#contatti"
+          href="https://wa.me/393493061878"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:inline-flex items-center gap-2 rounded-full border border-black px-6 py-2 text-sm hover:bg-black hover:text-white transition"
         >
           Contattaci
         </a>
+        {/* Hamburger menu mobile */}
+        <button
+          className="md:hidden flex items-center justify-center p-2 rounded hover:bg-neutral-100 transition"
+          onClick={() => setMobileMenuOpen(true)}
+          aria-label="Apri menu"
+        >
+          <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="6" y1="9" x2="22" y2="9" />
+            <line x1="6" y1="15" x2="22" y2="15" />
+            <line x1="6" y1="21" x2="22" y2="21" />
+          </svg>
+        </button>
+        {/* Mobile menu overlay */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-50 bg-black/60 flex justify-end" onClick={() => setMobileMenuOpen(false)}>
+            <nav
+              className="w-64 bg-white h-full shadow-lg flex flex-col p-8 gap-6"
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                className="self-end mb-6 text-2xl"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Chiudi menu"
+              >
+                &times;
+              </button>
+              <a href="#prodotti" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Prodotti</a>
+              <a href="#vantaggi" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Vantaggi</a>
+              <a href="#faq" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+              <a href="#contatti" className="text-lg py-2" onClick={() => setMobileMenuOpen(false)}>Contatti</a>
+              <a
+                href="https://wa.me/393493061878"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block rounded-full border border-black px-6 py-2 text-sm hover:bg-black hover:text-white transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contattaci
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

@@ -166,7 +166,7 @@ export default function LastraCeramicaLanding() {
             i 10 €/mq
           </motion.h2>
           <motion.p
-            className="mt-4 text-3xl md:text-4xl text-white font-semibold drop-shadow max-w-prose mx-auto"
+            className="mt-4 text-2xl md:text-4xl text-white font-semibold drop-shadow max-w-prose mx-auto"
             variants={stagger}
             initial="hidden"
             animate="visible"
@@ -261,7 +261,7 @@ export default function LastraCeramicaLanding() {
         </motion.h3>
         <div className="flex justify-center mb-6">
           <span className="inline-block bg-green-600 text-white text-lg font-bold px-6 py-2 rounded-full shadow">
-            Tutte le piastrelle sotto i 10 €/mq!
+            Tutte le piastrelle sotto i 10 €/mq
           </span>
         </div>
         <div className="grid md:grid-cols-3 gap-8">

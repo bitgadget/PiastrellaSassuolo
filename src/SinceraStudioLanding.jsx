@@ -277,80 +277,125 @@ export default function LastraCeramicaLanding() {
             Tutti gli articoli sotto i 10 €/mq
           </span>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Gres Porcellanato 60x60",
-              desc: "Finitura opaca, effetto cemento chiaro.",
-              img: "/prodotti/gres-60x60.png",
-              badge: "Ultimi pezzi",
-              prezzo: "5,90",
-              quantita: "120 mq",
-            },
-            {
-              title: "Effetto Marmo Bianco 120x60",
-              desc: "Superficie lucida, ideale per ambienti eleganti.",
-              img: "/prodotti/marmo-120x60.png",
-              badge: "Offerta",
-              prezzo: "8,50",
-              quantita: "80 mq",
-            },
-            {
-              title: "Gres Effetto Legno 20x120",
-              desc: "Color rovere naturale, bordo rettificato.",
-              img: "/prodotti/legno-20x120.png",
-              badge: "Novità",
-              prezzo: "14,00",
-              quantita: "150 mq",
-            },
-          ].map((prod, i) => (
-            <motion.div
-              key={prod.title}
-              className="group border border-neutral-200 rounded-2xl p-0 bg-white hover:shadow-xl hover:border-black transition overflow-hidden flex flex-col cursor-pointer"
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              custom={i + 1}
-              viewport={{ once: true }}
-              onClick={() => setModalProdotto(prod)}
-            >
-              <div className="h-48 bg-neutral-100 flex items-center justify-center overflow-hidden relative">
-                <img
-                  src={prod.img}
-                  alt={prod.title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition"
-                />
-                {prod.badge && (
-                  <span className="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full font-semibold">
-                    {prod.badge}
-                  </span>
-                )}
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h4 className="text-xl font-semibold text-center">{prod.title}</h4>
-                  <p className="mt-2 text-neutral-700 text-sm leading-relaxed text-center">
-                    {prod.desc}
-                  </p>
-                  <div className="mt-2 text-center text-black font-bold">
-                    {prod.prezzo && <span>{prod.prezzo} €/mq</span>}
-                  </div>
-                  <div className="mt-1 text-center text-xs text-neutral-500">
-                    {prod.quantita && <span>{prod.quantita} disponibili</span>}
-                  </div>
+        <div className="relative">
+          <div
+            className={`grid md:grid-cols-3 gap-8 transition duration-300 ${
+              modalProdotto ? "pointer-events-none blur-sm brightness-75 select-none" : ""
+            }`}
+            aria-hidden={modalProdotto ? "true" : "false"}
+          >
+            {[
+              {
+                title: "Gres Porcellanato 60x60",
+                desc: "Finitura opaca, effetto cemento chiaro.",
+                img: "/prodotti/gres-60x60.png",
+                badge: "Ultimi pezzi",
+                prezzo: "5,90",
+                quantita: "120 mq",
+              },
+              {
+                title: "Effetto Marmo Bianco 120x60",
+                desc: "Superficie lucida, ideale per ambienti eleganti.",
+                img: "/prodotti/marmo-120x60.png",
+                badge: "Offerta",
+                prezzo: "8,50",
+                quantita: "80 mq",
+              },
+              {
+                title: "Gres Effetto Legno 20x120",
+                desc: "Color rovere naturale, bordo rettificato.",
+                img: "/prodotti/legno-20x120.png",
+                badge: "Novità",
+                prezzo: "14,00",
+                quantita: "150 mq",
+              },
+            ].map((prod, i) => (
+              <motion.div
+                key={prod.title}
+                className="group border border-neutral-200 rounded-2xl p-0 bg-white hover:shadow-xl hover:border-black transition overflow-hidden flex flex-col cursor-pointer"
+                variants={stagger}
+                initial="hidden"
+                whileInView="visible"
+                custom={i + 1}
+                viewport={{ once: true }}
+                onClick={() => setModalProdotto(prod)}
+              >
+                <div className="h-48 bg-neutral-100 flex items-center justify-center overflow-hidden relative">
+                  <img
+                    src={prod.img}
+                    alt={prod.title}
+                    className="object-cover w-full h-full group-hover:scale-105 transition"
+                  />
+                  {prod.badge && (
+                    <span className="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full font-semibold">
+                      {prod.badge}
+                    </span>
+                  )}
                 </div>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-xl font-semibold text-center">{prod.title}</h4>
+                    <p className="mt-2 text-neutral-700 text-sm leading-relaxed text-center">
+                      {prod.desc}
+                    </p>
+                    <div className="mt-2 text-center text-black font-bold">
+                      {prod.prezzo && <span>{prod.prezzo} €/mq</span>}
+                    </div>
+                    <div className="mt-1 text-center text-xs text-neutral-500">
+                      {prod.quantita && <span>{prod.quantita} disponibili</span>}
+                    </div>
+                  </div>
+                  <a
+                    href="https://wa.me/393493061878"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    Richiedi disponibilità
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          {modalProdotto && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+              onClick={() => setModalProdotto(null)}
+              style={{ overscrollBehavior: "contain" }}
+            >
+              <div
+                className="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl relative"
+                onClick={e => e.stopPropagation()}
+              >
+                <button
+                  className="absolute top-3 right-4 text-2xl text-black font-bold"
+                  onClick={() => setModalProdotto(null)}
+                  type="button"
+                  aria-label="Chiudi"
+                >
+                  &times;
+                </button>
+                <img
+                  src={modalProdotto.img}
+                  alt={modalProdotto.title}
+                  className="w-full h-64 object-contain mb-4 rounded"
+                />
+                <h4 className="text-xl font-bold mb-2">{modalProdotto.title}</h4>
+                <p className="text-neutral-700 mb-2">{modalProdotto.desc}</p>
+                <div className="text-black font-bold mb-1">{modalProdotto.prezzo} €/mq</div>
+                <div className="text-xs text-neutral-500 mb-4">{modalProdotto.quantita} disponibili</div>
                 <a
                   href="https://wa.me/393493061878"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
-                  onClick={e => e.stopPropagation()}
+                  className="inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
                 >
                   Richiedi disponibilità
                 </a>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          )}
         </div>
         {modalProdotto && (
           <div
@@ -393,102 +438,106 @@ export default function LastraCeramicaLanding() {
       </section>
 
       {/* Calcolatore spedizione - IMPORTANTE E ANIMATO */}
-      <section
-        id="calcolatore"
-        className="relative z-10 px-8 py-24 max-w-2xl mx-auto text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-green-100 via-white to-blue-100 rounded-2xl shadow-xl p-10 border-2 border-green-400/30"
+      {!modalProdotto && (
+        <section
+          id="calcolatore"
+          className="relative z-10 px-8 py-24 max-w-2xl mx-auto text-center"
         >
-          <motion.h3
-            className="text-3xl md:text-4xl font-bold mb-4 text-green-700 flex items-center justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Truck className="inline-block text-green-600" size={36} />
-            Calcola la spedizione in pochi secondi
-          </motion.h3>
-          <motion.p
-            className="mb-8 text-neutral-700 text-lg text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Tutte le piastrelle che vedi sono in pronta consegna,<br />
-            con stock limitati e prezzi esclusivi.<br />
-            <span className="text-green-700 font-semibold">Scopri subito il costo di spedizione!</span>
-          </motion.p>
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
+            className="bg-gradient-to-br from-green-100 via-white to-blue-100 rounded-2xl shadow-xl p-10 border-2 border-green-400/30"
           >
-            <ShippingCalculator />
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Vantaggi */}
-      <section
-        id="vantaggi"
-        className="relative z-10 px-8 py-24 max-w-5xl mx-auto text-center"
-      >
-        <motion.h3
-          className="text-3xl font-bold mb-8"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          Perché scegliere LASTRA CERAMICA
-        </motion.h3>
-        <div className="grid md:grid-cols-4 gap-8">
-          {[
-            {
-              icon: <Euro size={36} />,
-              title: "Prezzi di fabbrica",
-              desc: "Acquisti direttamente dalla fabbrica, senza intermediari.",
-            },
-            {
-              icon: <Truck size={36} />,
-              title: "Spedizione rapida",
-              desc: "Stock sempre disponibili e consegna veloce in tutta Italia.",
-            },
-            {
-              icon: <CheckCircle2 size={36} />,
-              title: "Qualità garantita",
-              desc: "Solo piastrelle selezionate dai migliori produttori.",
-            },
-            {
-              icon: <Phone size={36} />,
-              title: "Consulenza dedicata",
-              desc: "Supporto professionale per ogni esigenza, dal preventivo alla posa.",
-            },
-          ].map((v, i) => (
-            <motion.div
-              key={v.title}
-              className="rounded-2xl border border-neutral-200 p-8 bg-white hover:shadow-xl hover:border-black transition flex flex-col items-center"
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              custom={i + 1}
+            <motion.h3
+              className="text-3xl md:text-4xl font-bold mb-4 text-green-700 flex items-center justify-center gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <div className="mb-4 text-black">{v.icon}</div>
-              <h4 className="text-lg font-semibold mb-2">{v.title}</h4>
-              <p className="text-neutral-700 text-sm">{v.desc}</p>
+              <Truck className="inline-block text-green-600" size={36} />
+              Calcola la spedizione in pochi secondi
+            </motion.h3>
+            <motion.p
+              className="mb-8 text-neutral-700 text-lg text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              Tutte le piastrelle che vedi sono in pronta consegna,<br />
+              con stock limitati e prezzi esclusivi.<br />
+              <span className="text-green-700 font-semibold">Scopri subito il costo di spedizione!</span>
+            </motion.p>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <ShippingCalculator />
             </motion.div>
-          ))}
-        </div>
-      </section>
+          </motion.div>
+        </section>
+      )}
+
+      {/* Vantaggi */}
+      {!modalProdotto && (
+        <section
+          id="vantaggi"
+          className="relative z-10 px-8 py-24 max-w-5xl mx-auto text-center"
+        >
+          <motion.h3
+            className="text-3xl font-bold mb-8"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            Perché scegliere LASTRA CERAMICA
+          </motion.h3>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <Euro size={36} />,
+                title: "Prezzi di fabbrica",
+                desc: "Acquisti direttamente dalla fabbrica, senza intermediari.",
+              },
+              {
+                icon: <Truck size={36} />,
+                title: "Spedizione rapida",
+                desc: "Stock sempre disponibili e consegna veloce in tutta Italia.",
+              },
+              {
+                icon: <CheckCircle2 size={36} />,
+                title: "Qualità garantita",
+                desc: "Solo piastrelle selezionate dai migliori produttori.",
+              },
+              {
+                icon: <Phone size={36} />,
+                title: "Consulenza dedicata",
+                desc: "Supporto professionale per ogni esigenza, dal preventivo alla posa.",
+              },
+            ].map((v, i) => (
+              <motion.div
+                key={v.title}
+                className="rounded-2xl border border-neutral-200 p-8 bg-white hover:shadow-xl hover:border-black transition flex flex-col items-center"
+                variants={stagger}
+                initial="hidden"
+                whileInView="visible"
+                custom={i + 1}
+                viewport={{ once: true }}
+              >
+                <div className="mb-4 text-black">{v.icon}</div>
+                <h4 className="text-lg font-semibold mb-2">{v.title}</h4>
+                <p className="text-neutral-700 text-sm">{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Calcolatore spedizione - IMPORTANTE E ANIMATO */}
       <section
@@ -770,7 +819,7 @@ function ShippingCalculator() {
         calcola();
       }}
     >
-      <div className="flex gap-3 w-full">
+      <div className="flex flex-col sm:flex-row gap-3 w-full">
         <input
           type="number"
           min={1}

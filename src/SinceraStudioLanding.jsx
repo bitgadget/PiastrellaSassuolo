@@ -392,6 +392,50 @@ export default function LastraCeramicaLanding() {
         )}
       </section>
 
+      {/* Calcolatore spedizione - IMPORTANTE E ANIMATO */}
+      <section
+        id="calcolatore"
+        className="relative z-10 px-8 py-24 max-w-2xl mx-auto text-center"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-green-100 via-white to-blue-100 rounded-2xl shadow-xl p-10 border-2 border-green-400/30"
+        >
+          <motion.h3
+            className="text-3xl md:text-4xl font-bold mb-4 text-green-700 flex items-center justify-center gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Truck className="inline-block text-green-600" size={36} />
+            Calcola la spedizione in pochi secondi
+          </motion.h3>
+          <motion.p
+            className="mb-8 text-neutral-700 text-lg text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Tutte le piastrelle che vedi sono in pronta consegna,<br />
+            con stock limitati e prezzi esclusivi.<br />
+            <span className="text-green-700 font-semibold">Scopri subito il costo di spedizione!</span>
+          </motion.p>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <ShippingCalculator />
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* Vantaggi */}
       <section
         id="vantaggi"
@@ -451,31 +495,42 @@ export default function LastraCeramicaLanding() {
         id="calcolatore"
         className="relative z-10 px-8 py-24 max-w-2xl mx-auto text-center"
       >
-        <motion.h3
-          className="text-3xl md:text-4xl font-bold mb-6"
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
+          className="bg-gradient-to-br from-green-100 via-white to-blue-100 rounded-2xl shadow-xl p-10 border-2 border-green-400/30"
         >
-          Calcola la spedizione in pochi secondi
-        </motion.h3>
-        <motion.p
-          className="mb-8 text-neutral-700 text-lg text-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          Tutte le piastrelle che vedi sono in pronta consegna, con stock limitati e prezzi esclusivi. Contattaci per ricevere foto dettagliate, campioni o un preventivo personalizzato!
-        </motion.p>
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <ShippingCalculator />
+          <motion.h3
+            className="text-3xl md:text-4xl font-bold mb-4 text-green-700 flex items-center justify-center gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Truck className="inline-block text-green-600" size={36} />
+            Calcola la spedizione in pochi secondi
+          </motion.h3>
+          <motion.p
+            className="mb-8 text-neutral-700 text-lg text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Tutte le piastrelle che vedi sono in pronta consegna,<br />
+            con stock limitati e prezzi esclusivi.<br />
+            <span className="text-green-700 font-semibold">Scopri subito il costo di spedizione!</span>
+          </motion.p>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <ShippingCalculator />
+          </motion.div>
         </motion.div>
       </section>
 
@@ -709,43 +764,45 @@ function ShippingCalculator() {
 
   return (
     <form
-      className="flex flex-col gap-3"
+      className="flex flex-col gap-4 items-center"
       onSubmit={e => {
         e.preventDefault();
         calcola();
       }}
     >
-      <input
-        type="number"
-        min={1}
-        step={1}
-        value={mq}
-        onChange={e => setMq(e.target.value)}
-        placeholder="Metri quadri"
-        className="px-3 py-2 rounded border border-neutral-300"
-        required
-      />
-      <select
-        value={zona}
-        onChange={e => setZona(e.target.value)}
-        className="px-3 py-2 rounded border border-neutral-300"
-        required
-      >
-        <option value="">Seleziona zona</option>
-        <option value="nord">Nord Italia</option>
-        <option value="centro">Centro Italia</option>
-        <option value="sud">Sud Italia</option>
-        <option value="isole">Isole</option>
-      </select>
+      <div className="flex gap-3 w-full">
+        <input
+          type="number"
+          min={1}
+          step={1}
+          value={mq}
+          onChange={e => setMq(e.target.value)}
+          placeholder="Metri quadri"
+          className="flex-1 px-4 py-3 rounded-lg border-2 border-green-400/50 focus:border-green-600 outline-none text-lg shadow-sm"
+          required
+        />
+        <select
+          value={zona}
+          onChange={e => setZona(e.target.value)}
+          className="flex-1 px-4 py-3 rounded-lg border-2 border-green-400/50 focus:border-green-600 outline-none text-lg shadow-sm"
+          required
+        >
+          <option value="">Zona</option>
+          <option value="nord">Nord Italia</option>
+          <option value="centro">Centro Italia</option>
+          <option value="sud">Sud Italia</option>
+          <option value="isole">Isole</option>
+        </select>
+      </div>
       <button
         type="submit"
-        className="rounded bg-black text-white px-4 py-2 font-semibold hover:bg-neutral-800 transition"
+        className="mt-2 rounded-full bg-green-600 text-white px-8 py-3 font-bold text-lg shadow hover:bg-green-700 transition"
       >
-        Calcola
+        Calcola spedizione
       </button>
       {costo && (
-        <div className="mt-2 text-black font-bold">
-          Costo stimato spedizione: <span className="text-green-700">{costo} €</span>
+        <div className="mt-4 text-xl font-bold text-green-700 bg-green-100 rounded-lg px-6 py-3 shadow">
+          Costo stimato spedizione: <span className="text-green-900">{costo} €</span>
         </div>
       )}
     </form>

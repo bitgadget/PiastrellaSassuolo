@@ -409,6 +409,64 @@ export default function LastraCeramicaLanding() {
         </motion.div>
       </section>
 
+      {/* Testimonianze - inserito dopo sezione calcolatore */}
+      <section className="relative z-10 px-8 py-24 bg-neutral-50 max-w-5xl mx-auto">
+        <motion.h3
+          className="text-3xl font-bold mb-12 text-center"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          Cosa dicono i nostri clienti
+        </motion.h3>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              nome: "Studio Architettura Moderni",
+              ruolo: "Cliente business",
+              testo: "Collaboriamo da due anni con Lastra Ceramica e non abbiamo mai avuto problemi di fornitura o qualità. Prezzi sempre competitivi.",
+              foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+            },
+            {
+              nome: "Roberto Bianchi",
+              ruolo: "Privato",
+              testo: "Ho ristrutturato casa risparmiando quasi 2.000€ sulle piastrelle. La qualità è eccellente e il servizio clienti davvero professionale.",
+              foto: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+            },
+            {
+              nome: "Edil Costruzioni srl",
+              ruolo: "Impresa edile",
+              testo: "Forniture sempre puntuali e prezzi imbattibili. La consulenza tecnica ci ha aiutato a scegliere i materiali migliori per ogni progetto.",
+              foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+            }
+          ].map((recensione, i) => (
+            <motion.div
+              key={recensione.nome}
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              custom={i + 1}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow-md flex flex-col"
+            >
+              <div className="flex-1">
+                <p className="text-neutral-700 italic mb-6">"{recensione.testo}"</p>
+              </div>
+              <div className="flex gap-4 items-center pt-4 border-t border-neutral-100">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-200">
+                  <img src={recensione.foto} alt={recensione.nome} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p className="font-semibold">{recensione.nome}</p>
+                  <p className="text-sm text-neutral-500">{recensione.ruolo}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* FAQ */}
       <section
         id="faq"

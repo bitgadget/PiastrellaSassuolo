@@ -273,9 +273,8 @@ export default function LastraCeramicaLanding() {
           Prodotti in pronta consegna
         </motion.h3>
         <div className="flex justify-center mb-6">
-          <span className="inline-block bg-green-600 text-white text-lg font-bold px-6 py-2 rounded-full shadow">
-            Tutte le piastrelle<br />
-            sotto i 10 €/mq
+          <span className="inline-block bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow">
+            Tutti gli articoli sotto i 10 €/mq
           </span>
         </div>
         <div className="grid md:grid-cols-3 gap-8">

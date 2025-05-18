@@ -162,7 +162,8 @@ export default function LastraCeramicaLanding() {
             animate="visible"
             custom={1}
           >
-            Tutto sotto i 10 €/mq
+            Tutto sotto<br />
+            i 10 €/mq
           </motion.h2>
           <motion.p
             className="mt-4 text-3xl md:text-4xl text-white font-semibold drop-shadow max-w-prose mx-auto"
@@ -171,7 +172,9 @@ export default function LastraCeramicaLanding() {
             animate="visible"
             custom={2}
           >
-            Piastrelle italiane in pronta consegna, direttamente dalla fabbrica
+            PIASTRELLE ITALIANE<br />
+            IN PRONTA CONSEGNA<br />
+            DIRETTAMENTE DALLA FABBRICA
           </motion.p>
           <motion.div
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
@@ -284,7 +287,7 @@ export default function LastraCeramicaLanding() {
               desc: "Color rovere naturale, bordo rettificato.",
               img: "/prodotti/legno-20x120.png",
               badge: "Novità",
-              prezzo: "9,00",
+              prezzo: "14,00",
               quantita: "150 mq",
             },
           ].map((prod, i) => (

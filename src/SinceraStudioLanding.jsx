@@ -163,19 +163,15 @@ export default function LastraCeramicaLanding() {
             custom={1}
           >
             Piastrelle a stock
-            <br />
-            <span className="underline decoration-black">
-              direttamente dalla fabbrica
-            </span>
           </motion.h2>
           <motion.p
-            className="mt-6 text-lg text-neutral-100 max-w-prose mx-auto"
+            className="mt-4 text-4xl md:text-5xl text-white font-semibold drop-shadow max-w-prose mx-auto"
             variants={stagger}
             initial="hidden"
             animate="visible"
             custom={2}
           >
-            LASTRA CERAMICA: qualità, convenienza e disponibilità immediata per professionisti e privati. Scopri le nostre offerte su lotti in pronta consegna.
+            direttamente dalla fabbrica
           </motion.p>
           <motion.div
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
@@ -203,7 +199,7 @@ export default function LastraCeramicaLanding() {
       {/* Chi siamo */}
       <section className="relative z-10 px-8 py-24 max-w-4xl mx-auto text-center">
         <motion.h3
-          className="text-3xl font-bold mb-6"
+          className="text-3xl md:text-4xl font-bold mb-8 text-black"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -212,15 +208,38 @@ export default function LastraCeramicaLanding() {
           Chi siamo
         </motion.h3>
         <motion.p
-          className="text-neutral-700 text-lg"
+          className="text-neutral-700 text-lg md:text-xl mb-12"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           custom={2}
           viewport={{ once: true }}
         >
-          LASTRA CERAMICA nasce per offrire piastrelle di alta qualità a prezzi di fabbrica. Lavoriamo direttamente con i migliori produttori italiani per garantire stock sempre aggiornati, consegne rapide e consulenza professionale.
+          LASTRA CERAMICA nasce per offrire piastrelle di alta qualità a prezzi di fabbrica. Lavoriamo direttamente con i migliori produttori italiani per garantire stock sempre aggiornati, consegne rapide e consulenza professionale. Siamo un punto di riferimento per privati e professionisti che cercano affidabilità, trasparenza e un servizio su misura.
         </motion.p>
+        <div className="grid md:grid-cols-3 gap-8 text-left">
+          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <Layers3 size={40} className="mb-4 text-black" />
+            <h4 className="font-bold text-lg mb-2">Esperienza</h4>
+            <p className="text-neutral-700 text-sm text-center">
+              Da oltre 10 anni nel settore ceramico, mettiamo la nostra esperienza al servizio di privati e professionisti.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <PackageSearch size={40} className="mb-4 text-black" />
+            <h4 className="font-bold text-lg mb-2">Fornitori selezionati</h4>
+            <p className="text-neutral-700 text-sm text-center">
+              Collaboriamo solo con produttori italiani certificati, per offrire qualità e affidabilità.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <CalendarIcon size={40} className="mb-4 text-black" />
+            <h4 className="font-bold text-lg mb-2">Consulenza dedicata</h4>
+            <p className="text-neutral-700 text-sm text-center">
+              Ti seguiamo dalla scelta del materiale fino alla consegna, con preventivi rapidi e assistenza personalizzata.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Prodotti */}

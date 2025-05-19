@@ -18,3 +18,12 @@
 .neon-blink {
   animation: neon-blink 1.8s infinite alternate;
 }
+
+/* Nasconde la scrollbar su tutti i browser */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

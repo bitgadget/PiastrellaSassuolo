@@ -12,6 +12,7 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
+import ProductSlider from "./components/ProductSlider";
 
 const PRIMARY = "#fff";
 const SECONDARY = "#000";
@@ -277,14 +278,192 @@ export default function LastraCeramicaLanding() {
             Tutti gli articoli sotto i 10 €/mq
           </span>
         </div>
-        <div className="relative">
-          <div
-            className={`grid md:grid-cols-3 gap-8 transition duration-300 ${
-              modalProdotto ? "pointer-events-none blur-sm brightness-75 select-none" : ""
-            }`}
-            aria-hidden={modalProdotto ? "true" : "false"}
-          >
-            {[
+
+        {/* Effetto Pietra */}
+        <div className="mb-12">
+          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Pietra</h4>
+          <ProductSlider
+            products={[
+              {
+                title: "Pietra Grigia 60x60",
+                desc: "Superficie naturale, effetto pietra moderna.",
+                img: "/prodotti/pietra-60x60.png",
+                badge: "Novità",
+                prezzo: "9,50",
+                quantita: "90 mq",
+              },
+              {
+                title: "Pietra Beige 60x60",
+                desc: "Tonalità calda, ideale per ambienti luminosi.",
+                img: "/prodotti/pietra-beige-60x60.png",
+                badge: "Offerta",
+                prezzo: "8,90",
+                quantita: "70 mq",
+              },
+              {
+                title: "Pietra Antracite 30x60",
+                desc: "Effetto pietra scura, bordo rettificato.",
+                img: "/prodotti/pietra-antracite-30x60.png",
+                badge: "Ultimi pezzi",
+                prezzo: "7,90",
+                quantita: "50 mq",
+              },
+              {
+                title: "Pietra Bianca 60x60",
+                desc: "Superficie chiara, moderna e versatile.",
+                img: "/prodotti/pietra-bianca-60x60.png",
+                badge: "",
+                prezzo: "9,20",
+                quantita: "100 mq",
+              },
+              {
+                title: "Pietra Grigia 30x60",
+                desc: "Formato versatile, effetto naturale.",
+                img: "/prodotti/pietra-grigia-30x60.png",
+                badge: "",
+                prezzo: "8,50",
+                quantita: "60 mq",
+              },
+              {
+                title: "Pietra Beige 30x60",
+                desc: "Tonalità calda, superficie naturale.",
+                img: "/prodotti/pietra-beige-30x60.png",
+                badge: "",
+                prezzo: "8,50",
+                quantita: "80 mq",
+              },
+              {
+                title: "Pietra Scura 60x60",
+                desc: "Effetto pietra intensa, moderna.",
+                img: "/prodotti/pietra-scura-60x60.png",
+                badge: "",
+                prezzo: "9,00",
+                quantita: "40 mq",
+              },
+              {
+                title: "Pietra Sabbia 60x60",
+                desc: "Color sabbia, ideale per esterni.",
+                img: "/prodotti/pietra-sabbia-60x60.png",
+                badge: "",
+                prezzo: "9,10",
+                quantita: "55 mq",
+              },
+              {
+                title: "Pietra Grigia 45x45",
+                desc: "Formato compatto, effetto naturale.",
+                img: "/prodotti/pietra-grigia-45x45.png",
+                badge: "",
+                prezzo: "7,80",
+                quantita: "65 mq",
+              },
+              {
+                title: "Pietra Beige 45x45",
+                desc: "Formato compatto, superficie calda.",
+                img: "/prodotti/pietra-beige-45x45.png",
+                badge: "",
+                prezzo: "7,80",
+                quantita: "75 mq",
+              },
+            ]}
+            onCardClick={setModalProdotto}
+          />
+        </div>
+
+        {/* Effetto Legno */}
+        <div className="mb-12">
+          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Legno</h4>
+          <ProductSlider
+            products={[
+              {
+                title: "Gres Effetto Legno 20x120",
+                desc: "Color rovere naturale, bordo rettificato.",
+                img: "/prodotti/legno-20x120.png",
+                badge: "Novità",
+                prezzo: "14,00",
+                quantita: "150 mq",
+              },
+              {
+                title: "Legno Chiaro 20x120",
+                desc: "Tonalità chiara, stile nordico.",
+                img: "/prodotti/legno-chiaro-20x120.png",
+                badge: "",
+                prezzo: "13,50",
+                quantita: "120 mq",
+              },
+              {
+                title: "Legno Scuro 20x120",
+                desc: "Effetto legno intenso, elegante.",
+                img: "/prodotti/legno-scuro-20x120.png",
+                badge: "",
+                prezzo: "13,90",
+                quantita: "80 mq",
+              },
+              {
+                title: "Legno Rovere 15x90",
+                desc: "Formato classico, effetto rovere.",
+                img: "/prodotti/legno-rovere-15x90.png",
+                badge: "",
+                prezzo: "12,90",
+                quantita: "100 mq",
+              },
+              {
+                title: "Legno Grigio 20x120",
+                desc: "Tonalità moderna, bordo rettificato.",
+                img: "/prodotti/legno-grigio-20x120.png",
+                badge: "",
+                prezzo: "13,80",
+                quantita: "90 mq",
+              },
+              {
+                title: "Legno Miele 20x120",
+                desc: "Color miele, caldo e accogliente.",
+                img: "/prodotti/legno-miele-20x120.png",
+                badge: "",
+                prezzo: "13,70",
+                quantita: "110 mq",
+              },
+              {
+                title: "Legno Sbiancato 20x120",
+                desc: "Effetto sbiancato, luminoso.",
+                img: "/prodotti/legno-sbiancato-20x120.png",
+                badge: "",
+                prezzo: "13,60",
+                quantita: "70 mq",
+              },
+              {
+                title: "Legno Noce 20x120",
+                desc: "Tonalità noce, elegante.",
+                img: "/prodotti/legno-noce-20x120.png",
+                badge: "",
+                prezzo: "13,90",
+                quantita: "60 mq",
+              },
+              {
+                title: "Legno Naturale 15x90",
+                desc: "Formato classico, effetto naturale.",
+                img: "/prodotti/legno-naturale-15x90.png",
+                badge: "",
+                prezzo: "12,80",
+                quantita: "85 mq",
+              },
+              {
+                title: "Legno Anticato 20x120",
+                desc: "Effetto anticato, stile rustico.",
+                img: "/prodotti/legno-anticato-20x120.png",
+                badge: "",
+                prezzo: "13,50",
+                quantita: "95 mq",
+              },
+            ]}
+            onCardClick={setModalProdotto}
+          />
+        </div>
+
+        {/* Effetto Cemento */}
+        <div className="mb-12">
+          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Cemento</h4>
+          <ProductSlider
+            products={[
               {
                 title: "Gres Porcellanato 60x60",
                 desc: "Finitura opaca, effetto cemento chiaro.",
@@ -294,6 +473,88 @@ export default function LastraCeramicaLanding() {
                 quantita: "120 mq",
               },
               {
+                title: "Cemento Grigio 60x60",
+                desc: "Superficie moderna, opaca.",
+                img: "/prodotti/cemento-grigio-60x60.png",
+                badge: "",
+                prezzo: "6,50",
+                quantita: "100 mq",
+              },
+              {
+                title: "Cemento Antracite 60x60",
+                desc: "Tonalità scura, stile industrial.",
+                img: "/prodotti/cemento-antracite-60x60.png",
+                badge: "",
+                prezzo: "6,90",
+                quantita: "80 mq",
+              },
+              {
+                title: "Cemento Beige 60x60",
+                desc: "Tonalità calda, versatile.",
+                img: "/prodotti/cemento-beige-60x60.png",
+                badge: "",
+                prezzo: "6,70",
+                quantita: "90 mq",
+              },
+              {
+                title: "Cemento Chiaro 30x60",
+                desc: "Formato versatile, effetto cemento.",
+                img: "/prodotti/cemento-chiaro-30x60.png",
+                badge: "",
+                prezzo: "5,80",
+                quantita: "110 mq",
+              },
+              {
+                title: "Cemento Grigio 30x60",
+                desc: "Formato compatto, moderno.",
+                img: "/prodotti/cemento-grigio-30x60.png",
+                badge: "",
+                prezzo: "5,90",
+                quantita: "95 mq",
+              },
+              {
+                title: "Cemento Scuro 60x60",
+                desc: "Tonalità intensa, stile urban.",
+                img: "/prodotti/cemento-scuro-60x60.png",
+                badge: "",
+                prezzo: "6,80",
+                quantita: "70 mq",
+              },
+              {
+                title: "Cemento Sabbia 60x60",
+                desc: "Color sabbia, effetto cemento.",
+                img: "/prodotti/cemento-sabbia-60x60.png",
+                badge: "",
+                prezzo: "6,60",
+                quantita: "85 mq",
+              },
+              {
+                title: "Cemento Grigio 45x45",
+                desc: "Formato compatto, superficie moderna.",
+                img: "/prodotti/cemento-grigio-45x45.png",
+                badge: "",
+                prezzo: "5,70",
+                quantita: "75 mq",
+              },
+              {
+                title: "Cemento Beige 45x45",
+                desc: "Formato compatto, superficie calda.",
+                img: "/prodotti/cemento-beige-45x45.png",
+                badge: "",
+                prezzo: "5,70",
+                quantita: "65 mq",
+              },
+            ]}
+            onCardClick={setModalProdotto}
+          />
+        </div>
+
+        {/* Effetto Marmo */}
+        <div className="mb-12">
+          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Marmo</h4>
+          <ProductSlider
+            products={[
+              {
                 title: "Effetto Marmo Bianco 120x60",
                 desc: "Superficie lucida, ideale per ambienti eleganti.",
                 img: "/prodotti/marmo-120x60.png",
@@ -302,101 +563,83 @@ export default function LastraCeramicaLanding() {
                 quantita: "80 mq",
               },
               {
-                title: "Gres Effetto Legno 20x120",
-                desc: "Color rovere naturale, bordo rettificato.",
-                img: "/prodotti/legno-20x120.png",
-                badge: "Novità",
-                prezzo: "14,00",
-                quantita: "150 mq",
+                title: "Marmo Calacatta 60x120",
+                desc: "Venature dorate, superficie lucida.",
+                img: "/prodotti/marmo-calacatta-60x120.png",
+                badge: "",
+                prezzo: "9,90",
+                quantita: "60 mq",
               },
-            ].map((prod, i) => (
-              <motion.div
-                key={prod.title}
-                className="group border border-neutral-200 rounded-2xl p-0 bg-white hover:shadow-xl hover:border-black transition overflow-hidden flex flex-col cursor-pointer"
-                variants={stagger}
-                initial="hidden"
-                whileInView="visible"
-                custom={i + 1}
-                viewport={{ once: true }}
-                onClick={() => setModalProdotto(prod)}
-              >
-                <div className="h-48 bg-neutral-100 flex items-center justify-center overflow-hidden relative">
-                  <img
-                    src={prod.img}
-                    alt={prod.title}
-                    className="object-cover w-full h-full group-hover:scale-105 transition"
-                  />
-                  {prod.badge && (
-                    <span className="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full font-semibold">
-                      {prod.badge}
-                    </span>
-                  )}
-                </div>
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h4 className="text-xl font-semibold text-center">{prod.title}</h4>
-                    <p className="mt-2 text-neutral-700 text-sm leading-relaxed text-center">
-                      {prod.desc}
-                    </p>
-                    <div className="mt-2 text-center text-black font-bold">
-                      {prod.prezzo && <span>{prod.prezzo} €/mq</span>}
-                    </div>
-                    <div className="mt-1 text-center text-xs text-neutral-500">
-                      {prod.quantita && <span>{prod.quantita} disponibili</span>}
-                    </div>
-                  </div>
-                  <a
-                    href="https://wa.me/393493061878"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
-                    onClick={e => e.stopPropagation()}
-                  >
-                    Richiedi disponibilità
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          {modalProdotto && (
-            <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
-              onClick={() => setModalProdotto(null)}
-              style={{ overscrollBehavior: "contain" }}
-            >
-              <div
-                className="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl relative"
-                onClick={e => e.stopPropagation()}
-              >
-                <button
-                  className="absolute top-3 right-4 text-2xl text-black font-bold"
-                  onClick={() => setModalProdotto(null)}
-                  type="button"
-                  aria-label="Chiudi"
-                >
-                  &times;
-                </button>
-                <img
-                  src={modalProdotto.img}
-                  alt={modalProdotto.title}
-                  className="w-full h-64 object-contain mb-4 rounded"
-                />
-                <h4 className="text-xl font-bold mb-2">{modalProdotto.title}</h4>
-                <p className="text-neutral-700 mb-2">{modalProdotto.desc}</p>
-                <div className="text-black font-bold mb-1">{modalProdotto.prezzo} €/mq</div>
-                <div className="text-xs text-neutral-500 mb-4">{modalProdotto.quantita} disponibili</div>
-                <a
-                  href="https://wa.me/393493061878"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
-                >
-                  Richiedi disponibilità
-                </a>
-              </div>
-            </div>
-          )}
+              {
+                title: "Marmo Statuario 60x120",
+                desc: "Eleganza senza tempo, superficie lucida.",
+                img: "/prodotti/marmo-statuario-60x120.png",
+                badge: "",
+                prezzo: "9,80",
+                quantita: "70 mq",
+              },
+              {
+                title: "Marmo Nero 60x120",
+                desc: "Superficie lucida, venature bianche.",
+                img: "/prodotti/marmo-nero-60x120.png",
+                badge: "",
+                prezzo: "9,70",
+                quantita: "50 mq",
+              },
+              {
+                title: "Marmo Beige 60x120",
+                desc: "Tonalità calda, elegante.",
+                img: "/prodotti/marmo-beige-60x120.png",
+                badge: "",
+                prezzo: "9,60",
+                quantita: "65 mq",
+              },
+              {
+                title: "Marmo Grigio 60x120",
+                desc: "Superficie lucida, venature grigie.",
+                img: "/prodotti/marmo-grigio-60x120.png",
+                badge: "",
+                prezzo: "9,50",
+                quantita: "55 mq",
+              },
+              {
+                title: "Marmo Bianco 60x60",
+                desc: "Formato quadrato, superficie lucida.",
+                img: "/prodotti/marmo-bianco-60x60.png",
+                badge: "",
+                prezzo: "8,90",
+                quantita: "80 mq",
+              },
+              {
+                title: "Marmo Nero 60x60",
+                desc: "Formato quadrato, venature bianche.",
+                img: "/prodotti/marmo-nero-60x60.png",
+                badge: "",
+                prezzo: "8,80",
+                quantita: "70 mq",
+              },
+              {
+                title: "Marmo Beige 60x60",
+                desc: "Formato quadrato, superficie calda.",
+                img: "/prodotti/marmo-beige-60x60.png",
+                badge: "",
+                prezzo: "8,70",
+                quantita: "60 mq",
+              },
+              {
+                title: "Marmo Grigio 60x60",
+                desc: "Formato quadrato, venature grigie.",
+                img: "/prodotti/marmo-grigio-60x60.png",
+                badge: "",
+                prezzo: "8,60",
+                quantita: "65 mq",
+              },
+            ]}
+            onCardClick={setModalProdotto}
+          />
         </div>
+
+        {/* Modale prodotto come già presente */}
         {modalProdotto && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
@@ -538,50 +781,6 @@ export default function LastraCeramicaLanding() {
           </div>
         </section>
       )}
-
-      {/* Calcolatore spedizione - IMPORTANTE E ANIMATO */}
-      <section
-        id="calcolatore"
-        className="relative z-10 px-8 py-24 max-w-2xl mx-auto text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-green-100 via-white to-blue-100 rounded-2xl shadow-xl p-10 border-2 border-green-400/30"
-        >
-          <motion.h3
-            className="text-3xl md:text-4xl font-bold mb-4 text-green-700 flex items-center justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Truck className="inline-block text-green-600" size={36} />
-            Calcola la spedizione in pochi secondi
-          </motion.h3>
-          <motion.p
-            className="mb-8 text-neutral-700 text-lg text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Tutte le piastrelle che vedi sono in pronta consegna,<br />
-            con stock limitati e prezzi esclusivi.<br />
-            <span className="text-green-700 font-semibold">Scopri subito il costo di spedizione!</span>
-          </motion.p>
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <ShippingCalculator />
-          </motion.div>
-        </motion.div>
-      </section>
 
       {/* Testimonianze - inserito dopo sezione calcolatore */}
       <section className="relative z-10 px-8 py-24 bg-neutral-50 max-w-5xl mx-auto">
@@ -850,8 +1049,10 @@ function ShippingCalculator() {
         Calcola spedizione
       </button>
       {costo && (
-        <div className="mt-4 text-xl font-bold text-green-700 bg-green-100 rounded-lg px-6 py-3 shadow">
-          Costo stimato spedizione: <span className="text-green-900">{costo} €</span>
+        <div className="mt-4 text-xl font-bold text-green-700 bg-green-100 rounded-lg px-6 py-3 shadow text-center">
+          Costo stimato spedizione:
+          <br className="block sm:hidden" />
+          <span className="text-green-900 block sm:inline">{costo} €</span>
         </div>
       )}
     </form>

@@ -290,7 +290,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-60x60.png",
                 badge: "Novità",
                 prezzo: "9,50",
-                quantita: "90 mq",
+                quantita: "220 mq",
               },
               {
                 title: "Pietra Beige 60x60",
@@ -298,7 +298,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-beige-60x60.png",
                 badge: "Offerta",
                 prezzo: "8,90",
-                quantita: "70 mq",
+                quantita: "180 mq",
               },
               {
                 title: "Pietra Antracite 30x60",
@@ -306,7 +306,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-antracite-30x60.png",
                 badge: "Ultimi pezzi",
                 prezzo: "7,90",
-                quantita: "50 mq",
+                quantita: "130 mq",
               },
               {
                 title: "Pietra Bianca 60x60",
@@ -314,7 +314,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-bianca-60x60.png",
                 badge: "",
                 prezzo: "9,20",
-                quantita: "100 mq",
+                quantita: "250 mq",
               },
               {
                 title: "Pietra Grigia 30x60",
@@ -322,7 +322,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-grigia-30x60.png",
                 badge: "",
                 prezzo: "8,50",
-                quantita: "60 mq",
+                quantita: "170 mq",
               },
               {
                 title: "Pietra Beige 30x60",
@@ -330,7 +330,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-beige-30x60.png",
                 badge: "",
                 prezzo: "8,50",
-                quantita: "80 mq",
+                quantita: "210 mq",
               },
               {
                 title: "Pietra Scura 60x60",
@@ -338,7 +338,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-scura-60x60.png",
                 badge: "",
                 prezzo: "9,00",
-                quantita: "40 mq",
+                quantita: "160 mq",
               },
               {
                 title: "Pietra Sabbia 60x60",
@@ -346,7 +346,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-sabbia-60x60.png",
                 badge: "",
                 prezzo: "9,10",
-                quantita: "55 mq",
+                quantita: "200 mq",
               },
               {
                 title: "Pietra Grigia 45x45",
@@ -354,7 +354,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-grigia-45x45.png",
                 badge: "",
                 prezzo: "7,80",
-                quantita: "65 mq",
+                quantita: "140 mq",
               },
               {
                 title: "Pietra Beige 45x45",
@@ -362,7 +362,7 @@ export default function LastraCeramicaLanding() {
                 img: "/prodotti/pietra-beige-45x45.png",
                 badge: "",
                 prezzo: "7,80",
-                quantita: "75 mq",
+                quantita: "190 mq",
               },
             ]}
             onCardClick={setModalProdotto}
@@ -693,6 +693,7 @@ export default function LastraCeramicaLanding() {
             viewport={{ once: true }}
             className="bg-gradient-to-br from-green-100 via-white to-blue-100 rounded-2xl shadow-xl p-10 border-2 border-green-400/30"
           >
+            <Truck className="mx-auto mb-2 text-green-600" size={36} />
             <motion.h3
               className="text-3xl md:text-4xl font-bold mb-4 text-green-700 flex items-center justify-center gap-3"
               initial={{ opacity: 0, y: 20 }}
@@ -700,7 +701,6 @@ export default function LastraCeramicaLanding() {
               transition={{ delay: 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Truck className="inline-block text-green-600" size={36} />
               Calcola la spedizione in pochi secondi
             </motion.h3>
             <motion.p

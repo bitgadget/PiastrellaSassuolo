@@ -69,6 +69,25 @@ export default function ProductSlider({ products, onCardClick }) {
                   {prod.quantita && <span>{prod.quantita} disponibili</span>}
                 </div>
               </div>
+              {/* Barra di disponibilità animata */}
+              {prod.quantita && (
+                <div className="mt-2 w-full">
+                  <div className="h-2 bg-neutral-200 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${Math.min(parseInt(prod.quantita), 300) / 3}%` }}
+                      transition={{ duration: 1 }}
+                      className="h-2 bg-green-500"
+                      style={{
+                        borderRadius: "9999px",
+                      }}
+                    />
+                  </div>
+                  <div className="text-[10px] text-neutral-400 mt-1">
+                    Stock: {prod.quantita}
+                  </div>
+                </div>
+              )}
               <a
                 href="https://wa.me/393493061878"
                 target="_blank"

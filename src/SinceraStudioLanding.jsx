@@ -262,7 +262,7 @@ export default function LastraCeramicaLanding() {
       {/* Prodotti */}
       <section
         id="prodotti"
-        className="relative z-10 px-8 py-24 max-w-7xl mx-auto"
+        className="relative z-10 px-8 pt-24 pb-4 max-w-7xl mx-auto"
       >
         <motion.h3
           className="text-3xl font-bold mb-8"
@@ -550,7 +550,7 @@ export default function LastraCeramicaLanding() {
         </div>
 
         {/* Effetto Marmo */}
-        <div className="mb-12">
+        <div className="mb-0">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Marmo</h4>
           <ProductSlider
             products={[
@@ -684,7 +684,7 @@ export default function LastraCeramicaLanding() {
       {!modalProdotto && (
         <section
           id="calcolatore"
-          className="relative z-10 px-8 py-24 max-w-2xl mx-auto text-center"
+          className="relative z-10 px-8 pt-2 pb-8 max-w-2xl mx-auto text-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -730,7 +730,7 @@ export default function LastraCeramicaLanding() {
       {!modalProdotto && (
         <section
           id="vantaggi"
-          className="relative z-10 px-8 py-24 max-w-5xl mx-auto text-center"
+          className="relative z-10 px-8 py-12 max-w-5xl mx-auto text-center"
         >
           <motion.h3
             className="text-3xl font-bold mb-8"
@@ -782,8 +782,8 @@ export default function LastraCeramicaLanding() {
         </section>
       )}
 
-      {/* Testimonianze - inserito dopo sezione calcolatore */}
-      <section className="relative z-10 px-8 py-24 bg-neutral-50 max-w-5xl mx-auto">
+      {/* Testimonianze */}
+      <section className="relative z-10 px-8 py-12 bg-neutral-50 max-w-5xl mx-auto">
         <motion.h3
           className="text-3xl font-bold mb-12 text-center"
           variants={stagger}

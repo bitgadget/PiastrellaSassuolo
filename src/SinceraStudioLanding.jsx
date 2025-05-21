@@ -13,6 +13,7 @@ import {
   Mail,
 } from "lucide-react";
 import ProductSlider from "./components/ProductSlider";
+import FloorConfigurator3D from "./components/FloorConfigurator3D";
 
 const PRIMARY = "#fff";
 const SECONDARY = "#000";
@@ -214,7 +215,7 @@ export default function LastraCeramicaLanding() {
       </section>
 
       {/* Chi siamo */}
-      <section className="relative z-10 px-8 py-24 max-w-4xl mx-auto text-center">
+      <section className="relative z-10 px-8 py-16 max-w-4xl mx-auto text-center">
         <motion.h3
           className="text-3xl md:text-4xl font-bold mb-8 text-black"
           variants={stagger}
@@ -259,10 +260,18 @@ export default function LastraCeramicaLanding() {
         </div>
       </section>
 
+      {/* Configuratore 3D */}
+      {false && (
+        <section className="relative z-10 px-8 pt-16 pb-8 max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold mb-4 text-center">Configura il tuo pavimento in 3D</h3>
+          <FloorConfigurator3D />
+        </section>
+      )}
+
       {/* Prodotti */}
       <section
         id="prodotti"
-        className="relative z-10 px-8 pt-24 pb-4 max-w-7xl mx-auto"
+        className="relative z-10 px-8 pt-12 pb-4 max-w-7xl mx-auto"
       >
         <motion.h3
           className="text-3xl font-bold mb-8"

@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   Layers3,
-  PackageSearch,
+  Gem,
+  Hammer,
+  Mountain,
   Calendar as CalendarIcon,
   ChevronDown,
   CheckCircle2,
@@ -11,6 +13,8 @@ import {
   Euro,
   Phone,
   Mail,
+  Lightbulb,
+  PackageSearch, // AGGIUNGI QUESTA RIGA
 } from "lucide-react";
 import ProductSlider from "./components/ProductSlider";
 import FloorConfigurator3D from "./components/FloorConfigurator3D";
@@ -36,6 +40,7 @@ export default function LastraCeramicaLanding() {
   const [showModal, setShowModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [modalProdotto, setModalProdotto] = useState(null);
+  const [showQuickMenu, setShowQuickMenu] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 5000);
@@ -480,35 +485,35 @@ export default function LastraCeramicaLanding() {
                 title: "60×60 cm economico",
                 desc: "Rettificato e monocalibro, soluzione economica per grandi superfici.",
                 prezzo: "5,80",
-                img: "",
+                img: "https://lastracereramica.shop/cdn/shop/files/IMG-3649.jpg?v=1726140014&width=1024", // INSERISCI UN LINK REALE
                 stock: 600,
               },
               {
                 title: "Gres effetto cemento 60×60 cm",
                 desc: "Effetto cemento grigio, superficie opaca, rettificata per fughe ridotte.",
                 prezzo: "9,80",
-                img: "",
+                img: "https://lastracereramica.shop/cdn/shop/files/IMG-5080.jpg?v=1727714650&width=1536", // INSERISCI UN LINK REALE
                 stock: 350,
               },
               {
                 title: "Ricchetti – Easy Extra White 60×60 cm",
                 desc: "Effetto cemento/resina bianco, rettificato e luminoso.",
                 prezzo: "5,90",
-                img: "",
+                img: "https://lastracereramica.shop/cdn/shop/files/IMG-3874.jpg?v=1726299336&width=1026", // INSERISCI UN LINK REALE
                 stock: 500,
               },
               {
                 title: "FONDOVALLE – REFRAME TAUPE 80×80 cm",
                 desc: "Effetto cemento taupe, rettificato, spessore elevato.",
                 prezzo: "13,50",
-                img: "",
+                img: "https://lastracereramica.shop/cdn/shop/files/IMG-7732.jpg?v=1731740969&width=767", // INSERISCI UN LINK REALE
                 stock: 150,
               },
               {
                 title: "FONDOVALLE – HOMESCAPE MATCHA 120×120 cm",
                 desc: "Lastra effetto cemento Matcha, rettificata e monocalibro, finitura matt verde-grigia.",
                 prezzo: "13,50",
-                img: "",
+                img: "https://lastracereramica.shop/cdn/shop/files/IMG-5596.jpg?v=1728580269&width=2200", // INSERISCI UN LINK REALE
                 stock: 180,
               },
             ]}
@@ -1090,6 +1095,98 @@ export default function LastraCeramicaLanding() {
           © {new Date().getFullYear()} PiastrellaSassuolo — Tutti i diritti riservati
         </div>
       </footer>
+
+      {/* Bottone fisso mobile: Quick Menu */}
+      {!modalProdotto && (
+        <>
+          {/* Bottone visibile solo su mobile */}
+          <button
+            className="fixed bottom-5 right-5 z-50 bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center md:hidden hover:bg-green-700 transition"
+            style={{ boxShadow: "0 4px 24px 0 rgba(0,0,0,0.18)" }}
+            onClick={() => setShowQuickMenu(true)}
+            aria-label="Vai agli effetti"
+            type="button"
+          >
+            <Lightbulb size={28} className="text-white" />
+          </button>
+          
+          {/* Finestra effetti mobile */}
+          {showQuickMenu && (
+            <div
+              className="fixed inset-0 z-50 flex items-end justify-end md:hidden"
+              onClick={() => setShowQuickMenu(false)}
+              style={{ background: "rgba(0,0,0,0.35)" }}
+            >
+              <div
+                className="w-full rounded-t-3xl bg-white p-6 pb-10 shadow-2xl flex flex-col gap-4 animate-slide-up"
+                style={{ maxWidth: 420 }}
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-lg text-green-700">Scegli effetto</span>
+                  <button
+                    className="text-2xl text-neutral-400 hover:text-black"
+                    onClick={() => setShowQuickMenu(false)}
+                    aria-label="Chiudi"
+                    type="button"
+                  >
+                    &times;
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <a
+                    href="#prodotti"
+                    onClick={() => setShowQuickMenu(false)}
+                    className="flex flex-col items-center justify-center bg-green-50 hover:bg-green-100 rounded-xl p-4 shadow transition"
+                  >
+                    {/* Legno: Layers3 */}
+                    <Layers3 size={32} className="mb-2 text-green-700" />
+                    <span className="font-semibold text-sm text-green-900">Legno</span>
+                  </a>
+                  <a
+                    href="#prodotti"
+                    onClick={() => setShowQuickMenu(false)}
+                    className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 rounded-xl p-4 shadow transition"
+                  >
+                    {/* Marmo: Gem */}
+                    <Gem size={32} className="mb-2 text-blue-700" />
+                    <span className="font-semibold text-sm text-blue-900">Marmo</span>
+                  </a>
+                  <a
+                    href="#prodotti"
+                    onClick={() => setShowQuickMenu(false)}
+                    className="flex flex-col items-center justify-center bg-neutral-100 hover:bg-neutral-200 rounded-xl p-4 shadow transition"
+                  >
+                    {/* Cemento: Hammer */}
+                    <Hammer size={32} className="mb-2 text-neutral-700" />
+                    <span className="font-semibold text-sm text-neutral-900">Cemento</span>
+                  </a>
+                  <a
+                    href="#prodotti"
+                    onClick={() => setShowQuickMenu(false)}
+                    className="flex flex-col items-center justify-center bg-yellow-50 hover:bg-yellow-100 rounded-xl p-4 shadow transition"
+                  >
+                    {/* Pietra: Mountain */}
+                    <Mountain size={32} className="mb-2 text-yellow-700" />
+                    <span className="font-semibold text-sm text-yellow-900">Pietra</span>
+                  </a>
+                </div>
+              </div>
+              <style>
+                {`
+                  @keyframes slide-up {
+                    0% { transform: translateY(100%); opacity: 0; }
+                    100% { transform: translateY(0); opacity: 1; }
+                  }
+                  .animate-slide-up {
+                    animation: slide-up 0.35s cubic-bezier(.4,0,.2,1);
+                  }
+                `}
+              </style>
+            </div>
+          )}
+        </>
+      )}
     </main>
   );
 }
@@ -1166,10 +1263,13 @@ function ShippingCalculator() {
 
 function ZoomableImage({ src, alt }) {
   const [zoom, setZoom] = React.useState(false);
+  // Immagine di fallback se src è vuoto
+  const fallback = "/placeholder-tile.jpg"; // metti qui il path di una tua immagine placeholder
+  const imageSrc = src && src.length > 5 ? src : fallback;
   return (
     <div className="relative mb-4">
       <img
-        src={src}
+        src={imageSrc}
         alt={alt}
         className="w-full h-64 object-contain rounded cursor-zoom-in transition-transform duration-200"
         style={zoom ? { cursor: "zoom-out" } : {}}

@@ -676,6 +676,7 @@ export default function LastraCeramicaLanding() {
             <div
               className="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl relative"
               onClick={e => e.stopPropagation()}
+              style={{ marginTop: 'max(100px, 8vh)' }} // Sposta la modale più in basso su mobile
             >
               <button
                 className="absolute top-3 right-4 text-2xl text-black font-bold"

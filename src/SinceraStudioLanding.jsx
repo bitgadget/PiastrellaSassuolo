@@ -116,6 +116,9 @@ export default function LastraCeramicaLanding() {
           <a href="#faq" className="hover:text-black transition">
             FAQ
           </a>
+          <a href="#calcolatore" className="hover:text-black transition">
+            Calcolo spedizione
+          </a>
           <a href="#contatti" className="hover:text-black transition">
             Contatti
           </a>
@@ -158,6 +161,7 @@ export default function LastraCeramicaLanding() {
               <a href="#prodotti" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Prodotti</a>
               <a href="#vantaggi" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Vantaggi</a>
               <a href="#faq" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+              <a href="#calcolatore" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Calcolo spedizione</a>
               <a href="#contatti" className="text-lg py-2" onClick={() => setMobileMenuOpen(false)}>Contatti</a>
               <a
                 href="https://wa.me/393493061878"
@@ -757,29 +761,32 @@ export default function LastraCeramicaLanding() {
       )}
 
       {/* Banner calcolatore spedizione */}
-      <div className="fixed top-24 left-0 w-full z-40 flex justify-center pointer-events-none animate-fade-in-down">
-        <div className="pointer-events-auto bg-green-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-full shadow-lg flex items-center gap-2 sm:gap-3">
-          <Truck size={18} className="inline" />
-          <span className="font-semibold text-xs sm:text-sm">Calcola subito la spedizione per la tua zona!</span>
-          <a
-            href="#calcolatore"
-            className="ml-2 sm:ml-3 px-3 py-1 bg-white text-green-700 font-bold rounded-full text-xs hover:bg-green-100 transition"
-          >
-            Calcola ora
-          </a>
+      {!modalProdotto && (
+        <div className="fixed top-28 left-0 w-full z-40 flex justify-center pointer-events-none animate-fade-in-down">
+          <div className="pointer-events-auto bg-green-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-full shadow-lg flex items-center gap-2 sm:gap-3 text-center">
+            <Truck size={18} className="inline" />
+            <span className="font-semibold text-xs sm:text-sm">Calcola subito la spedizione per la tua zona!</span>
+            <a
+              href="#calcolatore"
+              className="ml-2 sm:ml-3 px-3 py-1 bg-white text-green-700 font-extrabold rounded-full text-xs hover:bg-green-100 transition uppercase text-center"
+              style={{ letterSpacing: "0.04em", minWidth: 100, display: "inline-block" }}
+            >
+              CALCOLA ORA
+            </a>
+          </div>
+          <style>
+            {`
+              @keyframes fade-in-down {
+                0% { opacity: 0; transform: translateY(-24px);}
+                100% { opacity: 1; transform: translateY(0);}
+              }
+              .animate-fade-in-down {
+                animation: fade-in-down 0.8s cubic-bezier(.4,0,.2,1);
+              }
+            `}
+          </style>
         </div>
-        <style>
-          {`
-            @keyframes fade-in-down {
-              0% { opacity: 0; transform: translateY(-24px);}
-              100% { opacity: 1; transform: translateY(0);}
-            }
-            .animate-fade-in-down {
-              animation: fade-in-down 0.8s cubic-bezier(.4,0,.2,1);
-            }
-          `}
-        </style>
-      </div>
+      )}
 
       {/* Vantaggi */}
       {!modalProdotto && (

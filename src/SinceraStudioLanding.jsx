@@ -331,7 +331,7 @@ export default function LastraCeramicaLanding() {
         </div>
 
         {/* Effetto Legno */}
-        <div className="mb-12">
+        <div className="mb-12" id="categoria-legno">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Legno</h4>
           <ProductSlider
             products={[
@@ -411,7 +411,7 @@ export default function LastraCeramicaLanding() {
         </div>
 
         {/* Effetto Marmo */}
-        <div className="mb-12">
+        <div className="mb-12" id="categoria-marmo">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Marmo</h4>
           <ProductSlider
             products={[
@@ -477,7 +477,7 @@ export default function LastraCeramicaLanding() {
         </div>
 
         {/* Effetto Cemento */}
-        <div className="mb-12">
+        <div className="mb-12" id="categoria-cemento">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Cemento</h4>
           <ProductSlider
             products={[
@@ -522,7 +522,7 @@ export default function LastraCeramicaLanding() {
         </div>
 
         {/* Effetto Pietra */}
-        <div className="mb-12">
+        <div className="mb-12" id="categoria-pietra">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Pietra</h4>
           <ProductSlider
             products={[
@@ -1134,42 +1134,54 @@ export default function LastraCeramicaLanding() {
                   </button>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <a
-                    href="#prodotti"
-                    onClick={() => setShowQuickMenu(false)}
-                    className="flex flex-col items-center justify-center bg-green-50 hover:bg-green-100 rounded-xl p-4 shadow transition"
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowQuickMenu(false);
+                      setTimeout(() => scrollToCategoria("categoria-legno"), 100);
+                    }}
+                    className="flex flex-col items-center justify-center bg-green-50 hover:bg-green-100 rounded-xl p-4 shadow transition w-full"
                   >
                     {/* Legno: Layers3 */}
                     <Layers3 size={32} className="mb-2 text-green-700" />
                     <span className="font-semibold text-sm text-green-900">Legno</span>
-                  </a>
-                  <a
-                    href="#prodotti"
-                    onClick={() => setShowQuickMenu(false)}
-                    className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 rounded-xl p-4 shadow transition"
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowQuickMenu(false);
+                      setTimeout(() => scrollToCategoria("categoria-marmo"), 100);
+                    }}
+                    className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 rounded-xl p-4 shadow transition w-full"
                   >
                     {/* Marmo: Gem */}
                     <Gem size={32} className="mb-2 text-blue-700" />
                     <span className="font-semibold text-sm text-blue-900">Marmo</span>
-                  </a>
-                  <a
-                    href="#prodotti"
-                    onClick={() => setShowQuickMenu(false)}
-                    className="flex flex-col items-center justify-center bg-neutral-100 hover:bg-neutral-200 rounded-xl p-4 shadow transition"
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowQuickMenu(false);
+                      setTimeout(() => scrollToCategoria("categoria-cemento"), 100);
+                    }}
+                    className="flex flex-col items-center justify-center bg-neutral-100 hover:bg-neutral-200 rounded-xl p-4 shadow transition w-full"
                   >
                     {/* Cemento: Hammer */}
                     <Hammer size={32} className="mb-2 text-neutral-700" />
                     <span className="font-semibold text-sm text-neutral-900">Cemento</span>
-                  </a>
-                  <a
-                    href="#prodotti"
-                    onClick={() => setShowQuickMenu(false)}
-                    className="flex flex-col items-center justify-center bg-yellow-50 hover:bg-yellow-100 rounded-xl p-4 shadow transition"
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowQuickMenu(false);
+                      setTimeout(() => scrollToCategoria("categoria-pietra"), 100);
+                    }}
+                    className="flex flex-col items-center justify-center bg-yellow-50 hover:bg-yellow-100 rounded-xl p-4 shadow transition w-full"
                   >
                     {/* Pietra: Mountain */}
                     <Mountain size={32} className="mb-2 text-yellow-700" />
                     <span className="font-semibold text-sm text-yellow-900">Pietra</span>
-                  </a>
+                  </button>
                 </div>
               </div>
               <style>
@@ -1373,4 +1385,13 @@ function ZoomableImageSlider({ images, title }) {
       )}
     </>
   );
+}
+
+function scrollToCategoria(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const yOffset = -120; // offset per banner/header
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
 }

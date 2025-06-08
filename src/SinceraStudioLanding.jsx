@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import ProductSlider from "./components/ProductSlider";
 import FloorConfigurator3D from "./components/FloorConfigurator3D";
+import StockChart from "./components/StockChart";
 
 const PRIMARY = "#fff";
 const SECONDARY = "#000";
@@ -56,14 +57,19 @@ export default function LastraCeramicaLanding() {
   if (loading) {
     return (
       <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
-        <img src="/logo.png" alt="Lastra Ceramica logo" className="h-20 w-auto mb-8 animate-pulse" />
+        <img
+          src="/logo.png"
+          alt="Logo PiastrellaSassuolo"
+          className="h-24 w-24 mb-4 animate-spin-slow"
+          style={{ minWidth: 96 }}
+        />
+        <span className="mb-8 text-2xl font-bold text-black tracking-tight">PiastrellaSassuolo</span>
         <div className="w-72 h-3 bg-neutral-200 rounded-full overflow-hidden mb-4">
           <div className="h-full bg-black animate-loading-bar" />
         </div>
         <div className="text-black font-semibold text-lg">
           Sto cercando le migliori offerte a Sassuolo...
         </div>
-        {/* Animazione barra */}
         <style>
           {`
             @keyframes loading-bar {
@@ -72,6 +78,13 @@ export default function LastraCeramicaLanding() {
             }
             .animate-loading-bar {
               animation: loading-bar 2.2s cubic-bezier(.4,0,.2,1) forwards;
+            }
+            @keyframes spin-slow {
+              0% { transform: rotate(0deg);}
+              100% { transform: rotate(360deg);}
+            }
+            .animate-spin-slow {
+              animation: spin-slow 1.2s linear infinite;
             }
           `}
         </style>
@@ -84,7 +97,13 @@ export default function LastraCeramicaLanding() {
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-6 bg-white bg-opacity-95 border-b border-neutral-200">
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="Lastra Ceramica logo" className="h-10 w-auto" />
+          <img
+            src="/logo.png"
+            alt="Logo PiastrellaSassuolo"
+            className="h-10 w-10 object-contain"
+            style={{ minWidth: 40 }}
+          />
+          <span className="font-bold text-2xl tracking-tight text-black">PiastrellaSassuolo</span>
         </div>
         {/* Menu desktop */}
         <nav className="hidden md:flex gap-10 text-sm">
@@ -212,6 +231,11 @@ export default function LastraCeramicaLanding() {
             </a>
           </motion.div>
         </div>
+      </section>
+
+      {/* Grafico stock per categoria */}
+      <section className="relative z-20 w-full max-w-3xl mx-auto -mt-24 mb-12">
+        <StockChart />
       </section>
 
       {/* Chi siamo */}
@@ -990,8 +1014,8 @@ export default function LastraCeramicaLanding() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-10">
           {/* Logo e claim */}
           <div className="flex-1 flex flex-col gap-3 items-start">
-            <img src="/logo.png" alt="Lastra Ceramica logo" className="h-10 w-auto mb-2" />
-            <span className="font-semibold text-lg text-white">LASTRA CERAMICA</span>
+            {/* Logo rimosso */}
+            <span className="font-semibold text-lg text-white">PiastrellaSassuolo</span>
             <span className="text-neutral-400">Piastrelle italiane in pronta consegna a prezzi di fabbrica.</span>
           </div>
           {/* Link utili */}
@@ -1020,7 +1044,7 @@ export default function LastraCeramicaLanding() {
           </div>
         </div>
         <div className="mt-10 border-t border-neutral-700 pt-6 text-center text-neutral-400 text-xs">
-          © {new Date().getFullYear()} LASTRA CERAMICA — Tutti i diritti riservati
+          © {new Date().getFullYear()} PiastrellaSassuolo — Tutti i diritti riservati
         </div>
       </footer>
     </main>

@@ -1,8 +1,8 @@
 import { Bar } from 'react-chartjs-2';
-import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
-import React from 'react';
+import { Chart, BarElement, CategoryScale, LinearScale, Tooltip } from 'chart.js';
+import React, { useRef } from 'react';
 
-Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
 const stockData = [
   { categoria: 'Marmo', stock: 1350 },
@@ -11,93 +11,114 @@ const stockData = [
   { categoria: 'Legno', stock: 1000 },
 ];
 
-// Nuovi colori flat e moderni
-const barColors = [
-  '#6366f1', // blu-violet
-  '#fbbf24', // gold
-  '#34d399', // green
-  '#f87171', // red
-];
+const barColor = '#6366f1';
 
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { display: false },
-    tooltip: {
-      backgroundColor: '#fff',
-      titleColor: '#18181b',
-      bodyColor: '#18181b',
-      borderColor: '#e5e7eb',
-      borderWidth: 1,
-      padding: 12,
-      callbacks: {
-        label: ctx => ` ${ctx.parsed.y} mq`,
-      },
-      displayColors: false,
-      caretSize: 7,
-      cornerRadius: 8,
-    },
-    title: { display: false },
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
-      title: {
-        display: true,
-        text: 'mq',
-        color: '#64748b',
-        font: { size: 14, weight: 700 },
-        padding: { top: 8, bottom: 0 }
-      },
-      ticks: { stepSize: 500, color: '#64748b', font: { size: 12, weight: 600 } },
-      grid: { color: '#e5e7eb', borderDash: [2, 4] },
-    },
-    x: {
-      title: { display: false },
-      ticks: {
-        color: '#334155',
-        font: { size: 13, weight: 700 },
-        autoSkip: false,
-        maxRotation: 0,
-        minRotation: 0,
-        padding: 8,
-      },
-      grid: { display: false },
-    },
-  },
-  animation: {
-    duration: 900,
-    easing: 'easeOutCubic',
-  },
-  layout: {
-    padding: { left: 30, right: 10, top: 10, bottom: 20 },
-  },
-  elements: {
-    bar: {
-      borderRadius: 12,
-      borderSkipped: false,
-    },
-  },
-};
+function lighten(hex, percent) {
+  // Semplice funzione per schiarire un colore HEX
+  const num = parseInt(hex.replace('#', ''), 16);
+  let r = (num >> 16) + Math.round(255 * percent);
+  let g = ((num >> 8) & 0x00FF) + Math.round(255 * percent);
+  let b = (num & 0x0000FF) + Math.round(255 * percent);
+  r = r > 255 ? 255 : r;
+  g = g > 255 ? 255 : g;
+  b = b > 255 ? 255 : b;
+  return `rgb(${r},${g},${b})`;
+}
 
 export default function StockChart() {
-  const chartRef = React.useRef(null);
+  const chartRef = useRef();
 
-  const data = React.useMemo(() => ({
+  const data = {
     labels: stockData.map(d => d.categoria),
     datasets: [
       {
         label: 'Stock (mq)',
         data: stockData.map(d => d.stock),
-        backgroundColor: barColors,
-        borderWidth: 0,
-        maxBarThickness: 44,
-        barPercentage: 0.7,
+        borderRadius: 18,
+        borderSkipped: false,
+        backgroundColor: function(context) {
+          const chart = context.chart;
+          const {ctx, chartArea} = chart;
+          if (!chartArea) return barColor;
+          const gradient = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
+          gradient.addColorStop(0, barColor);
+          gradient.addColorStop(1, lighten(barColor, 0.4));
+          return gradient;
+        },
+        hoverBackgroundColor: lighten(barColor, 0.2),
+        barPercentage: 0.6,
         categoryPercentage: 0.6,
       },
     ],
-  }), []);
+  };
+
+  const options = {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#fff',
+        titleColor: '#18181b',
+        bodyColor: '#18181b',
+        borderColor: '#e5e7eb',
+        borderWidth: 1,
+        padding: 10,
+        displayColors: false,
+        caretSize: 7,
+        cornerRadius: 8,
+        enabled: true,
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.x} mq`,
+        },
+      },
+      datalabels: false,
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: { color: '#64748b', font: { size: 12, weight: 600 } },
+        grid: { color: '#e5e7eb33', borderDash: [2, 4] },
+      },
+      y: {
+        ticks: { color: '#334155', font: { size: 13, weight: 700 } },
+        grid: { display: false },
+      },
+    },
+    animation: {
+      duration: 1200,
+      easing: 'easeOutQuart',
+    },
+    onHover: (event, chartElement) => {
+      event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+    },
+  };
+
+  // Visualizza il valore direttamente sulla barra (senza plugin)
+  const renderValueOnBar = (chart) => {
+    const { ctx, chartArea, data: chartData } = chart;
+    ctx.save();
+    chartData.datasets[0].data.forEach((value, i) => {
+      const meta = chart.getDatasetMeta(0).data[i];
+      if (meta) {
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`${value} mq`, meta.x - 10, meta.y);
+      }
+    });
+    ctx.restore();
+  };
+
+  React.useEffect(() => {
+    const chart = chartRef.current;
+    if (chart && chart.chart) {
+      chart.chart.options.plugins.afterDraw = renderValueOnBar;
+      chart.chart.update();
+    }
+  }, []);
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg border border-neutral-200 p-0 flex flex-col items-center">
@@ -107,31 +128,14 @@ export default function StockChart() {
         <div
           className="relative w-full flex justify-center items-center"
           style={{
-            minHeight: 140,
+            minHeight: 180,
             height: '32vw',
-            maxHeight: 180
+            maxHeight: 220
           }}
         >
           <div className="w-full" style={{ minWidth: 220, maxWidth: 400 }}>
             <Bar ref={chartRef} data={data} options={options} />
           </div>
-        </div>
-        <div className="mt-4 flex flex-wrap justify-center gap-3 text-xs sm:text-base text-neutral-700 font-medium">
-          {stockData.map((cat, i) => (
-            <div key={cat.categoria} className="flex items-center gap-2">
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: 14,
-                  height: 14,
-                  borderRadius: 4,
-                  background: barColors[i],
-                  boxShadow: '0 1px 4px 0 #0001',
-                }}
-              />
-              <span className="whitespace-nowrap">{cat.categoria}</span>
-            </div>
-          ))}
         </div>
       </div>
     </div>

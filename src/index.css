@@ -27,3 +27,11 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 2s linear infinite; /* 25% più lento di 1s */
+}
+

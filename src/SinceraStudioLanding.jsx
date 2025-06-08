@@ -234,12 +234,12 @@ export default function LastraCeramicaLanding() {
       </section>
 
       {/* Grafico stock per categoria */}
-      <section className="relative z-20 w-full max-w-3xl mx-auto -mt-24 mb-12">
+      <section className="relative z-20 w-full max-w-3xl mx-auto -mt-24 mb-4 md:mb-12">
         <StockChart />
       </section>
 
       {/* Chi siamo */}
-      <section className="relative z-10 px-8 py-16 max-w-4xl mx-auto text-center">
+      <section className="relative z-10 px-8 py-8 md:py-16 max-w-4xl mx-auto text-center">
         <motion.h3
           className="text-3xl md:text-4xl font-bold mb-8 text-black"
           variants={stagger}
@@ -306,8 +306,8 @@ export default function LastraCeramicaLanding() {
         >
           Prodotti in pronta consegna
         </motion.h3>
-        <div className="flex justify-center mb-6">
-          <span className="inline-block bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow">
+        <div className="flex justify-center mb-6 text-center">
+          <span className="inline-block mx-auto block bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow">
             Tutti i prezzi sono IVA esclusa
           </span>
         </div>
@@ -675,7 +675,9 @@ export default function LastraCeramicaLanding() {
               ) : null}
               <h4 className="text-xl font-bold mb-2">{modalProdotto.title}</h4>
               <p className="text-neutral-700 mb-2">{modalProdotto.desc}</p>
-              <div className="text-black font-bold mb-1">{modalProdotto.prezzo} €</div>
+              <div className="text-black font-bold mb-1">
+                {modalProdotto.prezzo} €<span className="text-sm font-normal text-neutral-500">/mq</span>
+              </div>
               {typeof modalProdotto.stock === "number" && (
                 <div className="mb-3">
                   <div className="flex justify-between text-xs mb-1">
@@ -753,6 +755,31 @@ export default function LastraCeramicaLanding() {
           </motion.div>
         </section>
       )}
+
+      {/* Banner calcolatore spedizione */}
+      <div className="fixed top-24 left-0 w-full z-40 flex justify-center pointer-events-none animate-fade-in-down">
+        <div className="pointer-events-auto bg-green-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-full shadow-lg flex items-center gap-2 sm:gap-3">
+          <Truck size={18} className="inline" />
+          <span className="font-semibold text-xs sm:text-sm">Calcola subito la spedizione per la tua zona!</span>
+          <a
+            href="#calcolatore"
+            className="ml-2 sm:ml-3 px-3 py-1 bg-white text-green-700 font-bold rounded-full text-xs hover:bg-green-100 transition"
+          >
+            Calcola ora
+          </a>
+        </div>
+        <style>
+          {`
+            @keyframes fade-in-down {
+              0% { opacity: 0; transform: translateY(-24px);}
+              100% { opacity: 1; transform: translateY(0);}
+            }
+            .animate-fade-in-down {
+              animation: fade-in-down 0.8s cubic-bezier(.4,0,.2,1);
+            }
+          `}
+        </style>
+      </div>
 
       {/* Vantaggi */}
       {!modalProdotto && (
@@ -1122,16 +1149,28 @@ function ShippingCalculator() {
 }
 
 function ZoomableImage({ src, alt }) {
-  const [zoom, setZoom] = useState(false);
+  const [zoom, setZoom] = React.useState(false);
   return (
-    <>
+    <div className="relative mb-4">
       <img
         src={src}
         alt={alt}
-        className={`w-full h-64 object-contain mb-4 rounded cursor-zoom-in transition-transform duration-200 ${zoom ? "scale-150 z-50" : ""}`}
+        className="w-full h-64 object-contain rounded cursor-zoom-in transition-transform duration-200"
         style={zoom ? { cursor: "zoom-out" } : {}}
         onClick={() => setZoom(z => !z)}
       />
+      {/* Icona lente sopra l'immagine, overlay, sempre cliccabile l'immagine */}
+      {!zoom && (
+        <span className="absolute bottom-2 right-2 z-30 bg-white/80 rounded-full p-1 shadow text-black pointer-events-none">
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </span>
+      )}
+      {!zoom && (
+        <div className="text-xs text-neutral-500 text-center mt-1 select-none">Clicca per ingrandire</div>
+      )}
       {zoom && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
@@ -1145,13 +1184,13 @@ function ZoomableImage({ src, alt }) {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
 
 function ZoomableImageSlider({ images, title }) {
-  const [index, setIndex] = useState(0);
-  const [zoom, setZoom] = useState(false);
+  const [index, setIndex] = React.useState(0);
+  const [zoom, setZoom] = React.useState(false);
 
   function prev() {
     setIndex(i => (i === 0 ? images.length - 1 : i - 1));
@@ -1166,14 +1205,23 @@ function ZoomableImageSlider({ images, title }) {
         <img
           src={images[index]}
           alt={title}
-          className={`w-full h-64 object-contain rounded cursor-zoom-in transition-transform duration-200 ${zoom ? "scale-150 z-50" : ""}`}
+          className="w-full h-64 object-contain rounded cursor-zoom-in transition-transform duration-200"
           style={zoom ? { cursor: "zoom-out" } : {}}
           onClick={() => setZoom(z => !z)}
         />
+        {/* Icona lente sopra l'immagine, overlay, sempre cliccabile l'immagine */}
+        {!zoom && (
+          <span className="absolute bottom-2 right-2 z-30 bg-white/80 rounded-full p-1 shadow text-black pointer-events-none">
+            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+        )}
         {images.length > 1 && (
           <>
             <button
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-white z-10"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-white z-20"
               onClick={e => { e.stopPropagation(); prev(); }}
               aria-label="Immagine precedente"
               type="button"
@@ -1181,7 +1229,7 @@ function ZoomableImageSlider({ images, title }) {
               ‹
             </button>
             <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-white z-10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-white z-20"
               onClick={e => { e.stopPropagation(); next(); }}
               aria-label="Immagine successiva"
               type="button"
@@ -1191,6 +1239,9 @@ function ZoomableImageSlider({ images, title }) {
           </>
         )}
       </div>
+      {!zoom && (
+        <div className="text-xs text-neutral-500 text-center mt-1 select-none">Clicca per ingrandire</div>
+      )}
       {zoom && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"

@@ -67,18 +67,18 @@ export default function ProductSlider({ products, onCardClick }) {
                   {prod.prezzo && (
                     <span className="text-black font-bold text-base">{prod.prezzo} €/mq</span>
                   )}
-                  {prod.quantita && (
-                    <span className="text-xs text-neutral-500 font-medium">| {prod.quantita} disponibili</span>
+                  {typeof prod.stock === "number" && (
+                    <span className="text-xs text-neutral-500 font-medium">| {prod.stock} mq disponibili</span>
                   )}
                 </div>
               </div>
-              {/* Barra di disponibilità animata */}
-              {prod.quantita && (
+              {/* Barra di disponibilità stock */}
+              {typeof prod.stock === "number" && (
                 <div className="mt-2 w-full">
                   <div className="h-2 bg-neutral-200 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
-                      animate={{ width: `${Math.min(parseInt(prod.quantita), 300) / 3}%` }}
+                      animate={{ width: `${Math.min(100, (prod.stock / 600) * 100)}%` }}
                       transition={{ duration: 1 }}
                       className="h-2 bg-green-500"
                       style={{
@@ -87,7 +87,7 @@ export default function ProductSlider({ products, onCardClick }) {
                     />
                   </div>
                   <div className="text-[10px] text-neutral-400 mt-1 text-center">
-                    {`${Math.round((Math.min(parseInt(prod.quantita), 300) / 300) * 100)}%`}
+                    {`${prod.stock} mq in pronta consegna`}
                   </div>
                 </div>
               )}

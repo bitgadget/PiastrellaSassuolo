@@ -294,64 +294,74 @@ export default function LastraCeramicaLanding() {
           <ProductSlider
             products={[
               {
-                title: "Rovere miele 22,5×90 cm",
+                title: "Pavimento in gres porcellanato effetto legno rovere miele 22,5x90 cm",
                 desc: "Piastrella rettificata e monocalibro, superficie ad alta definizione grafica, Made in Italy.",
                 prezzo: "8,90",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-4920.webp?v=1727451701&width=849",
+                stock: 320,
               },
               {
-                title: "Maxiplancia 25×180 cm rovere",
+                title: "Gres effetto Legno maxiplancia 25x180 rovere",
                 desc: "Grande formato, rettificato e monocalibro, stampa HD digitale, produzione italiana.",
                 prezzo: "9,50",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/22E4649F-A77D-422F-B3A0-372353876FCB.jpg?v=1726300212&width=1920",
+                stock: 210,
               },
               {
-                title: "FAP – Fapnest 20×120 cm",
+                title: "FAP – Fapnest 20x120",
                 desc: "Serie Fapnest di FAP, rettificato, monocalibro e grafica ad alta risoluzione.",
                 prezzo: "9,90",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-5080.jpg?v=1727714650&width=1536",
+                stock: 150,
               },
               {
-                title: "Gres effetto legno 20×120 cm",
+                title: "Gres effetto legno 20x120",
                 desc: "Rettificata e monocalibro, aspetto naturale legno, posa facilitata e continuità estetica.",
                 prezzo: "15,50",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-3649.jpg?v=1726140014&width=1024",
+                stock: 180,
               },
               {
-                title: "ASCOT – Legati Havana 20×120 cm",
+                title: "ASCOT – Legati Havana 20x120",
                 desc: "Superficie rettificata con grafica HD dall’aspetto naturale.",
                 prezzo: "9,80",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/9E97AD89-4654-404F-95C0-55A99AB27B12.jpg?v=1726216928&width=3024",
+                stock: 240,
               },
               {
-                title: "Prezzo bomba",
+                title: "EFFETTO LEGNO - prezzo bomba",
                 desc: "Rettificato, alta qualità estetica, ideale per grandi metrature (offerta speciale).",
                 prezzo: "9,80",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/2860C1D6-5AE9-4221-A98C-A79A529D8FF1.jpg?v=1729868796&width=1152",
+                stock: 600,
               },
               {
-                title: "RICCHETTI – Megeve Iroko 20×120 cm",
+                title: "RICCHETTI – Megeve Iroko 20x120",
                 desc: "Effetto legno Iroko, rettificato e resistente, venature fedeli.",
                 prezzo: "9,70",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-4193.jpg?v=1726613211&width=1600",
+                stock: 300,
               },
               {
-                title: "Caramel 22×90 cm (spina di pesce/lisca)",
+                title: "Pavimento in gres porcellanato effetto legno caramel 22x90 spina di pesce/ lisca",
                 desc: "Rettificata 22×90 cm, tonalità caldo-caramello, ideale per posa a spina di pesce.",
                 prezzo: "9,90",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/8965F70F-8455-4391-9549-910FD290058D.jpg?v=1727717115&width=1536",
+                stock: 450,
               },
               {
-                title: "RICCHETTI – Soft Sugar 25×180 cm",
+                title: "RICCHETTI – Soft Sugar 25x180",
                 desc: "Effetto legno chiaro, grande formato, rettificato e monocalibro, look nordico.",
                 prezzo: "12,50",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-3874.jpg?v=1726299336&width=1026",
+                stock: 500,
               },
               {
-                title: "Soft Honey 20×120 cm + lastra amazzonite",
+                title: "Effetto legno soft honey 20x120 + lastra amazzonite",
                 desc: "Combinazione di Soft Honey 20×120 cm con lastra decorativa effetto amazzonite, rettificato.",
                 prezzo: "9,90",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-6388.jpg?v=1747511948&width=1080",
+                stock: 350,
               },
             ]}
             onCardClick={setModalProdotto}
@@ -367,31 +377,57 @@ export default function LastraCeramicaLanding() {
                 title: "RICCHETTI – Negresco 60×60 cm",
                 desc: "Marmo nero, superficie levigata e rettificata, aspetto elegante e lucido.",
                 prezzo: "7,00",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-5324.jpg?v=1728059059&width=1500",
+                stock: 180,
               },
               {
-                title: "Statuario 60×60 cm (levigato)",
+                title: "Gres effetto marmo statuario 60x60 levigato",
                 desc: "Finitura levigata lucida, rettificata e monocalibro, grafica digitale HD.",
                 prezzo: "8,90",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/9A5E8A39-1C2F-4BDA-BF0D-ACDAF16EB4B8.jpg?v=1733935218&width=1080",
+                stock: 220,
               },
               {
-                title: "Statuario 60×120 cm (satinato)",
+                title: "Le scelte di Billy ! Statuario 60x120 satinato",
                 desc: "Satinato, rettificato, monocalibro, superficie opaca elegante.",
                 prezzo: "11,00",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/FullSizeRender_cf25d68f-235d-458a-96dd-027e3ce3fab8.jpg?v=1726219079&width=1290",
+                stock: 160,
               },
               {
-                title: "Travertino 60×120 cm (beige)",
+                title: "Gres porcellanato tipo travertino 60x120 beige",
                 desc: "Lastra effetto travertino beige, rettificata e colorata in massa, venature naturali.",
                 prezzo: "11,50",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/2FC8DEAD-9E52-41E5-86E7-A317C9F998CF.jpg?v=1747429258&width=1080",
+                stock: 190,
               },
               {
                 title: "FONDOVALLE – STATUARIO EXTRA MATT 60×120 cm",
                 desc: "Finitura matt, rettificato, grafica HD ultra-realistica.",
                 prezzo: "9,90",
-                img: "",
+                img: "https://lastraceramica.shop/cdn/shop/files/2109D9FC-B64A-4625-9447-DED224556B66.jpg?v=1729532746&width=912",
+                stock: 210,
+              },
+              {
+                title: "Statuario 60x60 satinato",
+                desc: "Finitura satinata, rettificata e monocalibro, superficie opaca elegante.",
+                prezzo: "8,90",
+                img: "https://lastraceramica.shop/cdn/shop/files/DA78163B-3D2E-4970-95BD-990771149835.jpg?v=1726172432&width=1200",
+                stock: 160,
+              },
+              {
+                title: "Effetto marmo onice – crystal white matt 60x120",
+                desc: "Lastra effetto onice bianco, finitura matt, rettificata e monocalibro, venature cristalline.",
+                prezzo: "11,00",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-7732.jpg?v=1731740969&width=767",
+                stock: 250,
+              },
+              {
+                title: "RICCHETTI – Carrara Pure 60x120",
+                desc: "Effetto marmo Carrara puro, superficie lucida, rettificato; ideale per bagni di lusso.",
+                prezzo: "11,50",
+                img: "https://lastraceramica.shop/cdn/shop/files/IMG-5596.jpg?v=1728580269&width=2200",
+                stock: 220,
               },
             ]}
             onCardClick={setModalProdotto}
@@ -408,30 +444,35 @@ export default function LastraCeramicaLanding() {
                 desc: "Rettificato e monocalibro, soluzione economica per grandi superfici.",
                 prezzo: "5,80",
                 img: "",
+                stock: 600,
               },
               {
                 title: "Gres effetto cemento 60×60 cm",
                 desc: "Effetto cemento grigio, superficie opaca, rettificata per fughe ridotte.",
                 prezzo: "9,80",
                 img: "",
+                stock: 350,
               },
               {
                 title: "Ricchetti – Easy Extra White 60×60 cm",
                 desc: "Effetto cemento/resina bianco, rettificato e luminoso.",
                 prezzo: "5,90",
                 img: "",
+                stock: 500,
               },
               {
                 title: "FONDOVALLE – REFRAME TAUPE 80×80 cm",
                 desc: "Effetto cemento taupe, rettificato, spessore elevato.",
                 prezzo: "13,50",
                 img: "",
+                stock: 150,
               },
               {
                 title: "FONDOVALLE – HOMESCAPE MATCHA 120×120 cm",
                 desc: "Lastra effetto cemento Matcha, rettificata e monocalibro, finitura matt verde-grigia.",
                 prezzo: "13,50",
                 img: "",
+                stock: 180,
               },
             ]}
             onCardClick={setModalProdotto}
@@ -448,30 +489,35 @@ export default function LastraCeramicaLanding() {
                 desc: "Effetto pietra beige (serie Kone), rettificato e ingelivo, texture naturale.",
                 prezzo: "9,50",
                 img: "",
+                stock: 240,
               },
               {
                 title: "Pietra grigio 75×75 cm",
                 desc: "Finitura matt, rettificata e resistente all’usura, adatta anche per esterni coperti.",
                 prezzo: "9,50",
                 img: "",
+                stock: 300,
               },
               {
                 title: "Esterno R11 30×60 cm",
                 desc: "Antiscivolo R11, superficie strutturata, resistente agli agenti atmosferici.",
                 prezzo: "9,90",
                 img: "",
+                stock: 450,
               },
               {
                 title: "FONDOVALLE – Planeto Venus 60×120 cm",
                 desc: "Lastra effetto pietra, rettificata, superficie satinata con venature naturali.",
                 prezzo: "9,90",
                 img: "",
+                stock: 180,
               },
               {
                 title: "Pietra Almond 120×120 cm",
                 desc: "Colore Almond (beige chiaro), rettificato a bordo rettilineo, ideale per grandi formati.",
                 prezzo: "9,90",
                 img: "",
+                stock: 210,
               },
             ]}
             onCardClick={setModalProdotto}
@@ -488,36 +534,42 @@ export default function LastraCeramicaLanding() {
                 desc: "Grande lastra effetto cemento, rettificata e levigata, spessore 6 mm.",
                 prezzo: "25,00",
                 img: "",
+                stock: 150,
               },
               {
                 title: "Lastra XXL 160×320 cm (rettificata)",
                 desc: "Lastra XXL in gres porcellanato, finitura rettificata, perfetta per rivestimenti continui.",
                 prezzo: "27,00",
                 img: "",
+                stock: 120,
               },
               {
                 title: "Travertino 60×120 cm + lastra Capraia",
                 desc: "Combinazione di gres effetto travertino e lastra Capraia, materiali rettificati e levigati.",
                 prezzo: "29,00",
                 img: "",
+                stock: 180,
               },
               {
                 title: "Lastra effetto cemento 120×280 cm",
                 desc: "Grande lastra effetto cemento, superficie matt rettificata, look industriale.",
                 prezzo: "15,90",
                 img: "",
+                stock: 210,
               },
               {
                 title: "Lastra effetto marmo 120×280 cm",
                 desc: "Finitura lucida, rettificata, imitazione marmo naturale in formati extra large.",
                 prezzo: "28,00",
                 img: "",
+                stock: 160,
               },
               {
                 title: "Lastra statuario levigato 120×280 cm",
                 desc: "Finitura levigata lucida, rettificata, alto spessore per rivestimenti di pregio.",
                 prezzo: "28,00",
                 img: "",
+                stock: 140,
               },
             ]}
             onCardClick={setModalProdotto}
@@ -534,18 +586,21 @@ export default function LastraCeramicaLanding() {
                 desc: "Effetto travertino beige, finitura matt, piastrella rettificata con venature naturali.",
                 prezzo: "9,80",
                 img: "",
+                stock: 300,
               },
               {
                 title: "Effetto marmo onice – Crystal White Matt 60×120 cm (Rivestimento)",
                 desc: "Lastra effetto onice bianco, finitura matt, rettificata e monocalibro, venature cristalline.",
                 prezzo: "11,00",
                 img: "",
+                stock: 250,
               },
               {
                 title: "RICCHETTI – Carrara Pure 60×120 cm (Rivestimento)",
                 desc: "Effetto marmo Carrara puro, superficie lucida, rettificato; ideale per bagni di lusso.",
                 prezzo: "11,50",
                 img: "",
+                stock: 220,
               },
               {
                 title: "OUTFIT Bagno 60×120 cm + lastra Marquinia 75×150 cm",
@@ -555,12 +610,14 @@ export default function LastraCeramicaLanding() {
                   "https://lastraceramica.shop/cdn/shop/files/IMG-4812.jpg?v=1743714998&width=500",
                   "https://lastraceramica.shop/cdn/shop/files/IMG-4813.jpg?v=1743714997&width=500"
                 ],
+                stock: 180,
               },
               {
                 title: "FONDOVALLE – Travertino griseo 60×120 cm (Rivestimento)",
                 desc: "Effetto travertino grigio, rettificato e opaco, stile naturale e contemporaneo.",
                 prezzo: "12,70",
                 img: "",
+                stock: 190,
               },
             ]}
             onCardClick={setModalProdotto}
@@ -595,6 +652,25 @@ export default function LastraCeramicaLanding() {
               <h4 className="text-xl font-bold mb-2">{modalProdotto.title}</h4>
               <p className="text-neutral-700 mb-2">{modalProdotto.desc}</p>
               <div className="text-black font-bold mb-1">{modalProdotto.prezzo} €</div>
+              {typeof modalProdotto.stock === "number" && (
+                <div className="mb-3">
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-neutral-500">Stock</span>
+                    <span className="font-semibold text-black">{modalProdotto.stock} mq</span>
+                  </div>
+                  <div className="w-full h-2 bg-neutral-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-green-500 transition-all"
+                      style={{
+                        width: `${Math.min(100, (modalProdotto.stock / 600) * 100)}%`
+                      }}
+                    />
+                  </div>
+                  <div className="text-[10px] text-neutral-400 mt-1 text-center">
+                    {`${modalProdotto.stock} mq in pronta consegna`}
+                  </div>
+                </div>
+              )}
               <a
                 href="https://wa.me/393493061878"
                 target="_blank"

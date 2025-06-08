@@ -485,35 +485,35 @@ export default function LastraCeramicaLanding() {
                 title: "60×60 cm economico",
                 desc: "Rettificato e monocalibro, soluzione economica per grandi superfici.",
                 prezzo: "5,80",
-                img: "https://lastracereramica.shop/cdn/shop/files/IMG-3649.jpg?v=1726140014&width=1024", // INSERISCI UN LINK REALE
+                img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80", // Cemento grigio
                 stock: 600,
               },
               {
                 title: "Gres effetto cemento 60×60 cm",
                 desc: "Effetto cemento grigio, superficie opaca, rettificata per fughe ridotte.",
                 prezzo: "9,80",
-                img: "https://lastracereramica.shop/cdn/shop/files/IMG-5080.jpg?v=1727714650&width=1536", // INSERISCI UN LINK REALE
+                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", // Cemento chiaro
                 stock: 350,
               },
               {
                 title: "Ricchetti – Easy Extra White 60×60 cm",
                 desc: "Effetto cemento/resina bianco, rettificato e luminoso.",
                 prezzo: "5,90",
-                img: "https://lastracereramica.shop/cdn/shop/files/IMG-3874.jpg?v=1726299336&width=1026", // INSERISCI UN LINK REALE
+                img: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80", // Cemento bianco
                 stock: 500,
               },
               {
                 title: "FONDOVALLE – REFRAME TAUPE 80×80 cm",
                 desc: "Effetto cemento taupe, rettificato, spessore elevato.",
                 prezzo: "13,50",
-                img: "https://lastracereramica.shop/cdn/shop/files/IMG-7732.jpg?v=1731740969&width=767", // INSERISCI UN LINK REALE
+                img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Cemento taupe
                 stock: 150,
               },
               {
                 title: "FONDOVALLE – HOMESCAPE MATCHA 120×120 cm",
                 desc: "Lastra effetto cemento Matcha, rettificata e monocalibro, finitura matt verde-grigia.",
                 prezzo: "13,50",
-                img: "https://lastracereramica.shop/cdn/shop/files/IMG-5596.jpg?v=1728580269&width=2200", // INSERISCI UN LINK REALE
+                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", // Cemento verde-grigio
                 stock: 180,
               },
             ]}

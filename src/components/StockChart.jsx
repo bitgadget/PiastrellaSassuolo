@@ -5,10 +5,10 @@ import React, { useRef } from 'react';
 Chart.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
 const stockData = [
-  { categoria: 'Marmo', stock: 1350 },
-  { categoria: 'Pietra', stock: 1500 },
-  { categoria: 'Cemento', stock: 2250 },
-  { categoria: 'Legno', stock: 1000 },
+  { categoria: 'Marmo', stock: 2800 },
+  { categoria: 'Pietra', stock: 4120 },
+  { categoria: 'Cemento', stock: 6200 },
+  { categoria: 'Legno', stock: 1920 },
 ];
 
 const barColor = '#6366f1';

@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 
 Chart.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
-const stockData = [
+const initialStockData = [
   { categoria: 'Marmo', stock: 2800 },
   { categoria: 'Pietra', stock: 4120 },
   { categoria: 'Cemento', stock: 6200 },
@@ -14,7 +14,6 @@ const stockData = [
 const barColor = '#6366f1';
 
 function lighten(hex, percent) {
-  // Semplice funzione per schiarire un colore HEX
   const num = parseInt(hex.replace('#', ''), 16);
   let r = (num >> 16) + Math.round(255 * percent);
   let g = ((num >> 8) & 0x00FF) + Math.round(255 * percent);
@@ -27,6 +26,23 @@ function lighten(hex, percent) {
 
 export default function StockChart() {
   const chartRef = useRef();
+  const [stockData, setStockData] = React.useState(initialStockData);
+
+  // Simula la variazione dei valori ogni 2.5 secondi
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setStockData(prev =>
+        prev.map(item => ({
+          ...item,
+          stock: Math.max(
+            0,
+            Math.round(item.stock + (Math.random() - 0.5) * 200) // variazione random
+          ),
+        }))
+      );
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   const data = {
     labels: stockData.map(d => d.categoria),
@@ -118,7 +134,7 @@ export default function StockChart() {
       chart.chart.options.plugins.afterDraw = renderValueOnBar;
       chart.chart.update();
     }
-  }, []);
+  }, [data]);
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg border border-neutral-200 p-0 flex flex-col items-center">

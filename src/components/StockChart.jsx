@@ -36,7 +36,7 @@ export default function StockChart() {
           ...item,
           stock: Math.max(
             0,
-            Math.round(item.stock + (Math.random() - 0.5) * 200) // variazione random
+            Math.round(item.stock + (Math.random() - 0.5) * 600) // variazione random
           ),
         }))
       );

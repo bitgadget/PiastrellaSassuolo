@@ -302,7 +302,7 @@ export default function LastraCeramicaLanding() {
         className="relative z-10 px-8 pt-12 pb-4 max-w-7xl mx-auto"
       >
         <motion.h3
-          className="text-3xl font-bold mb-8"
+          className="text-3xl font-bold mb-2"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -310,9 +310,14 @@ export default function LastraCeramicaLanding() {
         >
           Prodotti in pronta consegna
         </motion.h3>
-        <div className="flex justify-center mb-6 text-center">
-          <span className="inline-block mx-auto block bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow">
+        <div className="mb-2 text-left">
+          <span className="text-sm text-neutral-500 font-normal whitespace-nowrap">
             Tutti i prezzi sono IVA esclusa
+          </span>
+        </div>
+        <div className="flex justify-center mb-6">
+          <span className="bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow text-center w-auto">
+            VIENI A TROVARCI A SASSUOLO
           </span>
         </div>
 
@@ -762,14 +767,14 @@ export default function LastraCeramicaLanding() {
 
       {/* Banner calcolatore spedizione */}
       {!modalProdotto && (
-        <div className="fixed top-28 left-0 w-full z-40 flex justify-center pointer-events-none animate-fade-in-down">
-          <div className="pointer-events-auto bg-green-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-full shadow-lg flex items-center gap-2 sm:gap-3 text-center">
+        <div className="fixed top-[97px] left-0 w-full z-40 flex justify-center pointer-events-none animate-fade-in-down">
+          <div className="pointer-events-auto bg-green-600 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg flex flex-row flex-nowrap items-center gap-1 sm:gap-3 text-center overflow-x-auto whitespace-nowrap">
             <Truck size={18} className="inline" />
             <span className="font-semibold text-xs sm:text-sm">Calcola subito la spedizione per la tua zona!</span>
             <a
               href="#calcolatore"
-              className="ml-2 sm:ml-3 px-3 py-1 bg-white text-green-700 font-extrabold rounded-full text-xs hover:bg-green-100 transition uppercase text-center"
-              style={{ letterSpacing: "0.04em", minWidth: 100, display: "inline-block" }}
+              className="ml-1 sm:ml-3 px-2 py-1 sm:px-3 sm:py-1 bg-white text-green-700 font-extrabold rounded-full text-xs hover:bg-green-100 transition uppercase text-center"
+              style={{ letterSpacing: "0.04em", minWidth: 80, display: "inline-block" }}
             >
               CALCOLA ORA
             </a>

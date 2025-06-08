@@ -1254,28 +1254,44 @@ function ShippingCalculator() {
       }}
     >
       <div className="flex flex-col sm:flex-row gap-3 w-full">
-        <input
-          type="number"
-          min={1}
-          step={1}
-          value={mq}
-          onChange={e => setMq(e.target.value)}
-          placeholder="Metri quadri"
-          className="flex-1 px-4 py-3 rounded-lg border-2 border-green-400/50 focus:border-green-600 outline-none text-lg shadow-sm"
-          required
-        />
-        <select
-          value={zona}
-          onChange={e => setZona(e.target.value)}
-          className="flex-1 px-4 py-3 rounded-lg border-2 border-green-400/50 focus:border-green-600 outline-none text-lg shadow-sm"
-          required
-        >
-          <option value="">Zona</option>
-          <option value="nord">Nord Italia</option>
-          <option value="centro">Centro Italia</option>
-          <option value="sud">Sud Italia</option>
-          <option value="isole">Isole</option>
-        </select>
+        <div className="flex-1 flex flex-col">
+          <label htmlFor="mq" className="text-xs text-neutral-600 mb-1">Metri quadri (mq)</label>
+          <div className="relative flex">
+            <input
+              id="mq"
+              type="number"
+              min={1}
+              step={1}
+              value={mq}
+              onChange={e => setMq(e.target.value)}
+              placeholder="Es: 50"
+              className="px-4 py-3 rounded-lg border-2 border-green-400/50 focus:border-green-600 outline-none text-lg shadow-sm w-full pr-16"
+              required
+            />
+            <span
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-green-600 text-white font-bold rounded-md flex items-center justify-center"
+              style={{ width: 38, height: 38, minWidth: 38, minHeight: 38, fontSize: 15 }}
+            >
+              mq
+            </span>
+          </div>
+        </div>
+        <div className="flex-1">
+          <label htmlFor="zona" className="text-xs text-neutral-600 mb-1">Zona</label>
+          <select
+            id="zona"
+            value={zona}
+            onChange={e => setZona(e.target.value)}
+            className="w-full px-4 py-3 rounded-lg border-2 border-green-400/50 focus:border-green-600 outline-none text-lg shadow-sm"
+            required
+          >
+            <option value="">Seleziona una zona</option>
+            <option value="nord">Nord Italia</option>
+            <option value="centro">Centro Italia</option>
+            <option value="sud">Sud Italia</option>
+            <option value="isole">Isole</option>
+          </select>
+        </div>
       </div>
       <button
         type="submit"

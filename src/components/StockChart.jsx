@@ -40,7 +40,7 @@ export default function StockChart() {
           ),
         }))
       );
-    }, 2500);
+    }, 25000);
     return () => clearInterval(interval);
   }, []);
 

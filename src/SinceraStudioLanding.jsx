@@ -251,48 +251,39 @@ export default function LastraCeramicaLanding() {
         <StockChart />
       </section>
 
-      {/* Chi siamo */}
-      <section className="relative z-10 px-8 py-8 md:py-16 max-w-4xl mx-auto text-center">
+      {/* Chi siamo - versione ultra compatta */}
+      <section className="relative z-10 px-6 py-8 max-w-md mx-auto text-center">
         <motion.h3
-          className="text-3xl md:text-4xl font-bold mb-8 text-black"
+          className="text-xl md:text-2xl font-bold mb-3 text-black tracking-tight"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          Chi siamo
+          Siamo una <span className="text-green-700">STOCK HOUSE</span>
         </motion.h3>
         <motion.p
-          className="text-neutral-700 text-lg md:text-xl mb-12"
+          className="text-neutral-700 text-sm md:text-base mb-5"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           custom={2}
           viewport={{ once: true }}
         >
-          LASTRA CERAMICA nasce per offrire piastrelle di alta qualità a prezzi di fabbrica, tutte sotto i 10 €/mq. Lavoriamo direttamente con i migliori produttori italiani per garantire stock sempre aggiornati, consegne rapide e consulenza professionale.
+          Ricerchiamo i migliori prezzi delle migliori marche di piastrelle in gres porcellanato prodotte a Sassuolo.
         </motion.p>
-        <div className="grid md:grid-cols-3 gap-8 text-left">
-          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
-            <Layers3 size={40} className="mb-4 text-black" />
-            <h4 className="font-bold text-lg mb-2">Esperienza</h4>
-            <p className="text-neutral-700 text-sm text-center">
-              Da oltre 10 anni nel settore ceramico, mettiamo la nostra esperienza al servizio di privati e professionisti.
-            </p>
+        <div className="flex justify-center gap-2 md:gap-6">
+          <div className="flex flex-col items-center">
+            <Gem size={28} className="mb-1 text-blue-700" />
+            <span className="text-[11px] font-semibold text-blue-900">Marche Top</span>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
-            <PackageSearch size={40} className="mb-4 text-black" />
-            <h4 className="font-bold text-lg mb-2">Fornitori selezionati</h4>
-            <p className="text-neutral-700 text-sm text-center">
-              Collaboriamo solo con produttori italiani certificati, per offrire qualità e affidabilità.
-            </p>
+          <div className="flex flex-col items-center">
+            <Euro size={28} className="mb-1 text-green-700" />
+            <span className="text-[11px] font-semibold text-green-900">Prezzi Stock</span>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
-            <CalendarIcon size={40} className="mb-4 text-black" />
-            <h4 className="font-bold text-lg mb-2">Consulenza dedicata</h4>
-            <p className="text-neutral-700 text-sm text-center">
-              Ti seguiamo dalla scelta del materiale fino alla consegna, con preventivi rapidi e assistenza personalizzata.
-            </p>
+          <div className="flex flex-col items-center">
+            <Truck size={28} className="mb-1 text-yellow-700" />
+            <span className="text-[11px] font-semibold text-yellow-900">Pronta consegna</span>
           </div>
         </div>
       </section>

@@ -49,13 +49,31 @@ export default function LastraCeramicaLanding() {
 
   // Blocca lo scroll quando la modale prodotto è aperta
   useEffect(() => {
+    let scrollY = 0;
     if (modalProdotto) {
+      scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+      // Salva la posizione nello scope del componente
+      window.__lastraScrollY = scrollY;
     } else {
+      // Recupera la posizione salvata
+      const y = window.__lastraScrollY || 0;
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, y);
+      // Pulisci la variabile globale
+      delete window.__lastraScrollY;
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
     };
   }, [modalProdotto]);
 
@@ -313,7 +331,20 @@ export default function LastraCeramicaLanding() {
         <div className="mb-2 text-left">
           <span className="text-sm text-neutral-500 font-normal whitespace-nowrap">
             Tutti i prezzi sono IVA esclusa
-          </span>
+          </span>          <a
+            href="https://wa.me/393493061878"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto mt-4 block rounded-full font-bold px-16 py-4 bg-black text-white text-center shadow-lg hover:scale-105 hover:bg-neutral-800 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black animate-pulse-on-hover"
+            style={{ maxWidth: 420, minWidth: 260, letterSpacing: "0.03em" }}
+          >
+            <span className="inline-flex items-center gap-2">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" className="inline">
+                <path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.484 1.341 4.997l-1.409 5.164a1.001 1.001 0 0 0 1.213 1.213l5.164-1.409a9.953 9.953 0 0 0 4.997 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001a7.96 7.96 0 0 1-4.073-1.143l-.291-.174-3.067.837.822-3.012-.189-.309a7.963 7.963 0 0 1-1.202-4.2c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.842c-.242-.121-1.434-.707-1.655-.788-.222-.081-.384-.121-.546.121-.161.242-.626.788-.768.95-.141.161-.283.181-.525.06-.242-.121-1.022-.377-1.946-1.201-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.109.242-.283.363-.424.121-.141.161-.242.242-.404.081-.161.04-.303-.02-.424-.06-.121-.546-1.318-.748-1.803-.197-.474-.398-.409-.546-.416l-.464-.008c-.161 0-.424.06-.646.303-.222.242-.848.828-.848 2.018s.868 2.342.989 2.504c.121.161 1.708 2.613 4.142 3.563.579.199 1.029.318 1.38.406.579.147 1.106.126 1.523.077.465-.055 1.434-.586 1.637-1.152.202-.566.202-1.051.141-1.152-.06-.101-.22-.161-.462-.282z"/>
+              </svg>
+              Richiedi disponibilità
+            </span>
+          </a>
         </div>
         <div className="flex justify-center mb-6">
           <span className="bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow text-center w-auto">
@@ -737,10 +768,28 @@ export default function LastraCeramicaLanding() {
                 href="https://wa.me/393493061878"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-md font-semibold px-6 py-2 bg-black text-white text-center hover:bg-neutral-800 transition"
+                className="mx-auto mt-4 block rounded-full font-bold px-10 py-2 bg-black text-white text-center shadow-lg hover:scale-105 hover:bg-neutral-800 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black animate-pulse-on-hover"
+                style={{ maxWidth: 340, minWidth: 220, letterSpacing: "0.03em" }}
               >
-                Richiedi disponibilità
+                <span className="inline-flex items-center gap-2">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" className="inline">
+                    <path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.484 1.341 4.997l-1.409 5.164a1.001 1.001 0 0 0 1.213 1.213l5.164-1.409a9.953 9.953 0 0 0 4.997 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001a7.96 7.96 0 0 1-4.073-1.143l-.291-.174-3.067.837.822-3.012-.189-.309a7.963 7.963 0 0 1-1.202-4.2c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.842c-.242-.121-1.434-.707-1.655-.788-.222-.081-.384-.121-.546.121-.161.242-.626.788-.768.95-.141.161-.283.181-.525.06-.242-.121-1.022-.377-1.946-1.201-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.109.242-.283.363-.424.121-.141.161-.242.242-.404.081-.161.04-.303-.02-.424-.06-.121-.546-1.318-.748-1.803-.197-.474-.398-.409-.546-.416l-.464-.008c-.161 0-.424.06-.646.303-.222.242-.848.828-.848 2.018s.868 2.342.989 2.504c.121.161 1.708 2.613 4.142 3.563.579.199 1.029.318 1.38.406.579.147 1.106.126 1.523.077.465-.055 1.434-.586 1.637-1.152.202-.566.202-1.051.141-1.152-.06-.101-.22-.161-.462-.282z"/>
+                  </svg>
+                  Richiedi disponibilità
+                </span>
               </a>
+              <style>
+                {`
+                  .animate-pulse-on-hover:hover {
+                    animation: pulse 0.7s;
+                  }
+                  @keyframes pulse {
+                    0% { transform: scale(1);}
+                    50% { transform: scale(1.08);}
+                    100% { transform: scale(1);}
+                  }
+                `}
+              </style>
             </div>
           </div>
         )}
@@ -1102,7 +1151,8 @@ export default function LastraCeramicaLanding() {
               <Phone size={16} /> +39 0123 456789
             </a>
             <a href="https://wa.me/393493061878" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:text-white transition">
-              <svg width="16" height="16" fill="currentColor" className="inline" viewBox="0 0 24 24"><path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.484 1.341 4.997l-1.409 5.164a1.001 1.001 0 0 0 1.213 1.213l5.164-1.409a9.953 9.953 0 0 0 4.997 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001a7.96 7.96 0 0 1-4.073-1.143l-.291-.174-3.067.837.822-3.012-.189-.309a7.963 7.963 0 0 1-1.202-4.2c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.842c-.242-.121-1.434-.707-1.655-.788-.222-.081-.384-.121-.546.121-.161.242-.626.788-.768.95-.141.161-.283.181-.525.06-.242-.121-1.022-.377-1.946-1.201-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.109.242-.283.363-.424.121-.141.161-.242.242-.404.081-.161.04-.303-.02-.424-.06-.121-.546-1.318-.748-1.803-.197-.474-.398-.409-.546-.416l-.464-.008c-.161 0-.424.06-.646.303-.222.242-.848.828-.848 2.018s.868 2.342.989 2.504c.121.161 1.708 2.613 4.142 3.563.579.199 1.029.318 1.38.406.579.147 1.106.126 1.523.077.465-.055 1.434-.586 1.637-1.152.202-.566.202-1.051.141-1.152-.06-.101-.22-.161-.462-.282z"/></svg>
+              <svg width="16" height="16" fill="currentColor" className="inline" viewBox="0 0 24 24"><path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.484 1.341 4.997l-1.409 5.164a1.001 1.001 0 0 0 1.213 1.213l5.164-1.409a9.953 9.953 0 0 0 4.997 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001a7.96 7.96 0 0 1-4.073-1.143l-.291-.174-3.067.837.822-3.012-.189-.309a7.963 7.963 0 0 1-1.202-4.2c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.842c-.242-.121-1.434-.707-1.655-.788-.222-.081-.384-.121-.546.121-.161.242-.626.788-.768.95-.141.161-.283.181-.525.06-.242-.121-1.022-.377-1.946-1.201-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.109.242-.283.363-.424.121-.141.161-.242.242-.404.081-.161.04-.303-.02-.424-.06-.121-.546-1.318-.748-1.803-.197-.474-.398-.409-.546-.416l-.464-.008c-.161 0-.424.06-.646.303-.222.242-.848.828-.848 2.018s.868 2.342.989 2.504c.121.161 1.708 2.613 4.142 3.563.579.199 1.029.318 1.38.406.579.147 1.106.126 1.523.077.465-.055 1.434-.586 1.637-1.152.202-.566.202-1.051.141-1.152-.06-.101-.22-.161-.462-.282z"/>
+              </svg>
               WhatsApp
             </a>
             <span className="text-neutral-400 mt-2">Via delle Piastrelle 10, 41049 Sassuolo (MO)</span>
@@ -1120,7 +1170,6 @@ export default function LastraCeramicaLanding() {
           {/* Bottone visibile solo su mobile */}
           <button
             className="fixed bottom-5 right-5 z-50 bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center md:hidden hover:bg-green-700 transition"
-            style={{ boxShadow: "0 4px 24px 0 rgba(0,0,0,0.18)" }}
             onClick={() => setShowQuickMenu(true)}
             aria-label="Vai agli effetti"
             type="button"
@@ -1362,9 +1411,10 @@ function ZoomableImage({ src, alt }) {
   );
 }
 
-function ZoomableImageSlider({ images, title }) {
+function ZoomableImageSlider({ images, title, height = "h-48", showArrows = true }) {
   const [index, setIndex] = React.useState(0);
   const [zoom, setZoom] = React.useState(false);
+  const touchStartX = React.useRef(null);
 
   function prev() {
     setIndex(i => (i === 0 ? images.length - 1 : i - 1));
@@ -1373,17 +1423,34 @@ function ZoomableImageSlider({ images, title }) {
     setIndex(i => (i === images.length - 1 ? 0 : i + 1));
   }
 
+  // Gestione swipe touch
+  function handleTouchStart(e) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+  function handleTouchEnd(e) {
+    if (touchStartX.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (deltaX > 40) prev();
+    if (deltaX < -40) next();
+    touchStartX.current = null;
+  }
+
   return (
     <>
-      <div className="relative mb-4">
+      <div
+        className={`relative mb-2 w-full ${height} flex items-center justify-center`}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <img
           src={images[index]}
           alt={title}
-          className="w-full h-64 object-contain rounded cursor-zoom-in transition-transform duration-200"
+          loading="lazy"
+          className={`w-full ${height} object-contain rounded cursor-zoom-in transition-transform duration-200`}
           style={zoom ? { cursor: "zoom-out" } : {}}
           onClick={() => setZoom(z => !z)}
         />
-        {/* Icona lente sopra l'immagine, overlay, sempre cliccabile l'immagine */}
+        {/* Icona lente sopra l'immagine */}
         {!zoom && (
           <span className="absolute bottom-2 right-2 z-30 bg-white/80 rounded-full p-1 shadow text-black pointer-events-none">
             <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -1392,52 +1459,66 @@ function ZoomableImageSlider({ images, title }) {
             </svg>
           </span>
         )}
-        {images.length > 1 && !zoom && (
+        {/* Frecce grandi e visibili solo se più immagini */}
+        {showArrows && images.length > 1 && !zoom && (
           <>
             <button
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-white z-20"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-2 shadow hover:bg-white z-20 text-3xl font-bold"
               onClick={e => { e.stopPropagation(); prev(); }}
               aria-label="Immagine precedente"
               type="button"
+              style={{ width: 44, height: 44, minWidth: 44, minHeight: 44 }}
             >
               ‹
             </button>
             <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow hover:bg-white z-20"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-2 shadow hover:bg-white z-20 text-3xl font-bold"
               onClick={e => { e.stopPropagation(); next(); }}
               aria-label="Immagine successiva"
               type="button"
+              style={{ width: 44, height: 44, minWidth: 44, minHeight: 44 }}
             >
               ›
             </button>
           </>
         )}
-        {!zoom && (
-          <div className="text-xs text-neutral-500 text-center mt-1 select-none">Clicca per ingrandire</div>
-        )}
-        {zoom && (
-          <div
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-            onClick={() => setZoom(false)}
-          >
-            <img
-              src={images[index]}
-              alt={title}
-              className="max-h-[90vh] max-w-[90vw] rounded shadow-lg"
-              style={{ cursor: "zoom-out" }}
-            />
+        {/* Indicatori pallini */}
+        {images.length > 1 && !zoom && (
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+            {images.map((_, i) => (
+              <span
+                key={i}
+                className={`w-2 h-2 rounded-full ${i === index ? "bg-green-700" : "bg-neutral-300"} inline-block`}
+              />
+            ))}
           </div>
         )}
       </div>
+      {!zoom && (
+        <div className="text-xs text-neutral-500 text-center mt-1 select-none">Swipe o clicca per ingrandire</div>
+      )}
+      {zoom && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setZoom(false)}
+        >
+          <img
+            src={images[index]}
+            alt={title}
+            loading="lazy"
+            className="max-h-[90vh] max-w-[90vw] rounded shadow-lg"
+            style={{ cursor: "zoom-out" }}
+          />
+        </div>
+      )}
     </>
   );
 }
 
 function scrollToCategoria(id) {
   const el = document.getElementById(id);
-  if (el) {
-    const yOffset = -120; // offset per banner/header
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  }
+  if (!el) return;
+  const yOffset = -120; // offset per banner/header
+  const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  window.scrollTo({ top: y, behavior: "smooth" });
 }

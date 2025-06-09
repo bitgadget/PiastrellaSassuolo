@@ -1154,8 +1154,11 @@ export default function LastraCeramicaLanding() {
                     }}
                     className="flex flex-col items-center justify-center bg-green-50 hover:bg-green-100 rounded-xl p-4 shadow transition w-full"
                   >
-                    {/* Legno: Layers3 */}
-                    <Layers3 size={32} className="mb-2 text-green-700" />
+                    <img
+                      src="https://images.unsplash.com/photo-1605367615038-4e3f139fa991?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Effetto Legno"
+                      className="mb-2 rounded shadow object-cover w-16 h-16"
+                    />
                     <span className="font-semibold text-sm text-green-900">Legno</span>
                   </button>
                   <button
@@ -1166,8 +1169,11 @@ export default function LastraCeramicaLanding() {
                     }}
                     className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 rounded-xl p-4 shadow transition w-full"
                   >
-                    {/* Marmo: Gem */}
-                    <Gem size={32} className="mb-2 text-blue-700" />
+                    <img
+                      src="https://images.unsplash.com/photo-1558346648-9757f2fa4474?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Effetto Marmo"
+                      className="mb-2 rounded shadow object-cover w-16 h-16"
+                    />
                     <span className="font-semibold text-sm text-blue-900">Marmo</span>
                   </button>
                   <button
@@ -1178,8 +1184,11 @@ export default function LastraCeramicaLanding() {
                     }}
                     className="flex flex-col items-center justify-center bg-neutral-100 hover:bg-neutral-200 rounded-xl p-4 shadow transition w-full"
                   >
-                    {/* Cemento: Hammer */}
-                    <Hammer size={32} className="mb-2 text-neutral-700" />
+                    <img
+                      src="https://plus.unsplash.com/premium_photo-1733317213152-64f2d68df05c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Effetto Cemento"
+                      className="mb-2 rounded shadow object-cover w-16 h-16"
+                    />
                     <span className="font-semibold text-sm text-neutral-900">Cemento</span>
                   </button>
                   <button
@@ -1190,8 +1199,11 @@ export default function LastraCeramicaLanding() {
                     }}
                     className="flex flex-col items-center justify-center bg-yellow-50 hover:bg-yellow-100 rounded-xl p-4 shadow transition w-full"
                   >
-                    {/* Pietra: Mountain */}
-                    <Mountain size={32} className="mb-2 text-yellow-700" />
+                    <img
+                      src="https://images.unsplash.com/photo-1525468568166-6f2cd17c7ec9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Effetto Pietra"
+                      className="mb-2 rounded shadow object-cover w-16 h-16"
+                    />
                     <span className="font-semibold text-sm text-yellow-900">Pietra</span>
                   </button>
                 </div>

@@ -209,8 +209,8 @@ export default function LastraCeramicaLanding() {
             animate="visible"
             custom={1}
           >
-            Tutto sotto<br />
-            i 10 €/mq
+            Più di 100 articoli<br />
+            Sotto i 10 €/mq
           </motion.h2>
           <motion.p
             className="mt-4 text-2xl md:text-4xl text-white font-semibold drop-shadow max-w-prose mx-auto"
@@ -260,7 +260,7 @@ export default function LastraCeramicaLanding() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          Siamo una <span className="text-green-700">STOCK HOUSE</span>
+          Siamo una <span className="text-green-700">STOCK HOUSE</span> <br />di pavimenti
         </motion.h3>
         <motion.p
           className="text-neutral-700 text-sm md:text-base mb-5"

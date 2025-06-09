@@ -330,14 +330,20 @@ export default function LastraCeramicaLanding() {
                 title: "Pavimento in gres porcellanato effetto legno rovere miele 22,5x90 cm",
                 desc: "Piastrella rettificata e monocalibro, superficie ad alta definizione grafica, Made in Italy.",
                 prezzo: "8,90",
-                img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80", // Texture legno chiaro
+                img: [
+                  "https://lastraceramica.shop/cdn/shop/files/IMG-4920.webp?v=1727451701",
+                  "https://lastraceramica.shop/cdn/shop/files/IMG-5056.heic?v=1727687929&width=600"
+                ],
                 stock: 320,
               },
               {
                 title: "Gres effetto Legno maxiplancia 25x180 rovere",
                 desc: "Grande formato, rettificato e monocalibro, stampa HD digitale, produzione italiana.",
                 prezzo: "9,50",
-                img: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80", // Texture legno naturale
+                img: [
+                  "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                ],
                 stock: 210,
               },
               {

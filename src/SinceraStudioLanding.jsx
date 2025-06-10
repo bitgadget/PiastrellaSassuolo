@@ -331,27 +331,13 @@ export default function LastraCeramicaLanding() {
         <div className="mb-2 text-left">
           <span className="text-sm text-neutral-500 font-normal whitespace-nowrap">
             Tutti i prezzi sono IVA esclusa
-          </span>          <a
-            href="https://wa.me/393493061878"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-auto mt-4 block rounded-full font-bold px-16 py-4 bg-black text-white text-center shadow-lg hover:scale-105 hover:bg-neutral-800 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black animate-pulse-on-hover"
-            style={{ maxWidth: 420, minWidth: 260, letterSpacing: "0.03em" }}
-          >
-            <span className="inline-flex items-center gap-2">
-              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" className="inline">
-                <path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.484 1.341 4.997l-1.409 5.164a1.001 1.001 0 0 0 1.213 1.213l5.164-1.409a9.953 9.953 0 0 0 4.997 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001a7.96 7.96 0 0 1-4.073-1.143l-.291-.174-3.067.837.822-3.012-.189-.309a7.963 7.963 0 0 1-1.202-4.2c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.842c-.242-.121-1.434-.707-1.655-.788-.222-.081-.384-.121-.546.121-.161.242-.626.788-.768.95-.141.161-.283.181-.525.06-.242-.121-1.022-.377-1.946-1.201-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.109.242-.283.363-.424.121-.141.161-.242.242-.404.081-.161.04-.303-.02-.424-.06-.121-.546-1.318-.748-1.803-.197-.474-.398-.409-.546-.416l-.464-.008c-.161 0-.424.06-.646.303-.222.242-.848.828-.848 2.018s.868 2.342.989 2.504c.121.161 1.708 2.613 4.142 3.563.579.199 1.029.318 1.38.406.579.147 1.106.126 1.523.077.465-.055 1.434-.586 1.637-1.152.202-.566.202-1.051.141-1.152-.06-.101-.22-.161-.462-.282z"/>
-              </svg>
-              Richiedi disponibilità
-            </span>
-          </a>
+          </span>
         </div>
         <div className="flex justify-center mb-6">
           <span className="bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow text-center w-auto">
             VIENI A TROVARCI A SASSUOLO
           </span>
         </div>
-
         {/* Effetto Legno */}
         <div className="mb-12" id="categoria-legno">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Legno</h4>
@@ -1463,22 +1449,43 @@ function ZoomableImageSlider({ images, title, height = "h-48", showArrows = true
         {showArrows && images.length > 1 && !zoom && (
           <>
             <button
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-2 shadow hover:bg-white z-20 text-3xl font-bold"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full shadow hover:bg-green-100 z-20 flex items-center justify-center border border-green-600 transition-all"
               onClick={e => { e.stopPropagation(); prev(); }}
               aria-label="Immagine precedente"
               type="button"
-              style={{ width: 44, height: 44, minWidth: 44, minHeight: 44 }}
+              style={{
+                width: 40,
+                height: 40,
+                minWidth: 40,
+                minHeight: 40,
+                fontSize: 22,
+                lineHeight: 1,
+                boxShadow: "0 2px 8px 0 rgba(16, 185, 129, 0.10)"
+              }}
             >
-              ‹
+              {/* Freccia SVG moderna, centrata */}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
             </button>
             <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-2 shadow hover:bg-white z-20 text-3xl font-bold"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full shadow hover:bg-green-100 z-20 flex items-center justify-center border border-green-600 transition-all"
               onClick={e => { e.stopPropagation(); next(); }}
               aria-label="Immagine successiva"
               type="button"
-              style={{ width: 44, height: 44, minWidth: 44, minHeight: 44 }}
+              style={{
+                width: 40,
+                height: 40,
+                minWidth: 40,
+                minHeight: 40,
+                fontSize: 22,
+                lineHeight: 1,
+                boxShadow: "0 2px 8px 0 rgba(16, 185, 129, 0.10)"
+              }}
             >
-              ›
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
             </button>
           </>
         )}

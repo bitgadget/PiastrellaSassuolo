@@ -1,159 +1,93 @@
-import { Bar } from 'react-chartjs-2';
-import { Chart, BarElement, CategoryScale, LinearScale, Tooltip } from 'chart.js';
-import React, { useRef } from 'react';
+import React from "react";
 
-Chart.register(BarElement, CategoryScale, LinearScale, Tooltip);
-
-const initialStockData = [
-  { categoria: 'Marmo', stock: 2800 },
-  { categoria: 'Pietra', stock: 4120 },
-  { categoria: 'Cemento', stock: 6200 },
-  { categoria: 'Legno', stock: 1920 },
+const categorie = [
+	{
+		nome: "Effetto Marmo",
+		mercato: 28,
+		piastrellasassuolo: 11.9,
+	},
+	{
+		nome: "Effetto Legno",
+		mercato: 24,
+		piastrellasassuolo: 9.9,
+	},
+	{
+		nome: "Effetto Pietra",
+		mercato: 22,
+		piastrellasassuolo: 8.9,
+	},
+	{
+		nome: "Effetto Cemento",
+		mercato: 20,
+		piastrellasassuolo: 7.9,
+	},
 ];
 
-const barColor = '#6366f1';
-
-function lighten(hex, percent) {
-  const num = parseInt(hex.replace('#', ''), 16);
-  let r = (num >> 16) + Math.round(255 * percent);
-  let g = ((num >> 8) & 0x00FF) + Math.round(255 * percent);
-  let b = (num & 0x0000FF) + Math.round(255 * percent);
-  r = r > 255 ? 255 : r;
-  g = g > 255 ? 255 : g;
-  b = b > 255 ? 255 : b;
-  return `rgb(${r},${g},${b})`;
-}
-
 export default function StockChart() {
-  const chartRef = useRef();
-  const [stockData, setStockData] = React.useState(initialStockData);
-
-  // Simula la variazione dei valori ogni 2.5 secondi
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setStockData(prev =>
-        prev.map(item => ({
-          ...item,
-          stock: Math.max(
-            0,
-            Math.round(item.stock + (Math.random() - 0.5) * 600) // variazione random
-          ),
-        }))
-      );
-    }, 25000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const data = {
-    labels: stockData.map(d => d.categoria),
-    datasets: [
-      {
-        label: 'Stock (mq)',
-        data: stockData.map(d => d.stock),
-        borderRadius: 18,
-        borderSkipped: false,
-        backgroundColor: function(context) {
-          const chart = context.chart;
-          const {ctx, chartArea} = chart;
-          if (!chartArea) return barColor;
-          const gradient = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
-          gradient.addColorStop(0, barColor);
-          gradient.addColorStop(1, lighten(barColor, 0.4));
-          return gradient;
-        },
-        hoverBackgroundColor: lighten(barColor, 0.2),
-        barPercentage: 0.6,
-        categoryPercentage: 0.6,
-      },
-    ],
-  };
-
-  const options = {
-    indexAxis: 'y',
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: '#fff',
-        titleColor: '#18181b',
-        bodyColor: '#18181b',
-        borderColor: '#e5e7eb',
-        borderWidth: 1,
-        padding: 10,
-        displayColors: false,
-        caretSize: 7,
-        cornerRadius: 8,
-        enabled: true,
-        callbacks: {
-          label: ctx => ` ${ctx.parsed.x} mq`,
-        },
-      },
-      datalabels: false,
-    },
-    scales: {
-      x: {
-        beginAtZero: true,
-        ticks: { color: '#64748b', font: { size: 12, weight: 600 } },
-        grid: { color: '#e5e7eb33', borderDash: [2, 4] },
-      },
-      y: {
-        ticks: { color: '#334155', font: { size: 13, weight: 700 } },
-        grid: { display: false },
-      },
-    },
-    animation: {
-      duration: 1200,
-      easing: 'easeOutQuart',
-    },
-    onHover: (event, chartElement) => {
-      event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
-    },
-  };
-
-  // Visualizza il valore direttamente sulla barra (senza plugin)
-  const renderValueOnBar = (chart) => {
-    const { ctx, chartArea, data: chartData } = chart;
-    ctx.save();
-    chartData.datasets[0].data.forEach((value, i) => {
-      const meta = chart.getDatasetMeta(0).data[i];
-      if (meta) {
-        ctx.font = 'bold 13px sans-serif';
-        ctx.fillStyle = '#fff';
-        ctx.textAlign = 'right';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(`${value} mq`, meta.x - 10, meta.y);
-      }
-    });
-    ctx.restore();
-  };
-
-  React.useEffect(() => {
-    const chart = chartRef.current;
-    if (chart && chart.chart) {
-      chart.chart.options.plugins.afterDraw = renderValueOnBar;
-      chart.chart.update();
-    }
-  }, [data]);
-
-  return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg border border-neutral-200 p-0 flex flex-col items-center">
-      <div className="w-full flex flex-col items-center px-2 py-4 sm:px-6 sm:py-6">
-        <h3 className="text-xl font-extrabold mb-1 text-center text-neutral-900 tracking-tight">Stock per categoria</h3>
-        <p className="text-center text-neutral-500 mb-4 text-xs sm:text-sm">Dati aggiornati in tempo reale</p>
-        <div
-          className="relative w-full flex justify-center items-center"
-          style={{
-            minHeight: 180,
-            height: '32vw',
-            maxHeight: 220
-          }}
-        >
-          <div className="w-full" style={{ minWidth: 220, maxWidth: 400 }}>
-            <Bar ref={chartRef} data={data} options={options} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-lg border border-neutral-200 p-0 flex flex-col items-center">
+			<div className="w-full flex flex-col items-center px-2 py-4 sm:px-6 sm:py-6">
+				<h3 className="text-xl font-extrabold mb-1 text-center text-neutral-900 tracking-tight">
+					Confronto prezzi al mq per categoria
+				</h3>
+				<p className="text-center text-neutral-600 text-xs mb-3">
+					Media Nazionale vs. piastrellasassuolo.com
+				</p>
+				{/* Colonne compatte con etichette una sola volta */}
+				<div className="w-full flex flex-row justify-center gap-2 sm:gap-4">
+					{categorie.map((cat) => {
+						const max = Math.max(cat.mercato, cat.piastrellasassuolo);
+						const mercatoPerc = (cat.mercato / max) * 100;
+						const piasPerc = (cat.piastrellasassuolo / max) * 100;
+						return (
+							<div
+								key={cat.nome}
+								className="flex flex-col items-center min-w-[70px] max-w-[90px] flex-1"
+							>
+								<div className="text-xs font-semibold text-neutral-700 text-center mb-1 whitespace-nowrap">
+									{cat.nome}
+								</div>
+								<div className="flex flex-row gap-1 items-end">
+									<div className="flex flex-col items-center">
+										<div className="w-7 h-16 bg-neutral-200 rounded-t-lg flex items-end justify-center relative mb-0.5">
+											<div
+												className="w-full bg-red-500 rounded-t-lg"
+												style={{ height: `${mercatoPerc}%` }}
+											/>
+											<span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-white font-bold text-xs">
+												{cat.mercato}€
+											</span>
+										</div>
+									</div>
+									<div className="flex flex-col items-center">
+										<div className="w-7 h-16 bg-neutral-200 rounded-t-lg flex items-end justify-center relative mb-0.5">
+											<div
+												className="w-full bg-green-600 rounded-t-lg"
+												style={{ height: `${piasPerc}%` }}
+											/>
+											<span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-white font-bold text-xs">
+												{cat.piastrellasassuolo}€
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+				
+				{/* Legenda centrata sotto i grafici */}
+				<div className="flex flex-row items-center gap-6 mt-6 justify-center w-full">
+					<span className="flex items-center gap-1 text-xs text-neutral-700">
+						<span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>
+						Media Nazionale
+					</span>
+					<span className="flex items-center gap-1 text-xs text-neutral-700">
+						<span className="inline-block w-3 h-3 rounded-full bg-green-600"></span>
+						piastrellasassuolo.com
+					</span>
+				</div>
+			</div>
+		</div>
+	);
 }

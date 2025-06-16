@@ -241,9 +241,9 @@ export default function LastraCeramicaLanding() {
             animate="visible"
             custom={2}
           >
-            PIASTRELLE ITALIANE<br />
-            IN PRONTA CONSEGNA<br />
-            DIRETTAMENTE DALLA FABBRICA
+            CONFRONTA I PREZZI:<br />
+            MERCATO vs. PIASTRELLASASSUOLO<br />
+            RISPARMIA FINO AL <span className="text-green-300">60%</span>!
           </motion.p>
           <motion.div
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
@@ -590,7 +590,7 @@ export default function LastraCeramicaLanding() {
           <ProductSlider
             products={[
               {
-                title: "FONDOVALLE – Portland Jordan 120×120 cm",
+                title: "FONDOVALLE – Portland 120×120 cm",
                 desc: "Grande lastra effetto cemento, rettificata e levigata, spessore 6 mm.",
                 prezzo: "25,00",
                 img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80",
@@ -834,7 +834,7 @@ export default function LastraCeramicaLanding() {
       {/* Banner calcolatore spedizione */}
       {!modalProdotto && (
         <div className="fixed top-[97px] left-0 w-full z-40 flex justify-center pointer-events-none animate-fade-in-down">
-          <div className="pointer-events-auto bg-green-600 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg flex flex-row flex-nowrap items-center gap-1 sm:gap-3 text-center overflow-x-auto whitespace-nowrap">
+          <div className="pointer-events-auto bg-green-600 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg flex flex-row flex-nowrap items-center gap-1 sm:gap-3">
             <Truck size={18} className="inline" />
             <span className="font-semibold text-xs sm:text-sm">Calcola subito la spedizione per la tua zona!</span>
             <a

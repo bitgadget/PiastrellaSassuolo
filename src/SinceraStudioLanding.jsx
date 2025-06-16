@@ -215,7 +215,7 @@ export default function LastraCeramicaLanding() {
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/src/assets/banner.webp')",
+            backgroundImage: "url('/public/banner.webp')",
             filter: "brightness(1) blur(0px)", // Nessuna opacità, nessun filtro
           }}
         />

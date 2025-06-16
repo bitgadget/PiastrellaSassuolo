@@ -23,6 +23,7 @@ import ShippingCalculator from "./components/ShippingCalculator";
 import ShippingCalculatorItalia from "./components/ShippingCalculatorItalia";
 import ZoomableImage from "./components/ZoomableImage";
 import ZoomableImageSlider from "./components/ZoomableImageSlider";
+import { Typewriter } from 'react-simple-typewriter';
 
 const PRIMARY = "#fff";
 const SECONDARY = "#000";
@@ -209,44 +210,107 @@ export default function LastraCeramicaLanding() {
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-0 py-0 max-w-none mx-0 text-center overflow-hidden">
-        {/* Video di sfondo SOLO nella sezione */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ minHeight: "100%", minWidth: "100%" }}
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
-        {/* Overlay per migliorare leggibilità */}
-        <div className="absolute inset-0 bg-black/5 z-10" />
-        <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-screen">
+      <section className="relative z-10 flex flex-col items-center justify-center min-h-[60vh] md:min-h-[80vh] w-full px-0 py-0 max-w-none mx-0 text-center overflow-hidden">
+        {/* Sfondo immagine */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/src/assets/banner.webp')",
+            filter: "brightness(1) blur(0px)", // Nessuna opacità, nessun filtro
+          }}
+        />
+        {/* Overlay per migliorare leggibilità (RIMOSSO) */}
+        {/* <div className="absolute inset-0 bg-black/40 z-10" /> */}
+        <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-2 sm:px-4">
           <motion.h2
-            className="text-5xl md:text-7xl font-bold leading-tight"
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            custom={1}
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl  font-bold leading-tight break-words"
+            style={{
+              wordBreak: "break-word",
+              lineHeight: "1.1",
+              maxWidth: "95vw",
+              textShadow: "0 2px 8px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25)"
+            }}
+            initial={{ opacity: 0, scale: 0.92, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
           >
-            Più di 100 articoli<br />
-            Sotto i 10 €/mq
+            <Typewriter
+              words={[
+                'OLTRE 100 ARTICOLI',
+                'SOTTO i 10 €/mq',
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={30}
+              delaySpeed={900}
+            />
           </motion.h2>
           <motion.p
-            className="mt-4 text-2xl md:text-4xl text-white font-semibold drop-shadow max-w-prose mx-auto"
+            className="mt-3 text-base xs:text-lg md:text-2xl text-white font-semibold drop-shadow max-w-prose mx-auto"
             variants={stagger}
             initial="hidden"
             animate="visible"
             custom={2}
+            style={{
+              fontSize: "clamp(1rem, 3vw, 1.5rem)",
+              lineHeight: "1.2",
+              maxWidth: "95vw",
+              textShadow: "0 2px 10px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0,0,0,0.25)"
+            }}
           >
-            CONFRONTA I PREZZI:<br />
-            MERCATO vs. PIASTRELLASASSUOLO<br />
-            RISPARMIA FINO AL <span className="text-green-300">60%</span>!
+            CONFRONTA I PREZZI<br />
+            DI MERCATO<br />
+            RISPARMIA FINO AL <span className="text-green-300 neon-flash">60%</span>!
+            <style>
+              {`
+                @keyframes neon-flash {
+                  0%, 100% {
+                    color: #7fff7f;
+                    text-shadow:
+                      0 0 8px #39ff14,
+                      0 0 16px #39ff14,
+                      0 0 24px #39ff14,
+                      0 0 32px #39ff14;
+                  }
+                  20% {
+                    color: #fff;
+                    text-shadow:
+                      0 0 2px #39ff14,
+                      0 0 4px #39ff14;
+                  }
+                  40% {
+                    color: #7fff7f;
+                    text-shadow:
+                      0 0 12px #39ff14,
+                      0 0 24px #39ff14,
+                      0 0 36px #39ff14;
+                  }
+                  60% {
+                    color: #fff;
+                    text-shadow:
+                      0 0 2px #39ff14,
+                      0 0 4px #39ff14;
+                  }
+                  80% {
+                    color: #7fff7f;
+                    text-shadow:
+                      0 0 16px #39ff14,
+                      0 0 32px #39ff14,
+                      0 0 48px #39ff14;
+                  }
+                }
+                .neon-flash {
+                  animation: neon-flash 1.2s infinite alternate;
+                  font-weight: 900;
+                  letter-spacing: 0.03em;
+                }
+              `}
+            </style>
           </motion.p>
           <motion.div
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-6 flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xs sm:max-w-none"
             variants={stagger}
             initial="hidden"
             animate="visible"
@@ -254,13 +318,13 @@ export default function LastraCeramicaLanding() {
           >
             <a
               href="#prodotti"
-              className="rounded-md font-semibold px-6 py-3 bg-black text-white text-center hover:bg-neutral-800 transition"
+              className="rounded-md font-semibold px-6 py-3 bg-black text-white text-center hover:bg-neutral-800 transition w-full sm:w-auto"
             >
               Scopri i prodotti
             </a>
             <a
               href="#contatti"
-              className="rounded-md border border-white px-6 py-3 text-center text-white hover:bg-white hover:text-black transition"
+              className="rounded-md border border-white px-6 py-3 text-center text-white hover:bg-white hover:text-black transition w-full sm:w-auto"
             >
               Contattaci
             </a>
@@ -1141,20 +1205,13 @@ export default function LastraCeramicaLanding() {
               <Phone size={16} /> +39 0123 456789
             </a>
             <a href="https://wa.me/393493061878" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:text-white transition">
-              <svg width="16" height="16" fill="currentColor" className="inline" viewBox="0 0 24 24"><path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.484 1.341 4.997l-1.409 5.164a1.001 1.001 0 0 0 1.213 1.213l5.164-1.409a9.953 9.953 0 0 0 4.997 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001a7.96 7.96 0 0 1-4.073-1.143l-.291-.174-3.067.837.822-3.012-.189-.309a7.963 7.963 0 0 1-1.202-4.2c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.842c-.242-.121-1.434-.707-1.655-.788-.222-.081-.384-.121-.546.121-.161.242-.626.788-.768.95-.141.161-.283.181-.525.06-.242-.121-1.022-.377-1.946-1.201-.72-.642-1.207-1.433-1.35-1.675-.141-.242-.015-.373.106-.494.109-.109.242-.283.363-.424.121-.141.161-.242.242-.404.081-.161.04-.303-.02-.424-.06-.121-.546-1.318-.748-1.803-.197-.474-.398-.409-.546-.416l-.464-.008c-.161 0-.424.06-.646.303-.222.242-.848.828-.848 2.018s.868 2.342.989 2.504c.121.161 1.708 2.613 4.142 3.563.579.199 1.029.318 1.38.406.579.147 1.106.126 1.523.077.465-.055 1.434-.586 1.637-1.152.202-.566.202-1.051.141-1.152-.06-.101-.22-.161-.462-.282z"/>
-              </svg>
-              WhatsApp
+              <PackageSearch size={16} /> WhatsApp
             </a>
-            <span className="text-neutral-400 mt-2">Via delle Piastrelle 10, 41049 Sassuolo (MO)</span>
-            <span className="text-neutral-400">P.IVA 01234567890</span>
           </div>
-        </div>
-        <div className="mt-10 border-t border-neutral-700 pt-6 text-center text-neutral-400 text-xs">
-          © {new Date().getFullYear()} PiastrellaSassuolo — Tutti i diritti riservati
         </div>
       </footer>
 
-      {/* Bottone fisso mobile: Quick Menu */}
+      {/* Quick Menu Mobile */}
       {!modalProdotto && (
         <>
           {/* Bottone visibile solo su mobile */}
@@ -1166,7 +1223,6 @@ export default function LastraCeramicaLanding() {
           >
             <Lightbulb size={28} className="text-white" />
           </button>
-          
           {/* Finestra effetti mobile */}
           {showQuickMenu && (
             <div
@@ -1174,22 +1230,15 @@ export default function LastraCeramicaLanding() {
               onClick={() => setShowQuickMenu(false)}
               style={{ background: "rgba(0,0,0,0.35)" }}
             >
-              <div
-                className="w-full rounded-t-3xl bg-white p-6 pb-10 shadow-2xl flex flex-col gap-4 animate-slide-up"
-                style={{ maxWidth: 420 }}
-                onClick={e => e.stopPropagation()}
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold text-lg text-green-700">Scegli effetto</span>
-                  <button
-                    className="text-2xl text-neutral-400 hover:text-black"
-                    onClick={() => setShowQuickMenu(false)}
-                    aria-label="Chiudi"
-                    type="button"
-                  >
-                    &times;
-                  </button>
-                </div>
+              <div className="w-full max-w-xs mx-auto mb-4 bg-white rounded-t-2xl p-6 shadow-xl animate-slide-up relative">
+                <button
+                  className="absolute top-3 right-4 text-2xl text-black font-bold"
+                  onClick={() => setShowQuickMenu(false)}
+                  type="button"
+                  aria-label="Chiudi"
+                >
+                  &times;
+                </button>
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     type="button"

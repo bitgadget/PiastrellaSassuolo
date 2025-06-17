@@ -14,16 +14,17 @@ import {
   Phone,
   Mail,
   Lightbulb,
-  PackageSearch, // AGGIUNGI QUESTA RIGA
+  PackageSearch,
 } from "lucide-react";
 import ProductSlider from "./components/ProductSlider";
-import FloorConfigurator3D from "./components/FloorConfigurator3D";
 import StockChart from "./components/StockChart";
 import ShippingCalculator from "./components/ShippingCalculator";
 import ShippingCalculatorItalia from "./components/ShippingCalculatorItalia";
 import ZoomableImage from "./components/ZoomableImage";
 import ZoomableImageSlider from "./components/ZoomableImageSlider";
 import { Typewriter } from 'react-simple-typewriter';
+import Footer from "./components/Footer";
+import products from "./data/products"; // <--- IMPORTA QUI
 
 const PRIMARY = "#fff";
 const SECONDARY = "#000";
@@ -39,6 +40,15 @@ const stagger = {
     },
   }),
 };
+
+// --- SPOSTA QUI LA FUNZIONE FUORI DAL COMPONENTE ---
+export function scrollToCategoria(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const yOffset = -120; // offset per banner/header
+  const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
 
 export default function LastraCeramicaLanding() {
   const [loading, setLoading] = useState(true);
@@ -98,24 +108,6 @@ export default function LastraCeramicaLanding() {
         <div className="text-black font-semibold text-lg">
           Sto cercando le migliori offerte a Sassuolo...
         </div>
-        <style>
-          {`
-            @keyframes loading-bar {
-              0% { width: 0%; }
-              100% { width: 100%; }
-            }
-            .animate-loading-bar {
-              animation: loading-bar 2.2s cubic-bezier(.4,0,.2,1) forwards;
-            }
-            @keyframes spin-slow {
-              0% { transform: rotate(0deg);}
-              100% { transform: rotate(360deg);}
-            }
-            .animate-spin-slow {
-              animation: spin-slow 1.2s linear infinite;
-            }
-          `}
-        </style>
       </div>
     );
   }
@@ -263,51 +255,6 @@ export default function LastraCeramicaLanding() {
             CONFRONTA I PREZZI<br />
             DI MERCATO<br />
             RISPARMIA FINO AL <span className="text-green-300 neon-flash">60%</span>!
-            <style>
-              {`
-                @keyframes neon-flash {
-                  0%, 100% {
-                    color: #7fff7f;
-                    text-shadow:
-                      0 0 8px #39ff14,
-                      0 0 16px #39ff14,
-                      0 0 24px #39ff14,
-                      0 0 32px #39ff14;
-                  }
-                  20% {
-                    color: #fff;
-                    text-shadow:
-                      0 0 2px #39ff14,
-                      0 0 4px #39ff14;
-                  }
-                  40% {
-                    color: #7fff7f;
-                    text-shadow:
-                      0 0 12px #39ff14,
-                      0 0 24px #39ff14,
-                      0 0 36px #39ff14;
-                  }
-                  60% {
-                    color: #fff;
-                    text-shadow:
-                      0 0 2px #39ff14,
-                      0 0 4px #39ff14;
-                  }
-                  80% {
-                    color: #7fff7f;
-                    text-shadow:
-                      0 0 16px #39ff14,
-                      0 0 32px #39ff14,
-                      0 0 48px #39ff14;
-                  }
-                }
-                .neon-flash {
-                  animation: neon-flash 1.2s infinite alternate;
-                  font-weight: 900;
-                  letter-spacing: 0.03em;
-                }
-              `}
-            </style>
           </motion.p>
           <motion.div
             className="mt-6 flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xs sm:max-w-none"
@@ -374,13 +321,7 @@ export default function LastraCeramicaLanding() {
         </div>
       </section>
 
-      {/* Configuratore 3D */}
-      {false && (
-        <section className="relative z-10 px-8 pt-16 pb-8 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold mb-4 text-center">Configura il tuo pavimento in 3D</h3>
-          <FloorConfigurator3D />
-        </section>
-      )}
+      
 
       {/* Prodotti */}
       <section
@@ -410,84 +351,7 @@ export default function LastraCeramicaLanding() {
         <div className="mb-12" id="categoria-legno">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Legno</h4>
           <ProductSlider
-            products={[
-              {
-                title: "Pavimento in gres porcellanato effetto legno rovere miele 22,5x90 cm",
-                desc: "Piastrella rettificata e monocalibro, superficie ad alta definizione grafica, Made in Italy.",
-                prezzo: "8,90",
-                img: [
-                  "https://lastraceramica.shop/cdn/shop/files/IMG-4920.webp?v=1727451701",
-                  "https://lastraceramica.shop/cdn/shop/files/IMG-5056.heic?v=1727687929&width=600"
-                ],
-                stock: 320,
-              },
-              {
-                title: "Gres effetto Legno maxiplancia 25x180 rovere",
-                desc: "Grande formato, rettificato e monocalibro, stampa HD digitale, produzione italiana.",
-                prezzo: "9,50",
-                img: [
-                  "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80",
-                  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
-                ],
-                stock: 210,
-              },
-              {
-                title: "FAP – Fapnest 20x120",
-                desc: "Serie Fapnest di FAP, rettificato, monocalibro e grafica ad alta risoluzione.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", // Texture legno beige
-                stock: 150,
-              },
-              {
-                title: "Gres effetto legno 20x120",
-                desc: "Rettificata e monocalibro, aspetto naturale legno, posa facilitata e continuità estetica.",
-                prezzo: "15,50",
-                img: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80", // Texture legno chiaro
-                stock: 180,
-              },
-              {
-                title: "ASCOT – Legati Havana 20x120",
-                desc: "Superficie rettificata con grafica HD dall’aspetto naturale.",
-                prezzo: "9,80",
-                img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Texture legno venato
-                stock: 240,
-              },
-              {
-                title: "EFFETTO LEGNO - prezzo bomba",
-                desc: "Rettificato, alta qualità estetica, ideale per grandi metrature (offerta speciale).",
-                prezzo: "9,80",
-                img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80", // Texture legno marrone
-                stock: 600,
-              },
-              {
-                title: "RICCHETTI – Megeve Iroko 20x120",
-                desc: "Effetto legno Iroko, rettificato e resistente, venature fedeli.",
-                prezzo: "9,70",
-                img: "https://images.unsplash.com/photo-1505826759031-2d5f1b4ddc61?auto=format&fit=crop&w=600&q=80", // Texture legno scuro
-                stock: 300,
-              },
-              {
-                title: "Pavimento in gres porcellanato effetto legno caramel 22x90 spina di pesce/ lisca",
-                desc: "Rettificata 22×90 cm, tonalità caldo-caramello, ideale per posa a spina di pesce.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80", // Texture legno caramello
-                stock: 450,
-              },
-              {
-                title: "RICCHETTI – Soft Sugar 25x180",
-                desc: "Effetto legno chiaro, grande formato, rettificato e monocalibro, look nordico.",
-                prezzo: "12,50",
-                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", // Texture legno nordico
-                stock: 500,
-              },
-              {
-                title: "Effetto legno soft honey 20x120 + lastra amazzonite",
-                desc: "Combinazione di Soft Honey 20×120 cm con lastra decorativa effetto amazzonite, rettificato.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Texture legno miele
-                stock: 350,
-              },
-            ]}
+            products={products.legno}
             onCardClick={setModalProdotto}
           />
         </div>
@@ -496,64 +360,7 @@ export default function LastraCeramicaLanding() {
         <div className="mb-12" id="categoria-marmo">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Marmo</h4>
           <ProductSlider
-            products={[
-              {
-                title: "RICCHETTI – Negresco 60×60 cm",
-                desc: "Marmo nero, superficie levigata e rettificata, aspetto elegante e lucido.",
-                prezzo: "7,00",
-                img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80", // Marmo nero/grigio
-                stock: 180,
-              },
-              {
-                title: "Gres effetto marmo statuario 60x60 levigato",
-                desc: "Finitura levigata lucida, rettificata e monocalibro, grafica digitale HD.",
-                prezzo: "8,90",
-                img: "https://images.unsplash.com/photo-1505826759031-2d5f1b4ddc61?auto=format&fit=crop&w=600&q=80", // Marmo bianco
-                stock: 220,
-              },
-              {
-                title: "Le scelte di Billy ! Statuario 60x120 satinato",
-                desc: "Satinato, rettificato, monocalibro, superficie opaca elegante.",
-                prezzo: "11,00",
-                img: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80", // Marmo chiaro
-                stock: 160,
-              },
-              {
-                title: "Gres porcellanato tipo travertino 60x120 beige",
-                desc: "Lastra effetto travertino beige, rettificata e colorata in massa, venature naturali.",
-                prezzo: "11,50",
-                img: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80", // Travertino beige
-                stock: 190,
-              },
-              {
-                title: "FONDOVALLE – STATUARIO EXTRA MATT 60×120 cm",
-                desc: "Finitura matt, rettificato, grafica HD ultra-realistica.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Marmo venato
-                stock: 210,
-              },
-              {
-                title: "Statuario 60x60 satinato",
-                desc: "Finitura satinata, rettificata e monocalibro, superficie opaca elegante.",
-                prezzo: "8,90",
-                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", // Marmo chiaro
-                stock: 160,
-              },
-              {
-                title: "Effetto marmo onice – crystal white matt 60x120",
-                desc: "Lastra effetto onice bianco, finitura matt, rettificata e monocalibro, venature cristalline.",
-                prezzo: "11,00",
-                img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80", // Onice/bianco
-                stock: 250,
-              },
-              {
-                title: "RICCHETTI – Carrara Pure 60x120",
-                desc: "Effetto marmo Carrara puro, superficie lucida, rettificato; ideale per bagni di lusso.",
-                prezzo: "11,50",
-                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", // Carrara
-                stock: 220,
-              },
-            ]}
+            products={products.marmo}
             onCardClick={setModalProdotto}
           />
         </div>
@@ -562,43 +369,7 @@ export default function LastraCeramicaLanding() {
         <div className="mb-12" id="categoria-cemento">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Cemento</h4>
           <ProductSlider
-            products={[
-              {
-                title: "60×60 cm economico",
-                desc: "Rettificato e monocalibro, soluzione economica per grandi superfici.",
-                prezzo: "5,80",
-                img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80", // Cemento grigio
-                stock: 600,
-              },
-              {
-                title: "Gres effetto cemento 60×60 cm",
-                desc: "Effetto cemento grigio, superficie opaca, rettificata per fughe ridotte.",
-                prezzo: "9,80",
-                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", // Cemento chiaro
-                stock: 350,
-              },
-              {
-                title: "Ricchetti – Easy Extra White 60×60 cm",
-                desc: "Effetto cemento/resina bianco, rettificato e luminoso.",
-                prezzo: "5,90",
-                img: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80", // Cemento bianco
-                stock: 500,
-              },
-              {
-                title: "FONDOVALLE – REFRAME TAUPE 80×80 cm",
-                desc: "Effetto cemento taupe, rettificato, spessore elevato.",
-                prezzo: "13,50",
-                img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Cemento taupe
-                stock: 150,
-              },
-              {
-                title: "FONDOVALLE – HOMESCAPE MATCHA 120×120 cm",
-                desc: "Lastra effetto cemento Matcha, rettificata e monocalibro, finitura matt verde-grigia.",
-                prezzo: "13,50",
-                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", // Cemento verde-grigio
-                stock: 180,
-              },
-            ]}
+            products={products.cemento}
             onCardClick={setModalProdotto}
           />
         </div>
@@ -607,43 +378,7 @@ export default function LastraCeramicaLanding() {
         <div className="mb-12" id="categoria-pietra">
           <h4 className="text-2xl font-bold mb-4 text-left">Effetto Pietra</h4>
           <ProductSlider
-            products={[
-              {
-                title: "Kone beige 60×60 cm",
-                desc: "Effetto pietra beige (serie Kone), rettificato e ingelivo, texture naturale.",
-                prezzo: "9,50",
-                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-                stock: 240,
-              },
-              {
-                title: "Pietra grigio 75×75 cm",
-                desc: "Finitura matt, rettificata e resistente all’usura, adatta anche per esterni coperti.",
-                prezzo: "9,50",
-                img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-                stock: 300,
-              },
-              {
-                title: "Esterno R11 30×60 cm",
-                desc: "Antiscivolo R11, superficie strutturata, resistente agli agenti atmosferici.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80",
-                stock: 450,
-              },
-              {
-                title: "FONDOVALLE – Planeto Venus 60×120 cm",
-                desc: "Lastra effetto pietra, rettificata, superficie satinata con venature naturali.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-                stock: 180,
-              },
-              {
-                title: "Pietra Almond 120×120 cm",
-                desc: "Colore Almond (beige chiaro), rettificato a bordo rettilineo, ideale per grandi formati.",
-                prezzo: "9,90",
-                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-                stock: 210,
-              },
-            ]}
+            products={products.pietra}
             onCardClick={setModalProdotto}
           />
         </div>
@@ -652,50 +387,7 @@ export default function LastraCeramicaLanding() {
         <div className="mb-12">
           <h4 className="text-2xl font-bold mb-4 text-left">Lastre Grande Formato</h4>
           <ProductSlider
-            products={[
-              {
-                title: "FONDOVALLE – Portland 120×120 cm",
-                desc: "Grande lastra effetto cemento, rettificata e levigata, spessore 6 mm.",
-                prezzo: "25,00",
-                img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80",
-                stock: 150,
-              },
-              {
-                title: "Lastra XXL 160×320 cm (rettificata)",
-                desc: "Lastra XXL in gres porcellanato, finitura rettificata, perfetta per rivestimenti continui.",
-                prezzo: "27,00",
-                img: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80",
-                stock: 120,
-              },
-              {
-                title: "Travertino 60×120 cm + lastra Capraia",
-                desc: "Combinazione di gres effetto travertino e lastra Capraia, materiali rettificati e levigati.",
-                prezzo: "29,00",
-                img: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80",
-                stock: 180,
-              },
-              {
-                title: "Lastra effetto cemento 120×280 cm",
-                desc: "Grande lastra effetto cemento, superficie matt rettificata, look industriale.",
-                prezzo: "15,90",
-                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-                stock: 210,
-              },
-              {
-                title: "Lastra effetto marmo 120×280 cm",
-                desc: "Finitura lucida, rettificata, imitazione marmo naturale in formati extra large.",
-                prezzo: "28,00",
-                img: "https://images.unsplash.com/photo-1505826759031-2d5f1b4ddc61?auto=format&fit=crop&w=600&q=80",
-                stock: 160,
-              },
-              {
-                title: "Lastra statuario levigato 120×280 cm",
-                desc: "Finitura levigata lucida, rettificata, alto spessore per rivestimenti di pregio.",
-                prezzo: "28,00",
-                img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-                stock: 140,
-              },
-            ]}
+            products={products.lastre}
             onCardClick={setModalProdotto}
           />
         </div>
@@ -704,36 +396,7 @@ export default function LastraCeramicaLanding() {
         <div className="mb-0">
           <h4 className="text-2xl font-bold mb-4 text-left">Rivestimenti Bagno</h4>
           <ProductSlider
-            products={[
-              {
-                title: "Gres porcellanato tipo travertino 60×120 cm (Rivestimento)",
-                desc: "Effetto travertino beige, finitura matt, piastrella rettificata con venature naturali.",
-                prezzo: "9,80",
-                img: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80",
-                stock: 300,
-              },
-              {
-                title: "Effetto marmo onice – Crystal White Matt 60×120 cm (Rivestimento)",
-                desc: "Lastra effetto onice bianco, finitura matt, rettificata e monocalibro, venature cristalline.",
-                prezzo: "11,00",
-                img: "https://images.unsplash.com/photo-1505826759031-2d5f1b4ddc61?auto=format&fit=crop&w=600&q=80",
-                stock: 250,
-              },
-              {
-                title: "RICCHETTI – Carrara Pure 60×120 cm (Rivestimento)",
-                desc: "Effetto marmo Carrara puro, superficie lucida, rettificato; ideale per bagni di lusso.",
-                prezzo: "11,50",
-                img: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80",
-                stock: 220,
-              },
-              {
-                title: "FONDOVALLE – Travertino griseo 60×120 cm (Rivestimento)",
-                desc: "Effetto travertino grigio, rettificato e opaco, stile naturale e contemporaneo.",
-                prezzo: "12,70",
-                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-                stock: 190,
-              },
-            ]}
+            products={products.bagno}
             onCardClick={setModalProdotto}
           />
         </div>
@@ -822,7 +485,7 @@ export default function LastraCeramicaLanding() {
                 href="https://wa.me/393493061878"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-auto mt-4 block rounded-full font-bold px-10 py-2 bg-black text-white text-center shadow-lg hover:scale-105 hover:bg-neutral-800 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black animate-pulse-on-hover"
+                className="mx-auto mt-4 block rounded-full font-bold px-10 py-2 bg-black text-white text-center shadow-lg hover:scale-105 hover:bg-neutral-800 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black"
                 style={{ maxWidth: 340, minWidth: 220, letterSpacing: "0.03em" }}
               >
                 <span className="inline-flex items-center gap-2">
@@ -832,18 +495,6 @@ export default function LastraCeramicaLanding() {
                   Richiedi disponibilità
                 </span>
               </a>
-              <style>
-                {`
-                  .animate-pulse-on-hover:hover {
-                    animation: pulse 0.7s;
-                  }
-                  @keyframes pulse {
-                    0% { transform: scale(1);}
-                    50% { transform: scale(1.08);}
-                    100% { transform: scale(1);}
-                  }
-                `}
-              </style>
             </div>
           </div>
         )}
@@ -909,17 +560,6 @@ export default function LastraCeramicaLanding() {
               CALCOLA ORA
             </a>
           </div>
-          <style>
-            {`
-              @keyframes fade-in-down {
-                0% { opacity: 0; transform: translateY(-24px);}
-                100% { opacity: 1; transform: translateY(0);}
-              }
-              .animate-fade-in-down {
-                animation: fade-in-down 0.8s cubic-bezier(.4,0,.2,1);
-              }
-            `}
-          </style>
         </div>
       )}
 
@@ -1179,37 +819,7 @@ export default function LastraCeramicaLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 px-8 py-12 bg-neutral-900 text-neutral-200 text-sm mt-12">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-10">
-          {/* Logo e claim */}
-          <div className="flex-1 flex flex-col gap-3 items-start">
-            {/* Logo rimosso */}
-            <span className="font-semibold text-lg text-white">PiastrellaSassuolo</span>
-            <span className="text-neutral-400">Piastrelle italiane in pronta consegna a prezzi di fabbrica.</span>
-          </div>
-          {/* Link utili */}
-          <div className="flex-1 flex flex-col gap-2 mt-8 md:mt-0">
-            <span className="font-semibold text-white mb-2">Link utili</span>
-            <a href="#prodotti" className="hover:underline hover:text-white transition">Prodotti</a>
-            <a href="#vantaggi" className="hover:underline hover:text-white transition">Vantaggi</a>
-            <a href="#faq" className="hover:underline hover:text-white transition">FAQ</a>
-            <a href="#contatti" className="hover:underline hover:text-white transition">Contatti</a>
-          </div>
-          {/* Contatti */}
-          <div className="flex-1 flex flex-col gap-2 mt-8 md:mt-0">
-            <span className="font-semibold text-white mb-2">Contatti</span>
-            <a href="mailto:info@lastraceramica.it" className="flex items-center gap-2 hover:underline hover:text-white transition">
-              <Mail size={16} /> info@lastraceramica.it
-            </a>
-            <a href="tel:+390123456789" className="flex items-center gap-2 hover:underline hover:text-white transition">
-              <Phone size={16} /> +39 0123 456789
-            </a>
-            <a href="https://wa.me/393493061878" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:text-white transition">
-              <PackageSearch size={16} /> WhatsApp
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Quick Menu Mobile */}
       {!modalProdotto && (
@@ -1302,29 +912,10 @@ export default function LastraCeramicaLanding() {
                   </button>
                 </div>
               </div>
-              <style>
-                {`
-                  @keyframes slide-up {
-                    0% { transform: translateY(100%); opacity: 0; }
-                    100% { transform: translateY(0); opacity: 1; }
-                  }
-                  .animate-slide-up {
-                    animation: slide-up 0.35s cubic-bezier(.4,0,.2,1);
-                  }
-                `}
-              </style>
             </div>
           )}
         </>
       )}
     </main>
   );
-}
-
-function scrollToCategoria(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const yOffset = -120; // offset per banner/header
-  const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-  window.scrollTo({ top: y, behavior: "smooth" });
 }

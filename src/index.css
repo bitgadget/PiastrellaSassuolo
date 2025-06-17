@@ -28,10 +28,92 @@
   display: none;
 }
 
+/* Animazione barra di caricamento */
+@keyframes loading-bar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+.animate-loading-bar {
+  animation: loading-bar 2.2s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+/* Animazione spin lenta */
 @keyframes spin-slow {
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
 }
 .animate-spin-slow {
-  animation: spin-slow 2s linear infinite; /* 25% più lento di 1s */
+  animation: spin-slow 1.2s linear infinite;
+}
+
+/* Neon lampeggiante per 60% */
+@keyframes neon-flash {
+  0%, 100% {
+    color: #7fff7f;
+    text-shadow:
+      0 0 8px #39ff14,
+      0 0 16px #39ff14,
+      0 0 24px #39ff14,
+      0 0 32px #39ff14;
+  }
+  20% {
+    color: #fff;
+    text-shadow:
+      0 0 2px #39ff14,
+      0 0 4px #39ff14;
+  }
+  40% {
+    color: #7fff7f;
+    text-shadow:
+      0 0 12px #39ff14,
+      0 0 24px #39ff14,
+      0 0 36px #39ff14;
+  }
+  60% {
+    color: #fff;
+    text-shadow:
+      0 0 2px #39ff14,
+      0 0 4px #39ff14;
+  }
+  80% {
+    color: #7fff7f;
+    text-shadow:
+      0 0 16px #39ff14,
+      0 0 32px #39ff14,
+      0 0 48px #39ff14;
+  }
+}
+.neon-flash {
+  animation: neon-flash 1.2s infinite alternate;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+/* Pulsazione su hover */
+@keyframes pulse {
+  0% { transform: scale(1);}
+  50% { transform: scale(1.08);}
+  100% { transform: scale(1);}
+}
+.animate-pulse-on-hover:hover {
+  animation: pulse 0.7s;
+}
+
+/* Fade in down */
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-24px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in-down {
+  animation: fade-in-down 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+/* Slide up */
+@keyframes slide-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(.4,0,.2,1);
 }
 

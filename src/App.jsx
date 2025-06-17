@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SinceraStudioLanding from "./SinceraStudioLanding";
-import BlogPage from "./components/BlogPage";
-import BlogDetail from "./components/BlogDetail";
+
 import { HelmetProvider } from "react-helmet-async";
 import { Helmet } from "react-helmet-async";
 
@@ -12,8 +11,7 @@ export default function App() {
         <Router>
           <Routes>
             <Route path="/" element={<SinceraStudioLanding />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogDetail />} />
+            
           </Routes>
         </Router>
       </div>

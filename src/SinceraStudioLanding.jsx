@@ -202,7 +202,7 @@ export default function LastraCeramicaLanding() {
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center min-h-[60vh] md:min-h-[80vh] w-full px-0 py-0 max-w-none mx-0 text-center overflow-hidden">
+      <section className="relative z-10 flex flex-col items-center justify-center w-full px-0 py-0 max-w-none mx-0 text-center overflow-hidden min-h-[60vh] md:min-h-[80vh]">
         {/* Sfondo video */}
         <video
           className="absolute inset-0 z-0 w-full h-full object-cover"
@@ -211,7 +211,23 @@ export default function LastraCeramicaLanding() {
           loop
           muted
           playsInline
+          style={{
+            width: "100%",
+            height: "100%",
+            // Riduci l'altezza all'80% solo su mobile
+            maxHeight: "80vh",
+          }}
         />
+        <style>
+          {`
+            @media (max-width: 640px) {
+              section > video {
+                height: 80% !important;
+                max-height: 80% !important;
+              }
+            }
+          `}
+        </style>
         <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-2 sm:px-4">
           <motion.h2
             className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl  font-bold leading-tight break-words"

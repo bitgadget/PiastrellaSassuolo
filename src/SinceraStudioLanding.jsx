@@ -203,16 +203,15 @@ export default function LastraCeramicaLanding() {
 
       {/* Hero */}
       <section className="relative z-10 flex flex-col items-center justify-center min-h-[60vh] md:min-h-[80vh] w-full px-0 py-0 max-w-none mx-0 text-center overflow-hidden">
-        {/* Sfondo immagine */}
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/assets/banner.webp')",
-            filter: "brightness(1) blur(0px)", // Nessuna opacità, nessun filtro
-          }}
+        {/* Sfondo video */}
+        <video
+          className="absolute inset-0 z-0 w-full h-full object-cover"
+          src="/banner2.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
         />
-        {/* Overlay per migliorare leggibilità (RIMOSSO) */}
-        {/* <div className="absolute inset-0 bg-black/40 z-10" /> */}
         <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-2 sm:px-4">
           <motion.h2
             className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl  font-bold leading-tight break-words"

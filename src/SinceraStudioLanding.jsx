@@ -521,6 +521,8 @@ export default function LastraCeramicaLanding() {
           id="calcolatore"
           className="relative z-10 px-8 pt-2 pb-8 max-w-2xl mx-auto text-center"
         >
+          {/* OFFSET per evitare che la barra verde copra il titolo */}
+          <div style={{ height: 60 }} aria-hidden="true"></div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

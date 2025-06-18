@@ -50,6 +50,14 @@ export function scrollToCategoria(id) {
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
+export function scrollToCalcolatore() {
+  const el = document.getElementById("calcolatore");
+  if (!el) return;
+  const yOffset = -120; // Modifica qui se la barra verde ha altezza diversa
+  const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+
 export default function LastraCeramicaLanding() {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -521,8 +529,7 @@ export default function LastraCeramicaLanding() {
           id="calcolatore"
           className="relative z-10 px-8 pt-2 pb-8 max-w-2xl mx-auto text-center"
         >
-          {/* OFFSET per evitare che la barra verde copra il titolo */}
-          <div style={{ height: 60 }} aria-hidden="true"></div>
+          
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -573,6 +580,7 @@ export default function LastraCeramicaLanding() {
               href="#calcolatore"
               className="ml-1 sm:ml-3 px-2 py-1 sm:px-3 sm:py-1 bg-white text-green-700 font-extrabold rounded-full text-[10px] sm:text-xs hover:bg-green-100 transition uppercase text-center"
               style={{ letterSpacing: "0.04em", minWidth: 80, display: "inline-block" }}
+              onClick={scrollToCalcolatore}
             >
               CALCOLA ORA
             </a>

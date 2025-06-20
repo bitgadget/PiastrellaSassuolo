@@ -209,92 +209,142 @@ export default function LastraCeramicaLanding() {
         )}
       </header>
 
-      {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center w-full px-0 py-0 max-w-none mx-0 text-center overflow-hidden min-h-[60vh] md:min-h-[80vh]">
-        {/* Sfondo video */}
-        <video
-          className="absolute inset-0 z-0 w-full h-full object-cover"
-          src="/banner1.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            width: "100%",
-            height: "100%",
-            // Riduci l'altezza all'80% solo su mobile
-            maxHeight: "80vh",
-          }}
-        />
-        <style>
-          {`
-            @media (max-width: 640px) {
-              section > video {
-                height: 80% !important;
-                max-height: 80% !important;
-              }
-            }
-          `}
-        </style>
-        <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-2 sm:px-4">
+      {/* Hero - Comparatore Live Animato Migliorato */}
+      <section
+        className="relative z-10 flex flex-col items-center justify-center w-full px-0 py-0 max-w-none mx-0 text-center overflow-visible min-h-[60vh] sm:min-h-[70vh] md:min-h-[90vh] bg-gradient-to-br from-green-100 via-white to-blue-100 mt-16 sm:mt-0"
+      >
+        <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[90vh] px-2 sm:px-4 pb-10 sm:pb-0">
+          {/* Badge offerta animato centrato */}
+          <motion.div
+            initial={{ y: -40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.7, type: "spring" }}
+            className="px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm md:px-6 md:py-2 md:text-base bg-yellow-400 text-yellow-900 rounded-full font-bold shadow-lg flex items-center gap-2 animate-pulse mb-1 sm:mb-2 max-w-full"
+            style={{ zIndex: 30, whiteSpace: "normal" }}
+          >
+            <Gem size={14} className="animate-bounce sm:w-5 sm:h-5" />
+            Offerta limitata: prezzi stock solo fino a fine mese!
+          </motion.div>
+          {/* Titolo */}
           <motion.h2
-            className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl  font-bold leading-tight break-words"
-            style={{
-              wordBreak: "break-word",
-              lineHeight: "1.1",
-              maxWidth: "95vw",
-              textShadow: "0 2px 8px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25)"
-            }}
+            className="text-lg xs:text-xl sm:text-3xl md:text-6xl font-bold leading-tight break-words text-green-900 drop-shadow max-w-[98vw] sm:max-w-2xl mx-auto"
             initial={{ opacity: 0, scale: 0.92, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+            style={{ wordBreak: "break-word" }}
           >
-            <Typewriter
-              words={[
-                'OLTRE 100 ARTICOLI',
-                'SOTTO i 10 €/mq',
-              ]}
-              loop={0}
-              cursor
-              cursorStyle="|"
-              typeSpeed={80}
-              deleteSpeed={30}
-              delaySpeed={900}
-            />
+            Quanto puoi risparmiare?
           </motion.h2>
-          <motion.p
-            className="mt-3 text-base xs:text-lg md:text-2xl text-white font-semibold drop-shadow max-w-prose mx-auto"
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            custom={2}
-            style={{
-              fontSize: "clamp(1rem, 3vw, 1.5rem)",
-              lineHeight: "1.2",
-              maxWidth: "95vw",
-              textShadow: "0 2px 10px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0,0,0,0.25)"
-            }}
-          >
-            CONFRONTA I PREZZI<br />
-            DI MERCATO<br />
-            RISPARMIA FINO AL <span className="text-green-300 neon-flash">60%</span>!
-          </motion.p>
+          {/* Sottotitolo animato */}
           <motion.div
-            className="mt-6 flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xs sm:max-w-none"
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            custom={3}
+            className="mt-2 text-sm xs:text-base md:text-2xl text-green-900 font-semibold drop-shadow max-w-[95vw] sm:max-w-prose mx-auto min-h-[28px] sm:min-h-[36px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+          >
+            <span className="mr-1 sm:mr-2">Confronta il nostro prezzo medio con quello di mercato:</span>
+            <span className="text-green-700 font-bold">
+              <Typewriter
+                words={["Risparmia subito!", "Prezzi imbattibili!", "Solo stock limitati!"]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={60}
+                deleteSpeed={40}
+                delaySpeed={1800}
+              />
+            </span>
+          </motion.div>
+
+          {/* Icone animate vantaggi */}
+          <motion.div
+            className="flex gap-3 sm:gap-6 mt-4 sm:mt-8 mb-1 sm:mb-2 w-full justify-center overflow-x-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+          >
+            {[Gem, Truck, Euro, CheckCircle2, Hammer, PackageSearch].map((Icon, i) => (
+              <motion.div
+                key={i}
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.7 + i * 0.08, type: "spring" }}
+                className="bg-white/80 rounded-full shadow p-2 sm:p-3 flex-shrink-0"
+              >
+                <Icon size={22} className="text-green-700 animate-bounce-slow sm:w-8 sm:h-8" />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Comparatore animato */}
+          <div className="mt-4 sm:mt-8 w-full max-w-xs sm:max-w-md mx-auto flex flex-col gap-4 sm:gap-6">
+            {/* Prezzo mercato */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-neutral-600 font-semibold whitespace-nowrap text-xs sm:text-base">Prezzo medio mercato</span>
+              <div className="flex-1 h-5 sm:h-6 bg-neutral-200 rounded-full relative overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "90%" }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  className="h-full bg-red-400 rounded-full"
+                />
+                <span className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-red-700 font-bold text-base sm:text-lg">25 €/mq</span>
+              </div>
+            </div>
+            {/* Prezzo Lastra Ceramica */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-green-700 font-semibold whitespace-nowrap text-xs sm:text-base">Il nostro prezzo</span>
+              <div className="flex-1 h-5 sm:h-6 bg-neutral-200 rounded-full relative overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "32%" }}
+                  transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                  className="h-full bg-green-500 rounded-full"
+                />
+                <span className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-green-900 font-bold text-base sm:text-lg">10.50 €/mq</span>
+              </div>
+            </div>
+            {/* Badge risparmio */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 1.1, duration: 0.5, type: "spring" }}
+              className="mx-auto mt-1 sm:mt-2 bg-green-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-base sm:text-xl font-bold shadow-lg flex items-center gap-1 sm:gap-2"
+            >
+              <ArrowUpRight size={18} className="inline animate-bounce" />
+              Risparmia fino al <span className="text-yellow-300 drop-shadow font-extrabold">60%</span>
+            </motion.div>
+          </div>
+
+          {/* Dettagli vantaggi */}
+          <motion.ul
+            className="mt-4 sm:mt-8 mb-1 sm:mb-2 flex flex-wrap justify-center gap-2 sm:gap-4 text-green-900 text-xs sm:text-sm font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.3, duration: 0.7 }}
+          >
+            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Stock reale e aggiornato</li>
+            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Spedizione in tutta Italia</li>
+            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Consulenza gratuita</li>
+            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Solo grandi marche</li>
+          </motion.ul>
+
+          {/* CTA animata */}
+          <motion.div
+            className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center w-full max-w-xs sm:max-w-none"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
           >
             <a
               href="#prodotti"
-              className="rounded-md font-semibold px-6 py-3 bg-black text-white text-center hover:bg-neutral-800 transition w-full sm:w-auto"
+              className="rounded-md font-semibold px-4 py-2 sm:px-6 sm:py-3 bg-black text-white text-center hover:bg-neutral-800 transition w-full sm:w-auto animate-pulse"
             >
               Scopri i prodotti
             </a>
             <a
               href="#contatti"
-              className="rounded-md border border-white px-6 py-3 text-center text-white hover:bg-white hover:text-black transition w-full sm:w-auto"
+              className="rounded-md border border-black px-4 py-2 sm:px-6 sm:py-3 text-center text-black hover:bg-black hover:text-white transition w-full sm:w-auto"
             >
               Contattaci
             </a>
@@ -303,7 +353,7 @@ export default function LastraCeramicaLanding() {
       </section>
 
       {/* Grafico stock per categoria */}
-      <section className="relative z-20 w-full max-w-3xl mx-auto -mt-24 mb-4 md:mb-12">
+      <section className="relative z-20 w-full max-w-3xl mx-auto -mt-4 sm:-mt-24 mb-4 md:mb-12">
         <StockChart />
       </section>
 

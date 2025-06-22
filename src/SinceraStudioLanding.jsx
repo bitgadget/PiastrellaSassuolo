@@ -240,9 +240,9 @@ export default function LastraCeramicaLanding() {
             la porta d’ingresso alle migliori occasioni di Sassuolo.
           </h3>
           <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
-            Non serve più saltare da un sito all’altro<br /> qui, in questo momento<br /> hai già trovato il meglio al miglior prezzo del web.<br />
+            Non serve più saltare da un sito all’altro<br /> qui, in questo momento hai già trovato il meglio al miglior prezzo del web.<br />
             Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
-            <span className="text-black font-bold">Nessun compromesso: Il meglio, subito, al miglior prezzo possibile</span>
+            <span className="text-black font-bold">Nessun compromesso: Il meglio, subito, al miglior prezzo possibile.</span>
           </p>
         </motion.div>
       </section>
@@ -316,14 +316,7 @@ export default function LastraCeramicaLanding() {
           />
         </div>
 
-        {/* Rivestimenti Bagno */}
-        <div className="mb-0">
-          <h4 className="text-2xl font-bold mb-4 text-left">Rivestimenti Bagno</h4>
-          <ProductSlider
-            products={products.bagno}
-            onCardClick={setModalProdotto}
-          />
-        </div>
+        
 
         {/* Modale prodotto */}
         {modalProdotto && (

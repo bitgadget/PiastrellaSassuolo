@@ -17,7 +17,7 @@ export default function ProductSlider({ products, onCardClick }) {
     <div className="relative">
       <button
         type="button"
-        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full shadow p-2"
+        className="flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full shadow p-2"
         onClick={() => scroll("left")}
         aria-label="Scorri a sinistra"
       >
@@ -25,7 +25,7 @@ export default function ProductSlider({ products, onCardClick }) {
       </button>
       <button
         type="button"
-        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full shadow p-2"
+        className="flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full shadow p-2"
         onClick={() => scroll("right")}
         aria-label="Scorri a destra"
       >

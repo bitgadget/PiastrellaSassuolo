@@ -159,33 +159,6 @@ export default function HeroComparatore() {
           />
         </div>
 
-        {/* Vantaggi */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.7 }}
-          className="flex flex-row sm:grid sm:grid-cols-3 gap-4 mt-8 max-w-md mx-auto w-full"
-        >
-          {[
-            { icon: <Truck size={32} className="text-white mx-auto" />, label: "Spedizione rapida" },
-            { icon: <CheckCircle2 size={32} className="text-white mx-auto" />, label: "Qualità top" },
-            { icon: <Hammer size={32} className="text-white mx-auto" />, label: "Solo stock selezionati" },
-          ].map((v, i) => (
-            <div
-              key={i}
-              className="flex-1 flex flex-col items-center text-center min-w-0"
-            >
-              <div className="mb-2">{v.icon}</div>
-              <span
-                className="text-xs sm:text-sm font-semibold text-neutral-700 whitespace-nowrap"
-                style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}
-              >
-                {v.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
-
         {/* Bottone CTA - Sempre centrato */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

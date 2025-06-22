@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-export default function StatAnimated({ value, label, suffix = "", decimals = 0, duration = 1200 }) {
+export default function StatAnimated({ value, label, suffix = "", decimals = 0, duration = 1200, valueStyle }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -20,7 +20,13 @@ export default function StatAnimated({ value, label, suffix = "", decimals = 0, 
 
   return (
     <div className="flex flex-col items-center min-w-[90px]">
-      <span className="text-2xl sm:text-3xl font-extrabold text-green-700">
+      <span
+        className="text-2xl sm:text-3xl font-extrabold text-green-700"
+        style={{
+          ...(valueStyle || {}),
+          textShadow: "0 1px 1px #fff, 0 0 1px #fff", // glow molto più leggero
+        }}
+      >
         {display.toFixed(decimals)}
         {suffix}
       </span>

@@ -14,25 +14,20 @@ export default function HeroComparatore() {
       }}
     >
       {/* Immagine di sfondo */}
-      <img
-        src="/bg-hero.jpg" // Cambia con il path della tua immagine
-        alt=""
+      <video
+        src="/banner2.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
         aria-hidden="true"
-        className="pointer-events-none select-none object-cover object-center absolute inset-0 w-full h-full z-0 opacity-30"
-        style={{ filter: "blur(2px)" }}
+        className="pointer-events-none select-none object-cover object-center absolute inset-0 w-full h-full z-0"
+        
       />
+      
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center justify-center">
-        {/* Badge offerta */}
-        <motion.div
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 rounded-full font-bold shadow-lg mx-auto"
-        >
-          <Gem size={18} className="mr-2 animate-spin-slow" />
-          OFFERTA LIMITATA: PREZZI STOCK FINO A ESAURIMENTO SCORTE
-        </motion.div>
+        
 
         {/* Titolo */}
         <motion.h1
@@ -40,8 +35,18 @@ export default function HeroComparatore() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
           className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight text-center mt-6"
+          style={{
+            textShadow: `
+              0 4px 32px #fff,
+              0 0px 32px #fff,
+              0 0 16px #fff,
+              0 2px 8px #fff,
+              0 0 2px #fff
+            `,
+            textTransform: "uppercase"
+          }}
         >
-          Quanto puoi <span className="text-green-600">risparmiare</span>?
+          QUANTO PUOI <span className="text-green-600">RISPARMIARE</span>?
         </motion.h1>
 
         {/* Sottotitolo */}
@@ -49,9 +54,18 @@ export default function HeroComparatore() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="text-xl text-gray-600 text-center max-w-2xl mx-auto mt-4"
+          className="text-xl text-gray-700 text-center max-w-2xl mx-auto mt-4"
+          style={{
+            textShadow: `
+              0 2px 16px #fff,
+              0 0px 32px #fff,
+              0 0 8px #fff,
+              0 0 2px #fff
+            `,
+            textTransform: "uppercase"
+          }}
         >
-          Confronta i nostri prezzi diretti con quelli di mercato e scopri il tuo risparmio
+          CONFRONTA I NOSTRI PREZZI DIRETTI CON QUELLI DI MERCATO E SCOPRI IL TUO RISPARMIO
         </motion.p>
 
         {/* Comparatore */}
@@ -117,10 +131,31 @@ export default function HeroComparatore() {
 
         {/* Statistiche animate */}
         <div className="flex flex-row flex-wrap justify-center gap-8 mt-8 mb-2 w-full">
-          <StatAnimated value={3500} label="Clienti soddisfatti" suffix="+" />
-          <StatAnimated value={120000} label="Metri quadri venduti" suffix=" mq" />
-          <StatAnimated value={4.9} label="Valutazione media" suffix="/5" decimals={1} />
-          <StatAnimated value={60} label="Risparmio massimo" suffix="%" />
+          <StatAnimated
+            value={3500}
+            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Clienti soddisfatti</span>}
+            suffix="+"
+            valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
+          />
+          <StatAnimated
+            value={120000}
+            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Metri quadri venduti</span>}
+            suffix=" mq"
+            valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
+          />
+          <StatAnimated
+            value={4.9}
+            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Valutazione media</span>}
+            suffix="/5"
+            decimals={1}
+            valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
+          />
+          <StatAnimated
+            value={60}
+            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Risparmio massimo</span>}
+            suffix="%"
+            valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
+          />
         </div>
 
         {/* Vantaggi */}
@@ -131,16 +166,21 @@ export default function HeroComparatore() {
           className="flex flex-row sm:grid sm:grid-cols-3 gap-4 mt-8 max-w-md mx-auto w-full"
         >
           {[
-            { icon: <Truck size={32} className="text-green-700 mx-auto" />, label: "Spedizione rapida" },
-            { icon: <CheckCircle2 size={32} className="text-green-700 mx-auto" />, label: "Qualità top" },
-            { icon: <Hammer size={32} className="text-green-700 mx-auto" />, label: "Solo stock selezionati" },
+            { icon: <Truck size={32} className="text-white mx-auto" />, label: "Spedizione rapida" },
+            { icon: <CheckCircle2 size={32} className="text-white mx-auto" />, label: "Qualità top" },
+            { icon: <Hammer size={32} className="text-white mx-auto" />, label: "Solo stock selezionati" },
           ].map((v, i) => (
             <div
               key={i}
               className="flex-1 flex flex-col items-center text-center min-w-0"
             >
               <div className="mb-2">{v.icon}</div>
-              <span className="text-xs sm:text-sm font-semibold text-neutral-700 whitespace-nowrap">{v.label}</span>
+              <span
+                className="text-xs sm:text-sm font-semibold text-neutral-700 whitespace-nowrap"
+                style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}
+              >
+                {v.label}
+              </span>
             </div>
           ))}
         </motion.div>

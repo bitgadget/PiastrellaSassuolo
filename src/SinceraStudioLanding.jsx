@@ -236,11 +236,11 @@ export default function LastraCeramicaLanding() {
             </span>
           </div>
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2 sm:mb-4 text-black tracking-tight leading-tight">
-            Non siamo un semplice negozio.<br />
-            Siamo la <span className="text-green-700">porta segreta</span> per chi vuole il meglio, subito.
+            Non il solito negozio:<br />
+            la porta d’ingresso alle migliori occasioni di Sassuolo.
           </h3>
           <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
-            Ogni lotto che trovi qui è stato scelto tra centinaia.<br />
+            Non serve più saltare da un sito all’altro<br /> qui, in questo momento<br /> hai già trovato il meglio al miglior prezzo del web.<br />
             Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
             <span className="text-black font-bold">Nessun compromesso: qualità top, pronta consegna, zero sorprese.</span>
           </p>

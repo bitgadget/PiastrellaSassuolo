@@ -134,7 +134,7 @@ export default function LastraCeramicaLanding() {
   ];
 
   return (
-    <main id="top" className="pt-24 min-h-screen scroll-smooth bg-white text-black font-sans overflow-x-hidden selection:bg-black/10 selection:text-black">
+    <main id="top" className="pt-24 min-h-screen scroll-smooth bg-white text-black font-sans selection:bg-black/10 selection:text-black">
       <Header setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
       {/* Hero - Comparatore Live Animato Migliorato */}
       <HeroComparatore />

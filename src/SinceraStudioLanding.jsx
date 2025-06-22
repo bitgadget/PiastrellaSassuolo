@@ -25,6 +25,8 @@ import ZoomableImageSlider from "./components/ZoomableImageSlider";
 import { Typewriter } from 'react-simple-typewriter';
 import Footer from "./components/Footer";
 import products from "./data/products"; // <--- IMPORTA QUI
+import HeroComparatore from "./components/HeroComparatore";
+import QuickMenuMobile from "./components/QuickMenuMobile";
 
 const PRIMARY = "#fff";
 const SECONDARY = "#000";
@@ -45,7 +47,9 @@ const stagger = {
 export function scrollToCategoria(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  const yOffset = -120; // offset per banner/header
+  // Offset maggiore su mobile per banner fisso
+  const isMobile = window.innerWidth < 640;
+  const yOffset = isMobile ? -170 : -120; // aumenta se serve
   const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
   window.scrollTo({ top: y, behavior: "smooth" });
 }
@@ -210,199 +214,46 @@ export default function LastraCeramicaLanding() {
       </header>
 
       {/* Hero - Comparatore Live Animato Migliorato */}
-      <section
-        className="relative z-10 flex flex-col items-center justify-center w-full px-0 py-0 max-w-none mx-0 text-center overflow-visible min-h-[60vh] sm:min-h-[70vh] md:min-h-[90vh] bg-gradient-to-br from-green-100 via-white to-blue-100 mt-16 sm:mt-0"
-      >
-        <div className="relative z-20 flex flex-col items-center justify-center w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[90vh] px-2 sm:px-4 pb-10 sm:pb-0">
-          {/* Badge offerta animato centrato */}
-          <motion.div
-            initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.7, type: "spring" }}
-            className="px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm md:px-6 md:py-2 md:text-base bg-yellow-400 text-yellow-900 rounded-full font-bold shadow-lg flex items-center gap-2 animate-pulse mb-1 sm:mb-2 max-w-full"
-            style={{ zIndex: 30, whiteSpace: "normal" }}
-          >
-            <Gem size={14} className="animate-bounce sm:w-5 sm:h-5" />
-            Offerta limitata: prezzi stock solo fino a fine mese!
-          </motion.div>
-          {/* Titolo */}
-          <motion.h2
-            className="text-lg xs:text-xl sm:text-3xl md:text-6xl font-bold leading-tight break-words text-green-900 drop-shadow max-w-[98vw] sm:max-w-2xl mx-auto"
-            initial={{ opacity: 0, scale: 0.92, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: 'easeOut' }}
-            style={{ wordBreak: "break-word" }}
-          >
-            Quanto puoi risparmiare?
-          </motion.h2>
-          {/* Sottotitolo animato */}
-          <motion.div
-            className="mt-2 text-sm xs:text-base md:text-2xl text-green-900 font-semibold drop-shadow max-w-[95vw] sm:max-w-prose mx-auto min-h-[28px] sm:min-h-[36px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-          >
-            <span className="mr-1 sm:mr-2">Confronta il nostro prezzo medio con quello di mercato:</span>
-            <span className="text-green-700 font-bold">
-              <Typewriter
-                words={["Risparmia subito!", "Prezzi imbattibili!", "Solo stock limitati!"]}
-                loop={0}
-                cursor
-                cursorStyle="|"
-                typeSpeed={60}
-                deleteSpeed={40}
-                delaySpeed={1800}
-              />
-            </span>
-          </motion.div>
-
-          {/* Icone animate vantaggi */}
-          <motion.div
-            className="flex gap-3 sm:gap-6 mt-4 sm:mt-8 mb-1 sm:mb-2 w-full justify-center overflow-x-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-          >
-            {[Gem, Truck, Euro, CheckCircle2, Hammer, PackageSearch].map((Icon, i) => (
-              <motion.div
-                key={i}
-                initial={{ scale: 0.7, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.7 + i * 0.08, type: "spring" }}
-                className="bg-white/80 rounded-full shadow p-2 sm:p-3 flex-shrink-0"
-              >
-                <Icon size={22} className="text-green-700 animate-bounce-slow sm:w-8 sm:h-8" />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Comparatore animato */}
-          <div className="mt-4 sm:mt-8 w-full max-w-xs sm:max-w-md mx-auto flex flex-col gap-4 sm:gap-6">
-            {/* Prezzo mercato */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-neutral-600 font-semibold whitespace-nowrap text-xs sm:text-base">Prezzo medio mercato</span>
-              <div className="flex-1 h-5 sm:h-6 bg-neutral-200 rounded-full relative overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "90%" }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                  className="h-full bg-red-400 rounded-full"
-                />
-                <span className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-red-700 font-bold text-base sm:text-lg">25 €/mq</span>
-              </div>
-            </div>
-            {/* Prezzo Lastra Ceramica */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-green-700 font-semibold whitespace-nowrap text-xs sm:text-base">Il nostro prezzo</span>
-              <div className="flex-1 h-5 sm:h-6 bg-neutral-200 rounded-full relative overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "32%" }}
-                  transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-                  className="h-full bg-green-500 rounded-full"
-                />
-                <span className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-green-900 font-bold text-base sm:text-lg">10.50 €/mq</span>
-              </div>
-            </div>
-            {/* Badge risparmio */}
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1.1, duration: 0.5, type: "spring" }}
-              className="mx-auto mt-1 sm:mt-2 bg-green-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-base sm:text-xl font-bold shadow-lg flex items-center gap-1 sm:gap-2"
-            >
-              <ArrowUpRight size={18} className="inline animate-bounce" />
-              Risparmia fino al <span className="text-yellow-300 drop-shadow font-extrabold">60%</span>
-            </motion.div>
-          </div>
-
-          {/* Dettagli vantaggi */}
-          <motion.ul
-            className="mt-4 sm:mt-8 mb-1 sm:mb-2 flex flex-wrap justify-center gap-2 sm:gap-4 text-green-900 text-xs sm:text-sm font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.7 }}
-          >
-            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Stock reale e aggiornato</li>
-            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Spedizione in tutta Italia</li>
-            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Consulenza gratuita</li>
-            <li className="bg-white/80 rounded-full px-3 py-1 sm:px-4 sm:py-2 shadow">Solo grandi marche</li>
-          </motion.ul>
-
-          {/* CTA animata */}
-          <motion.div
-            className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center w-full max-w-xs sm:max-w-none"
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
-          >
-            <a
-              href="#prodotti"
-              className="rounded-md font-semibold px-4 py-2 sm:px-6 sm:py-3 bg-black text-white text-center hover:bg-neutral-800 transition w-full sm:w-auto animate-pulse"
-            >
-              Scopri i prodotti
-            </a>
-            <a
-              href="#contatti"
-              className="rounded-md border border-black px-4 py-2 sm:px-6 sm:py-3 text-center text-black hover:bg-black hover:text-white transition w-full sm:w-auto"
-            >
-              Contattaci
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      <HeroComparatore />
 
       {/* Grafico stock per categoria */}
       <section className="relative z-20 w-full max-w-3xl mx-auto -mt-4 sm:-mt-24 mb-4 md:mb-12">
         <StockChart />
       </section>
 
-      {/* Chi siamo - versione ultra compatta */}
-      <section className="relative z-10 px-6 py-8 max-w-md mx-auto text-center">
-        <motion.h3
-          className="text-xl md:text-2xl font-bold mb-3 text-black tracking-tight"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
+      {/* Chi siamo - versione innovativa */}
+      <section className="relative z-10 px-4 py-6 sm:py-12 max-w-2xl mx-auto text-center flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
+          className="w-full"
         >
-          Siamo una <span className="text-green-700">STOCK HOUSE</span> <br />di pavimenti
-        </motion.h3>
-        <motion.p
-          className="text-neutral-700 text-sm md:text-base mb-5"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          custom={2}
-          viewport={{ once: true }}
-        >
-          Ricerchiamo i migliori prezzi delle migliori marche di piastrelle in gres porcellanato prodotte a Sassuolo.
-        </motion.p>
-        <div className="flex justify-center gap-2 md:gap-6">
-          <div className="flex flex-col items-center">
-            <Gem size={28} className="mb-1 text-blue-700" />
-            <span className="text-[11px] font-semibold text-blue-900">Marche Top</span>
+          <div className="mb-2 sm:mb-4">
+            <span className="inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest shadow uppercase">
+              SOLO STOCK SELEZIONATI
+            </span>
           </div>
-          <div className="flex flex-col items-center">
-            <Euro size={28} className="mb-1 text-green-700" />
-            <span className="text-[11px] font-semibold text-green-900">Prezzi Stock</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <Truck size={28} className="mb-1 text-yellow-700" />
-            <span className="text-[11px] font-semibold text-yellow-900">Pronta consegna</span>
-          </div>
-        </div>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2 sm:mb-4 text-black tracking-tight leading-tight">
+            Non siamo un semplice negozio.<br />
+            Siamo la <span className="text-green-700">porta segreta</span> per chi vuole il meglio, subito.
+          </h3>
+          <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
+            Ogni lotto che trovi qui è stato scelto tra centinaia.<br />
+            Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
+            <span className="text-black font-bold">Nessun compromesso: qualità top, pronta consegna, zero sorprese.</span>
+          </p>
+        </motion.div>
       </section>
-
-      
 
       {/* Prodotti */}
       <section
         id="prodotti"
-        className="relative z-10 px-8 pt-12 pb-4 max-w-7xl mx-auto"
+        className="relative z-10 px-4 sm:px-8 pt-6 sm:pt-12 pb-2 sm:pb-4 max-w-7xl mx-auto"
       >
         <motion.h3
-          className="text-3xl font-bold mb-2"
+          className="text-2xl sm:text-3xl font-bold mb-2"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -411,12 +262,12 @@ export default function LastraCeramicaLanding() {
           Prodotti in pronta consegna
         </motion.h3>
         <div className="mb-2 text-left">
-          <span className="text-sm text-neutral-500 font-normal whitespace-nowrap">
+          <span className="text-xs sm:text-sm text-neutral-500 font-normal whitespace-nowrap">
             Tutti i prezzi sono IVA esclusa
           </span>
         </div>
-        <div className="flex justify-center mb-6">
-          <span className="bg-green-600 text-white text-lg font-bold px-10 py-2 rounded-full shadow text-center w-auto">
+        <div className="flex justify-center mb-4 sm:mb-6">
+          <span className="bg-green-600 text-white text-base sm:text-lg font-bold px-6 sm:px-10 py-2 rounded-full shadow text-center w-auto">
             VIENI A TROVARCI A SASSUOLO
           </span>
         </div>
@@ -908,87 +759,11 @@ export default function LastraCeramicaLanding() {
           >
             <Lightbulb size={28} className="text-white" />
           </button>
-          {/* Finestra effetti mobile */}
-          {showQuickMenu && (
-            <div
-              className="fixed inset-0 z-50 flex items-end justify-end md:hidden"
-              onClick={() => setShowQuickMenu(false)}
-              style={{ background: "rgba(0,0,0,0.35)" }}
-            >
-              <div className="w-full max-w-xs mx-auto mb-4 bg-white rounded-t-2xl p-6 shadow-xl animate-slide-up relative">
-                <button
-                  className="absolute top-3 right-4 text-2xl text-black font-bold"
-                  onClick={() => setShowQuickMenu(false)}
-                  type="button"
-                  aria-label="Chiudi"
-                >
-                  &times;
-                </button>
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowQuickMenu(false);
-                      setTimeout(() => scrollToCategoria("categoria-legno"), 100);
-                    }}
-                    className="flex flex-col items-center justify-center bg-green-50 hover:bg-green-100 rounded-xl p-4 shadow transition w-full"
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1605367615038-4e3f139fa991?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Effetto Legno"
-                      className="mb-2 rounded shadow object-cover w-16 h-16"
-                    />
-                    <span className="font-semibold text-sm text-green-900">Legno</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowQuickMenu(false);
-                      setTimeout(() => scrollToCategoria("categoria-marmo"), 100);
-                    }}
-                    className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 rounded-xl p-4 shadow transition w-full"
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1558346648-9757f2fa4474?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Effetto Marmo"
-                      className="mb-2 rounded shadow object-cover w-16 h-16"
-                    />
-                    <span className="font-semibold text-sm text-blue-900">Marmo</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowQuickMenu(false);
-                      setTimeout(() => scrollToCategoria("categoria-cemento"), 100);
-                    }}
-                    className="flex flex-col items-center justify-center bg-neutral-100 hover:bg-neutral-200 rounded-xl p-4 shadow transition w-full"
-                  >
-                    <img
-                      src="https://plus.unsplash.com/premium_photo-1733317213152-64f2d68df05c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Effetto Cemento"
-                      className="mb-2 rounded shadow object-cover w-16 h-16"
-                    />
-                    <span className="font-semibold text-sm text-neutral-900">Cemento</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowQuickMenu(false);
-                      setTimeout(() => scrollToCategoria("categoria-pietra"), 100);
-                    }}
-                    className="flex flex-col items-center justify-center bg-yellow-50 hover:bg-yellow-100 rounded-xl p-4 shadow transition w-full"
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1525468568166-6f2cd17c7ec9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Effetto Pietra"
-                      className="mb-2 rounded shadow object-cover w-16 h-16"
-                    />
-                    <span className="font-semibold text-sm text-yellow-900">Pietra</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          <QuickMenuMobile
+            show={showQuickMenu}
+            onClose={() => setShowQuickMenu(false)}
+            scrollToCategoria={scrollToCategoria}
+          />
         </>
       )}
     </main>

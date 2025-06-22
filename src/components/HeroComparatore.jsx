@@ -8,7 +8,7 @@ export default function HeroComparatore() {
 
   return (
     <section
-      className="relative z-10 w-full px-4 py-12 sm:py-24 overflow-hidden"
+      className="relative z-10 w-full px-4 pt-8 pb-0 sm:py-24 overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #f0fdf4 0%, #fff 60%, #e0f2fe 100%)",
       }}
@@ -54,7 +54,7 @@ export default function HeroComparatore() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="text-xl text-gray-700 text-center max-w-2xl mx-auto mt-4"
+          className="text-xl text-gray-700 text-center max-w-2xl mx-auto mt-4 font-bold"
           style={{
             textShadow: `
               0 2px 16px #fff,
@@ -130,7 +130,7 @@ export default function HeroComparatore() {
         </motion.div>
 
         {/* Statistiche animate */}
-        <div className="flex flex-row flex-wrap justify-center gap-8 mt-8 mb-2 w-full">
+        <div className="flex flex-row flex-wrap justify-center gap-8 mt-8 mb-0 w-full">
           <StatAnimated
             value={3500}
             label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Clienti soddisfatti</span>}

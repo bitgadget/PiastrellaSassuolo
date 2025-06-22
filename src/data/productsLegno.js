@@ -1,0 +1,73 @@
+const productsLegno = [
+  {
+    title: "Pavimento in gres porcellanato effetto legno rovere miele 22,5x90 cm",
+    desc: "Piastrella rettificata e monocalibro, superficie ad alta definizione grafica, Made in Italy.",
+    prezzo: "8,90",
+    img: "/products/l1.jpg",
+    stock: 320,
+  },
+  {
+    title: "Gres effetto Legno maxiplancia 25x180 rovere",
+    desc: "Grande formato, rettificato e monocalibro, stampa HD digitale, produzione italiana.",
+    prezzo: "9,50",
+    img: "/products/l2.jpg",
+    stock: 210,
+  },
+  {
+    title: "FAP – Fapnest 20x120",
+    desc: "Serie Fapnest di FAP, rettificato, monocalibro e grafica ad alta risoluzione.",
+    prezzo: "9,90",
+    img: "/products/l3.jpg",
+    stock: 150,
+  },
+  {
+    title: "Gres effetto legno 20x120",
+    desc: "Rettificata e monocalibro, aspetto naturale legno, posa facilitata e continuità estetica.",
+    prezzo: "15,50",
+    img: "/products/l4.jpg",
+    stock: 180,
+  },
+  {
+    title: "ASCOT – Legati Havana 20x120",
+    desc: "Superficie rettificata con grafica HD dall’aspetto naturale.",
+    prezzo: "9,80",
+    img: "/products/l5.jpg",
+    stock: 240,
+  },
+  {
+    title: "EFFETTO LEGNO - prezzo bomba",
+    desc: "Rettificato, alta qualità estetica, ideale per grandi metrature (offerta speciale).",
+    prezzo: "9,80",
+    img: "/products/l6.jpg",
+    stock: 600,
+  },
+  {
+    title: "RICCHETTI – Megeve Iroko 20x120",
+    desc: "Effetto legno Iroko, rettificato e resistente, venature fedeli.",
+    prezzo: "9,70",
+    img: "/products/l7.jpg",
+    stock: 300,
+  },
+  {
+    title: "Pavimento in gres porcellanato effetto legno caramel 22x90 spina di pesce/ lisca",
+    desc: "Rettificata 22×90 cm, tonalità caldo-caramello, ideale per posa a spina di pesce.",
+    prezzo: "9,90",
+    img: "/products/l8.jpg",
+    stock: 450,
+  },
+  {
+    title: "RICCHETTI – Soft Sugar 25x180",
+    desc: "Effetto legno chiaro, grande formato, rettificato e monocalibro, look nordico.",
+    prezzo: "12,50",
+    img: "/products/l9.jpg",
+    stock: 500,
+  },
+  {
+    title: "Effetto legno soft honey 20x120 + lastra amazzonite",
+    desc: "Combinazione di Soft Honey 20×120 cm con lastra decorativa effetto amazzonite, rettificato.",
+    prezzo: "9,90",
+    img: "/products/l10.jpg",
+    stock: 350,
+  },
+];
+export default productsLegno;

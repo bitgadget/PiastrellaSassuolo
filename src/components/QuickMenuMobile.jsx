@@ -11,7 +11,7 @@ export default function QuickMenuMobile({ show, onClose, scrollToCategoria }) {
       style={{ background: "rgba(0,0,0,0.35)" }}
     >
       <div
-        className="w-full max-w-xs mx-auto mb-4 bg-white rounded-t-2xl p-6 shadow-xl animate-slide-up relative"
+        className="w-full max-w-xs mx-auto bg-white rounded-t-2xl p-6 shadow-xl animate-slide-up relative"
         onClick={e => e.stopPropagation()}
       >
         <button

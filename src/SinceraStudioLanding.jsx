@@ -124,6 +124,15 @@ export default function LastraCeramicaLanding() {
     );
   }
 
+  // dichiarazione delle categorie
+  const categorie = [
+    { id: "categoria-legno", nome: "Effetto Legno", prodotti: products.legno },
+    { id: "categoria-marmo", nome: "Effetto Marmo", prodotti: products.marmo },
+    { id: "categoria-cemento", nome: "Effetto Cemento", prodotti: products.cemento },
+    { id: "categoria-pietra", nome: "Effetto Pietra", prodotti: products.pietra },
+    { id: "categoria-lastre", nome: "Lastre Grande Formato", prodotti: products.lastre },
+  ];
+
   return (
     <main id="top" className="pt-24 min-h-screen scroll-smooth bg-white text-black font-sans overflow-x-hidden selection:bg-black/10 selection:text-black">
       {/* Header */}
@@ -240,7 +249,7 @@ export default function LastraCeramicaLanding() {
             la porta d’ingresso alle migliori occasioni di Sassuolo.
           </h3>
           <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
-            Non serve più saltare da un sito all’altro<br /> qui, in questo momento hai già trovato il meglio al miglior prezzo del web.<br />
+            Non serve più saltare da un sito all’altro. Qui, in questo momento, hai già trovato il meglio al miglior prezzo del web.<br />
             Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
             <span className="text-black font-bold">Nessun compromesso: Il meglio, subito, al miglior prezzo possibile.</span>
           </p>
@@ -272,51 +281,15 @@ export default function LastraCeramicaLanding() {
           </span>
         </div>
         {/* Effetto Legno */}
-        <div className="mb-12" id="categoria-legno">
-          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Legno</h4>
-          <ProductSlider
-            products={products.legno}
-            onCardClick={setModalProdotto}
-          />
-        </div>
-
-        {/* Effetto Marmo */}
-        <div className="mb-12" id="categoria-marmo">
-          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Marmo</h4>
-          <ProductSlider
-            products={products.marmo}
-            onCardClick={setModalProdotto}
-          />
-        </div>
-
-        {/* Effetto Cemento */}
-        <div className="mb-12" id="categoria-cemento">
-          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Cemento</h4>
-          <ProductSlider
-            products={products.cemento}
-            onCardClick={setModalProdotto}
-          />
-        </div>
-
-        {/* Effetto Pietra */}
-        <div className="mb-12" id="categoria-pietra">
-          <h4 className="text-2xl font-bold mb-4 text-left">Effetto Pietra</h4>
-          <ProductSlider
-            products={products.pietra}
-            onCardClick={setModalProdotto}
-          />
-        </div>
-
-        {/* Lastre Grande Formato */}
-        <div className="mb-12">
-          <h4 className="text-2xl font-bold mb-4 text-left">Lastre Grande Formato</h4>
-          <ProductSlider
-            products={products.lastre}
-            onCardClick={setModalProdotto}
-          />
-        </div>
-
-        
+        {categorie.map(cat => (
+          <div className="mb-12" id={cat.id} key={cat.id}>
+            <h4 className="text-2xl font-bold mb-4 text-left">{cat.nome}</h4>
+            <ProductSlider
+              products={cat.prodotti}
+              onCardClick={setModalProdotto}
+            />
+          </div>
+        ))}
 
         {/* Modale prodotto */}
         {modalProdotto && (

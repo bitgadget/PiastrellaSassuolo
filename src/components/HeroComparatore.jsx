@@ -65,7 +65,7 @@ export default function HeroComparatore() {
             textTransform: "uppercase"
           }}
         >
-          CONFRONTA I NOSTRI PREZZI DIRETTI CON QUELLI DI MERCATO E SCOPRI IL TUO RISPARMIO
+          CONFRONTA I NOSTRI PREZZI CON QUELLI DI MERCATO E SCOPRI <br />IL TUO RISPARMIO
         </motion.p>
 
         {/* Comparatore */}

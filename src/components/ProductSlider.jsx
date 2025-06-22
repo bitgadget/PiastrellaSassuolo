@@ -4,9 +4,38 @@ import { motion } from "framer-motion";
 export default function ProductSlider({ products, onCardClick }) {
   const scrollRef = useRef(null);
 
+  // Funzione per scorrere a destra/sinistra
+  const scroll = (direction) => {
+    const { current } = scrollRef;
+    if (!current) return;
+    const scrollAmount = current.offsetWidth * 0.8;
+    if (direction === "left") current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    if (direction === "right") current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  };
+
   return (
     <div className="relative">
-      {/* RIMOSSE LE FRECCE */}
+      {/* Freccia sinistra */}
+      <button
+        type="button"
+        className="flex absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full shadow p-2"
+        onClick={() => scroll("left")}
+        aria-label="Scorri a sinistra"
+        style={{ display: products.length > 1 ? "flex" : "none" }}
+      >
+        <svg width={28} height={28} fill="none" stroke="currentColor" strokeWidth={2}><polyline points="18 6 10 14 18 22" /></svg>
+      </button>
+      {/* Freccia destra */}
+      <button
+        type="button"
+        className="flex absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full shadow p-2"
+        onClick={() => scroll("right")}
+        aria-label="Scorri a destra"
+        style={{ display: products.length > 1 ? "flex" : "none" }}
+      >
+        <svg width={28} height={28} fill="none" stroke="currentColor" strokeWidth={2}><polyline points="10 6 18 14 10 22" /></svg>
+      </button>
+
       <div
         ref={scrollRef}
         className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 py-2"

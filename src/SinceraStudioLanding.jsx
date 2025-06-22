@@ -176,6 +176,12 @@ export default function LastraCeramicaLanding() {
         id="prodotti"
         className="relative z-10 px-4 sm:px-8 pt-6 sm:pt-12 pb-2 sm:pb-4 max-w-7xl mx-auto"
       >
+        {/* La label ora è solo qui sopra il titolo */}
+        <div className="flex justify-center mb-4 sm:mb-6">
+          <span className="bg-green-600 text-white text-base sm:text-lg font-bold px-6 sm:px-10 py-2 rounded-full shadow text-center w-auto">
+            VIENI A TROVARCI A SASSUOLO
+          </span>
+        </div>
         <motion.h3
           className="text-2xl sm:text-3xl font-bold mb-2"
           variants={stagger}
@@ -190,15 +196,16 @@ export default function LastraCeramicaLanding() {
             Tutti i prezzi sono IVA esclusa
           </span>
         </div>
-        <div className="flex justify-center mb-4 sm:mb-6">
+        {/* RIMUOVI la seconda label qui sotto */}
+        {/* <div className="flex justify-center mb-4 sm:mb-6">
           <span className="bg-green-600 text-white text-base sm:text-lg font-bold px-6 sm:px-10 py-2 rounded-full shadow text-center w-auto">
             VIENI A TROVARCI A SASSUOLO
           </span>
-        </div>
+        </div> */}
         {/* Effetto Legno */}
         {categorie.map(cat => (
           <div className="mb-12" id={cat.id} key={cat.id}>
-            <h4 className="text-3xl sm:text-4xl font-extrabold mb-6 text-left text-green-700 drop-shadow-sm tracking-tight uppercase">
+            <h4 className="text-3xl sm:text-4xl font-extrabold mb-6 text-left text-black drop-shadow-sm tracking-tight uppercase">
               {cat.nome}
             </h4>
             <ProductSlider

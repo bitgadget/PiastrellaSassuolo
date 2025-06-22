@@ -1,7 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-export default function StatAnimated({ value, label, suffix = "", decimals = 0, duration = 1200, valueStyle }) {
+export default function StatAnimated({
+  value,
+  label,
+  suffix = "",
+  decimals = 0,
+  duration = 1200,
+  valueStyle,
+  format, // <--- aggiungi la prop format
+}) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -18,16 +26,25 @@ export default function StatAnimated({ value, label, suffix = "", decimals = 0, 
     // eslint-disable-next-line
   }, [value, duration]);
 
+  // Applica la formattazione se fornita
+  let displayValue = decimals > 0
+    ? display.toFixed(decimals)
+    : Math.round(display);
+
+  if (typeof format === "function") {
+    displayValue = format(decimals > 0 ? Number(displayValue) : parseInt(displayValue, 10));
+  }
+
   return (
     <div className="flex flex-col items-center min-w-[90px]">
       <span
         className="text-2xl sm:text-3xl font-extrabold text-green-700"
         style={{
           ...(valueStyle || {}),
-          textShadow: "0 1px 1px #fff, 0 0 1px #fff", // glow molto più leggero
+          textShadow: "0 1px 1px #fff, 0 0 1px #fff",
         }}
       >
-        {display.toFixed(decimals)}
+        {displayValue}
         {suffix}
       </span>
       <span className="text-xs sm:text-sm text-neutral-700 font-semibold mt-1 text-center">{label}</span>

@@ -142,6 +142,7 @@ export default function HeroComparatore() {
             label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Metri quadri venduti</span>}
             suffix=" mq"
             valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
+            format={value => value.toLocaleString('it-IT')}
           />
           <StatAnimated
             value={4.9}

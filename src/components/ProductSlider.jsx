@@ -38,7 +38,7 @@ export default function ProductSlider({ products, onCardClick }) {
       >
         {products.map((prod, i) => (
           <motion.div
-            key={prod.title}
+            key={prod.title + '-' + i} // <-- così la chiave è sempre unica
             className="min-w-[270px] max-w-xs flex-1 snap-center bg-white border border-neutral-200 rounded-2xl shadow hover:shadow-xl hover:border-black transition flex flex-col cursor-pointer"
             whileHover={{ scale: 1.03 }}
             onClick={() => onCardClick(prod)}

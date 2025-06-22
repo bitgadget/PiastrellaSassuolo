@@ -131,7 +131,6 @@ export default function LastraCeramicaLanding() {
     { id: "categoria-marmo", nome: "Effetto Marmo", prodotti: products.marmo },
     { id: "categoria-cemento", nome: "Effetto Cemento", prodotti: products.cemento },
     { id: "categoria-pietra", nome: "Effetto Pietra", prodotti: products.pietra },
-    { id: "categoria-lastre", nome: "Lastre Grande Formato", prodotti: products.lastre },
   ];
 
   return (

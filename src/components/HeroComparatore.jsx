@@ -14,17 +14,13 @@ export default function HeroComparatore() {
       }}
     >
       {/* Immagine di sfondo */}
-      <video
-        src="/banner2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
+      <img
+        src="/bannerb.webp"
+        alt=""
         aria-hidden="true"
         className="pointer-events-none select-none object-cover object-center absolute inset-0 w-full h-full z-0"
-        
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
-      
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center justify-center">
         
@@ -133,27 +129,27 @@ export default function HeroComparatore() {
         <div className="flex flex-row flex-wrap justify-center gap-8 mt-8 mb-0 w-full">
           <StatAnimated
             value={3500}
-            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Clienti soddisfatti</span>}
+            label={<span style={{ color: "#fff", textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Clienti soddisfatti</span>}
             suffix="+"
             valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
           />
           <StatAnimated
             value={120000}
-            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Metri quadri venduti</span>}
+            label={<span style={{ color: "#fff", textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Metri quadri venduti</span>}
             suffix=" mq"
             valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
             format={value => value.toLocaleString('it-IT')}
           />
           <StatAnimated
             value={4.9}
-            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Valutazione media</span>}
+            label={<span style={{ color: "#fff", textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Valutazione media</span>}
             suffix="/5"
             decimals={1}
             valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
           />
           <StatAnimated
             value={60}
-            label={<span style={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Risparmio massimo</span>}
+            label={<span style={{ color: "#fff", textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Risparmio massimo</span>}
             suffix="%"
             valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
           />
@@ -164,7 +160,7 @@ export default function HeroComparatore() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.7 }}
-          className="flex justify-center mt-12"
+          className="flex justify-center mt-20 mb-16"
         >
           <a
             href="#prodotti"

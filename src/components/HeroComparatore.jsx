@@ -4,7 +4,18 @@ import { ArrowUpRight, Gem, Truck, Euro, CheckCircle2, Hammer } from "lucide-rea
 import StatAnimated from "./StatAnimated";
 
 export default function HeroComparatore() {
-  const [price] = React.useState(25);
+  const [typed, setTyped] = React.useState("");
+  const fullWord = "RISPARMIARE";
+  React.useEffect(() => {
+    let i = 0;
+    setTyped("");
+    const timer = setInterval(() => {
+      setTyped(fullWord.slice(0, i + 1));
+      i++;
+      if (i === fullWord.length) clearInterval(timer);
+    }, 140); // <-- più lento
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -23,8 +34,6 @@ export default function HeroComparatore() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center justify-center">
-        
-
         {/* Titolo */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +51,11 @@ export default function HeroComparatore() {
             textTransform: "uppercase"
           }}
         >
-          QUANTO PUOI <span className="text-green-600">RISPARMIARE</span>?
+          QUANTO PUOI{" "}
+          <span className="text-green-600" style={{ borderRight: typed.length < fullWord.length ? "2px solid #16a34a" : "none", paddingRight: 2 }}>
+            {typed}
+          </span>
+          ?
         </motion.h1>
 
         {/* Sottotitolo */}

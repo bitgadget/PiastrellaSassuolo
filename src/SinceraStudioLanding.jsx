@@ -163,7 +163,13 @@ export default function LastraCeramicaLanding() {
             la porta d’ingresso alle migliori occasioni di Sassuolo.
           </h3>
           <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
-            Non serve più saltare da un sito all’altro. Qui, in questo momento, hai già trovato il meglio al miglior prezzo del web.<br />
+            <span
+              className="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded-lg shadow-sm animate-pulse"
+              style={{ fontSize: "1.15em" }}
+            >
+              NON SERVE PIU' SALTARE DA UN SITO ALL'ALTRO
+            </span>
+              Qui, in questo momento, hai già trovato il meglio al miglior prezzo del web.<br />
             Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
             <span className="text-black font-bold">Nessun compromesso: Il meglio, subito, al miglior prezzo possibile.</span>
           </p>
@@ -454,10 +460,10 @@ export default function LastraCeramicaLanding() {
               foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
             },
             {
-              nome: "Roberto Bianchi",
+              nome: "Alfredo Alfi",
               ruolo: "Privato",
               testo: "Ho ristrutturato casa risparmiando quasi 2.000€ sulle piastrelle. La qualità è eccellente e il servizio clienti davvero professionale.",
-              foto: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&h=256&q=80"
+              foto: "/alfio.jpg"
             },
             {
               nome: "Edil Costruzioni srl",

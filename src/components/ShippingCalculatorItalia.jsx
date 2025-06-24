@@ -2,26 +2,26 @@ import React, { useState } from "react";
 import italyMap from "../assets/italy.svg"; // importa l'immagine SVG locale
 
 const prezziRegioni = {
-  piemonte: 2.5,
-  valle: 2.8,
-  lombardia: 2.5,
-  trentino: 2.5,
-  veneto: 2.5,
-  friuli: 2.5,
-  liguria: 2.8,
-  emilia: 2.2,
-  toscana: 2.2,
-  umbria: 2.2,
-  marche: 2.2,
-  lazio: 2.5,
-  abruzzo: 2.7,
-  molise: 2.7,
-  campania: 3.0,
-  puglia: 3.0,
-  basilicata: 3.2,
-  calabria: 3.5,
-  sicilia: 4.0,
-  sardegna: 4.5,
+  piemonte: 1.5,
+  valle: 1.5,
+  lombardia: 1.5,
+  trentino: 1.5,
+  veneto: 1.5,
+  friuli: 1.5,
+  liguria: 1.5,
+  emilia: 1.5,
+  toscana: 1.5,
+  umbria: 2.0,
+  marche: 2.0,
+  lazio: 2.0,
+  abruzzo: 2.0,
+  molise: 2.0,
+  campania: 2.5,
+  puglia: 2.5,
+  basilicata: 2.5,
+  calabria: 2.5,
+  sicilia: 2.5,
+  sardegna: 2.5,
 };
 
 const nomiRegioni = {
@@ -273,10 +273,11 @@ export default function ShippingCalculatorItalia() {
     }
     setLoading(true);
     setTimeout(() => {
-      const base = 40;
+      const base = 0;
       const perMq = prezziRegioni[regione] || 3;
       const totale = base + perMq * mqNum;
-      setCosto(totale.toFixed(2));
+      const capped = Math.min(Math.max(totale, 180), 750); // Minimo 180, massimo 750
+      setCosto(capped.toFixed(2));
       setLoading(false);
     }, 900);
   }

@@ -167,7 +167,7 @@ export default function LastraCeramicaLanding() {
               className="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded-lg shadow-sm animate-pulse"
               style={{ fontSize: "1.15em" }}
             >
-              NON SERVE PIU' SALTARE DA UN SITO ALL'ALTRO
+              NON SERVE PIU' SALTARE DA UN SITO ALL'ALTRO!
             </span>
               Qui, in questo momento, hai già trovato il meglio al miglior prezzo del web.<br />
             Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />

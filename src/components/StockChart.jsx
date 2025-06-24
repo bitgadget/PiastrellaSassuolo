@@ -13,7 +13,7 @@ const categorie = [
 	},
 	{
 		nome: "Effetto Pietra",
-		mercato: 22,
+		mercato: 18,
 		piastrellasassuolo: 8.9,
 	},
 	{
@@ -49,7 +49,7 @@ export default function StockChart() {
 								</div>
 								<div className="flex flex-row gap-1 items-end">
 									<div className="flex flex-col items-center">
-										<div className="w-7 h-16 bg-neutral-200 rounded-t-lg flex items-end justify-center relative mb-0.5">
+										<div className="w-9 h-16 bg-neutral-200 rounded-t-lg flex items-end justify-center relative mb-0.5">
 											<div
 												className="w-full bg-red-500 rounded-t-lg"
 												style={{ height: `${mercatoPerc}%` }}
@@ -60,7 +60,7 @@ export default function StockChart() {
 										</div>
 									</div>
 									<div className="flex flex-col items-center">
-										<div className="w-7 h-16 bg-neutral-200 rounded-t-lg flex items-end justify-center relative mb-0.5">
+										<div className="w-9 h-16 bg-neutral-200 rounded-t-lg flex items-end justify-center relative mb-0.5">
 											<div
 												className="w-full bg-green-600 rounded-t-lg"
 												style={{ height: `${piasPerc}%` }}

@@ -106,7 +106,7 @@ export default function HeroComparatore() {
                   className="h-5 sm:h-6 bg-green-500 rounded-full absolute top-0 left-0"
                 />
                 <span className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-green-900 font-bold text-base sm:text-lg pointer-events-none select-none z-10">
-                  10.50 €/mq
+                  10.90 €/mq
                 </span>
               </div>
             </div>

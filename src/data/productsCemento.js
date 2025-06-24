@@ -1,6 +1,6 @@
 const productsCemento = [
   {
-    title: "GROUND 60X60 cm",
+    title: "GROUND 60X120 cm",
     desc: "Gres effetto cemento Ground, rettificata e monocalibro, finitura matt",
     prezzo: "7,90",
     img: "/products/c9.jpg",
@@ -30,21 +30,21 @@ const productsCemento = [
   {
     title: "STUDIO 80X80 cm",
     desc: "Gres effetto cemento Studio, rettificata e monocalibro, finitura matt",
-    prezzo: "5,90",
+    prezzo: "8,50",
     img: "/products/c11.jpg",
     stock: 500,
   },
   {
     title: "MELODY 60x120 cm",
     desc: "Gres effetto Melody e monocalibro, soluzione economica per grandi superfici.",
-    prezzo: "5,80",
+    prezzo: "8,70",
     img: "/products/c1.jpg",
     stock: 600,
   },
   {
     title: "SPIRIT 60x120 cm",
     desc: "Gres effetto cemento Spirit, rettificata e monocalibro, finitura matt",
-    prezzo: "11,80",
+    prezzo: "10,90",
     img: "/products/c2.jpg",
     stock: 250,
   },
@@ -58,7 +58,7 @@ const productsCemento = [
   {
     title: "INDUSTRIAL 60x120 cm",
     desc: "Gres effetto cemento Matcha, rettificata e monocalibro, finitura matt",
-    prezzo: "13,50",
+    prezzo: "11,50",
     img: "/products/c4.jpg",
     stock: 180,
   },
@@ -72,7 +72,7 @@ const productsCemento = [
   {
     title: "NEUTRO 120x120 cm",
     desc: "Gres cemento taupe, rettificato, rettificata e monocalibro, finitura Matt",
-    prezzo: "13,50",
+    prezzo: "11,20",
     img: "/products/c10.jpg",
     stock: 150,
   },

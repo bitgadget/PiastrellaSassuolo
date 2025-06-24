@@ -3,13 +3,13 @@ import React from "react";
 const categorie = [
 	{
 		nome: "Effetto Marmo",
-		mercato: 28,
-		piastrellasassuolo: 11.9,
+		mercato: 26,
+		piastrellasassuolo: 14.5,
 	},
 	{
 		nome: "Effetto Legno",
-		mercato: 24,
-		piastrellasassuolo: 9.9,
+		mercato: 22,
+		piastrellasassuolo: 10.9,
 	},
 	{
 		nome: "Effetto Pietra",

@@ -1,6 +1,6 @@
 const productsMarmo = [
   {
-    title: "MARMO NEGRESCO 60×60 cm",
+    title: "MARMO SHADOW 60×60 cm",
     desc: "Marmo nero, superficie levigata e rettificata, aspetto elegante e lucido.",
     prezzo: "13,00",
     img: "/products/m1.webp",
@@ -24,14 +24,14 @@ const productsMarmo = [
     title: "TRAVERTINO GRISEO 60x120 cm",
     desc: "Lastra effetto travertino beige, rettificata e colorata in massa, venature naturali.",
     prezzo: "11,50",
-    img: "/products/m4.jpg",
+    img: "/products/m4.webp",
     stock: 190,
   },
   {
     title: "CALACATTA GOLD 60×120 cm",
     desc: "Finitura matt, rettificato, grafica HD ultra-realistica.",
     prezzo: "13,20",
-    img: "/products/m5.jpg",
+    img: "/products/m5.webp",
     stock: 210,
   },
   {
@@ -52,7 +52,14 @@ const productsMarmo = [
     title: "DARK MATTE 60x120 cm",
     desc: "Effetto marmo Carrara puro, superficie lucida, rettificato; ideale per bagni di lusso.",
     prezzo: "18,50",
-    img: "/products/m8.jpg",
+    img: "/products/m8.webp",
+    stock: 220,
+  },
+  {
+    title: "DARK MATTE 60x120 cm",
+    desc: "Effetto marmo Carrara puro, superficie lucida, rettificato; ideale per bagni di lusso.",
+    prezzo: "18,50",
+    img: "/products/m8.webp",
     stock: 220,
   },
 ];

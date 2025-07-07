@@ -10,6 +10,7 @@ export default function ZoomableImage({ src, alt }) {
       <img
         src={imageSrc}
         alt={alt}
+        loading="lazy"
         className="w-full h-64 object-contain rounded cursor-zoom-in transition-transform duration-200"
         style={zoom ? { cursor: "zoom-out" } : {}}
         onClick={() => setZoom((z) => !z)}

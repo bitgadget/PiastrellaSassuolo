@@ -36,8 +36,6 @@ export default function ZoomableImageSlider({ images, title, height = "h-48", sh
           alt={title}
           loading="lazy"
           className={`w-full ${height} object-contain rounded cursor-zoom-in transition-transform duration-200`}
-          style={zoom ? { cursor: "zoom-out" } : {}}
-          onClick={() => setZoom(z => !z)}
         />
         {/* Icona lente sopra l'immagine */}
         {!zoom && (

@@ -18,13 +18,15 @@ export default function Footer() {
             Piastrelle italiane in pronta consegna<br />a prezzi di fabbrica.
           </span>
         </div>
-        {/* Link utili */}
-        <div className="flex-1 flex flex-col gap-2 mt-8 md:mt-0 items-center md:items-start">
+        {/* Link utili ottimizzati per mobile */}
+        <div className="flex-1 flex flex-col md:flex-col gap-2 mt-8 md:mt-0 items-center md:items-start">
           <span className="font-semibold text-white mb-2 uppercase tracking-wide text-xs">Link utili</span>
-          <a href="#prodotti" className="hover:underline hover:text-white transition">Prodotti</a>
-          <a href="#vantaggi" className="hover:underline hover:text-white transition">Vantaggi</a>
-          <a href="#faq" className="hover:underline hover:text-white transition">FAQ</a>
-          <a href="#contatti" className="hover:underline hover:text-white transition">Contatti</a>
+          <div className="flex flex-row flex-wrap gap-4 md:flex-col md:gap-2 w-full justify-center md:justify-start">
+            <a href="#prodotti" className="hover:underline hover:text-white transition">Prodotti</a>
+            <a href="#vantaggi" className="hover:underline hover:text-white transition">Vantaggi</a>
+            <a href="#faq" className="hover:underline hover:text-white transition">FAQ</a>
+            <a href="#contatti" className="hover:underline hover:text-white transition">Contatti</a>
+          </div>
         </div>
         {/* Contatti */}
         <div className="flex-1 flex flex-col gap-2 mt-8 md:mt-0 items-center md:items-start">

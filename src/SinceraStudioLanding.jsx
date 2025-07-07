@@ -133,8 +133,25 @@ export default function LastraCeramicaLanding() {
     { id: "categoria-pietra", nome: "Effetto Pietra", prodotti: products.pietra },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Lastra Ceramica",
+    "image": "https://piastrellasassuolo.vercel.app/logo.png",
+    "description": "Stock piastrelle Sassuolo: vendita piastrelle in pronta consegna, offerte su pavimenti e rivestimenti, spedizione rapida in tutta Italia.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sassuolo",
+      "addressCountry": "IT"
+    },
+    "url": "https://piastrellasassuolo.vercel.app/"
+  };
+
   return (
     <main id="top" className="pt-24 min-h-screen scroll-smooth bg-white text-black font-sans selection:bg-black/10 selection:text-black">
+      <title>Piastrelle Sassuolo: Stock Piastrelle in Pronta Consegna, Offerte e Spedizione - Lastra Ceramica</title>
+      <meta name="description" content="Acquista piastrelle a Sassuolo direttamente dal produttore. Stock in pronta consegna, offerte esclusive, spedizione rapida in tutta Italia. Scopri i nostri pavimenti effetto legno, marmo, cemento e pietra." />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <Header setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
       {/* Hero - Comparatore Live Animato Migliorato */}
       <HeroComparatore />
@@ -158,20 +175,21 @@ export default function LastraCeramicaLanding() {
               SOLO STOCK SELEZIONATI
             </span>
           </div>
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2 sm:mb-4 text-black tracking-tight leading-tight">
-            Non il solito negozio:<br />
-            la porta d’ingresso alle migliori occasioni di Sassuolo.
-          </h3>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2 sm:mb-4 text-black tracking-tight leading-tight">
+            Non il solito negozio di piastrelle a Sassuolo:<br />
+            la porta d’ingresso alle migliori occasioni di ceramiche e pavimenti.
+          </h1>
           <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
             <span
               className="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded-lg shadow-sm animate-pulse"
               style={{ fontSize: "1.15em" }}
             >
-              NON SERVE PIU' SALTARE DA UN SITO ALL'ALTRO!
+              NON SERVE PIÙ SALTARE DA UN SITO ALL’ALTRO PER TROVARE LE MIGLIORI PIASTRELLE!
             </span>
-              Qui, in questo momento, hai già trovato il meglio al miglior prezzo del web.<br />
-            Solo chi conosce davvero il settore può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
-            <span className="text-black font-bold">Nessun compromesso: Il meglio, subito, al miglior prezzo possibile.</span>
+            <br />
+            Qui trovi stock di piastrelle in pronta consegna a Sassuolo, offerte esclusive su pavimenti e rivestimenti effetto legno, marmo, cemento e pietra.<br />
+            Solo chi conosce davvero il settore ceramico può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
+            <span className="text-black font-bold">Nessun compromesso: il meglio delle piastrelle di Sassuolo, subito, al miglior prezzo possibile.</span>
           </p>
         </motion.div>
       </section>
@@ -210,9 +228,9 @@ export default function LastraCeramicaLanding() {
         {/* Effetto Legno */}
         {categorie.map(cat => (
           <div className="mb-12" id={cat.id} key={cat.id}>
-            <h4 className="text-3xl sm:text-4xl font-extrabold mb-6 text-left text-black drop-shadow-sm tracking-tight uppercase">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 text-left text-black drop-shadow-sm tracking-tight uppercase">
               {cat.nome}
-            </h4>
+            </h2>
             <ProductSlider
               products={cat.prodotti}
               onCardClick={setModalProdotto}
@@ -341,7 +359,7 @@ export default function LastraCeramicaLanding() {
               transition={{ delay: 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              Calcola la spedizione in pochi secondi
+              Calcola la spedizione delle piastrelle in tutta Italia
             </motion.h3>
             <motion.p
               className="mb-8 text-neutral-700 text-lg text-center"
@@ -350,9 +368,8 @@ export default function LastraCeramicaLanding() {
               transition={{ delay: 0.2, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              Tutte le piastrelle che vedi sono in pronta consegna,<br />
-              con stock limitati e prezzi esclusivi.<br />
-              <span className="text-green-700 font-semibold">Scopri subito il costo di spedizione!</span>
+              Tutte le piastrelle sono disponibili in stock reale e spediamo rapidamente in tutta Italia.<br />
+              Scopri subito il costo di spedizione per i tuoi pavimenti e rivestimenti!
             </motion.p>
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -486,7 +503,7 @@ export default function LastraCeramicaLanding() {
               </div>
               <div className="flex gap-4 items-center pt-4 border-t border-neutral-100">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-200">
-                  <img src={recensione.foto} alt={recensione.nome} className="w-full h-full object-cover" />
+                  <img src={recensione.foto} alt={`Foto di ${recensione.nome}`} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="font-semibold">{recensione.nome}</p>
@@ -560,7 +577,7 @@ export default function LastraCeramicaLanding() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          Contattaci
+          Contattaci per offerte su piastrelle, stock e spedizioni
         </motion.h3>
         <motion.p
           className="mb-12 text-neutral-700 text-lg"
@@ -570,7 +587,7 @@ export default function LastraCeramicaLanding() {
           custom={2}
           viewport={{ once: true }}
         >
-          Richiedi disponibilità, preventivi o informazioni: rispondiamo in poche ore.
+          Richiedi disponibilità, preventivi o informazioni su piastrelle in pronta consegna a Sassuolo. Rispondiamo in poche ore.
         </motion.p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
           <a

@@ -29,12 +29,6 @@ export default function Header({ setMobileMenuOpen, mobileMenuOpen }) {
         <a href="#prodotti" className="hover:text-black transition">
           Prodotti
         </a>
-        <a href="#vantaggi" className="hover:text-black transition">
-          Vantaggi
-        </a>
-        <a href="#faq" className="hover:text-black transition">
-          FAQ
-        </a>
         <a href="#calcolatore" className="hover:text-black transition">
           Calcolo spedizione
         </a>
@@ -77,9 +71,9 @@ export default function Header({ setMobileMenuOpen, mobileMenuOpen }) {
             >
               &times;
             </button>
+            <a href="#top" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Home</a>
+            <a href="#chi-siamo" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Chi siamo</a>
             <a href="#prodotti" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Prodotti</a>
-            <a href="#vantaggi" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Vantaggi</a>
-            <a href="#faq" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
             <a href="#calcolatore" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Calcolo spedizione</a>
             <a href="#contatti" className="text-lg py-2" onClick={() => setMobileMenuOpen(false)}>Contatti</a>
             <a

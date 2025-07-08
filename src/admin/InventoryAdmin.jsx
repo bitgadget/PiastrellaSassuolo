@@ -155,7 +155,7 @@ export default function InventoryAdmin() {
             )}
             <div className="overflow-x-auto max-h-[60vh] overflow-y-auto rounded-2xl border border-neutral-200 shadow-2xl bg-white/95">
               <table className="min-w-full bg-transparent">
-                <thead className="sticky top-0 z-10 bg-neutral-100/95 backdrop-blur hidden sm:table-header-group">
+                <thead className="sticky top-0 z-10 bg-neutral-100/95 backdrop-blur table-header-group">
                   <tr className="bg-neutral-100 text-neutral-700">
                     <th
                       className="px-2 py-2 sm:px-6 sm:py-4 text-left font-bold text-black text-base sm:text-lg cursor-pointer select-none flex items-center gap-2"
@@ -190,7 +190,6 @@ export default function InventoryAdmin() {
                     >
                       {/* Nome prodotto */}
                       <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 font-semibold text-black text-sm sm:text-base break-words">
-                        <span className="block sm:hidden text-[11px] text-neutral-400 font-bold uppercase mb-1">Nome prodotto</span>
                         <a
                           href={`https://www.google.com/search?q=${encodeURIComponent(r.nome)}`}
                           target="_blank"
@@ -203,12 +202,10 @@ export default function InventoryAdmin() {
                       </td>
                       {/* Formato */}
                       <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 text-sm sm:text-base text-black">
-                        <span className="block sm:hidden text-[11px] text-neutral-400 font-bold uppercase mb-1">Formato</span>
                         {r.formato}
                       </td>
                       {/* Quantità */}
                       <td className={`px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 font-semibold text-sm sm:text-base ${r.quantita < 51 ? "text-red-700" : "text-black"}`}>
-                        <span className="block sm:hidden text-[11px] text-neutral-400 font-bold uppercase mb-1">Quantità (m²)</span>
                         {r.quantita}
                         {r.quantita < 51 && (
                           <span title="Scorta bassa" className="ml-2 text-red-500 animate-pulse">⚠️</span>
@@ -216,7 +213,6 @@ export default function InventoryAdmin() {
                       </td>
                       {/* Categoria */}
                       <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 text-sm sm:text-base text-black">
-                        <span className="block sm:hidden text-[11px] text-neutral-400 font-bold uppercase mb-1">Categoria</span>
                         {r.categoria}
                       </td>
                     </tr>

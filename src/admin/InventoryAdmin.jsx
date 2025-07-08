@@ -25,7 +25,9 @@ export default function InventoryAdmin() {
           .filter(row => row && row[0] && row[1] && Number.isFinite(Number(row[1])))
           .map(row => ({
             nome: row[0],
-            quantita: Number(row[1])
+            quantita: Number(row[1]),
+            formato: row[2] || "",
+            categoria: row[3] || ""
           }));
 
         setRows(dataRows);
@@ -129,13 +131,18 @@ export default function InventoryAdmin() {
         {errore && <div className="text-red-600 mb-4 text-center">{errore}</div>}
         {!loading && !errore && (
           <>
-            <input
-              type="text"
-              placeholder="Cerca prodotto..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="mb-6 px-4 py-2 border rounded-lg w-full max-w-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 text-black"
-            />
+            <div className="relative mb-6 w-full max-w-xs">
+              <input
+                type="text"
+                placeholder="Cerca prodotto..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="pl-10 pr-4 py-2 border rounded-lg w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 text-black"
+              />
+              <span className="absolute left-3 top-2.5 text-green-400">
+                <PackageSearch size={20} />
+              </span>
+            </div>
             {search && (
               <div className="mb-4 flex gap-6 items-center">
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
@@ -146,12 +153,12 @@ export default function InventoryAdmin() {
                 </span>
               </div>
             )}
-            <div className="overflow-x-auto rounded-2xl border border-neutral-200 shadow-2xl bg-white/95">
+            <div className="overflow-x-auto max-h-[60vh] overflow-y-auto rounded-2xl border border-neutral-200 shadow-2xl bg-white/95">
               <table className="min-w-full bg-transparent">
-                <thead>
+                <thead className="sticky top-0 z-10 bg-neutral-100/95 backdrop-blur">
                   <tr className="bg-neutral-100 text-neutral-700">
                     <th
-                      className="px-6 py-4 text-left font-bold text-black text-lg cursor-pointer select-none flex items-center gap-2"
+                      className="px-2 py-2 sm:px-6 sm:py-4 text-left font-bold text-black text-base sm:text-lg cursor-pointer select-none flex items-center gap-2"
                       onClick={handleSort}
                       title="Ordina per quantità"
                       style={{ userSelect: "none" }}
@@ -168,31 +175,39 @@ export default function InventoryAdmin() {
                         }`}
                       />
                     </th>
-                    <th title="Superficie disponibile in magazzino">Quantità (m²)</th>
+                    <th className="px-2 py-2 sm:px-6 sm:py-4 text-base sm:text-lg" title="Formato del prodotto">Formato</th>
+                    <th className="px-2 py-2 sm:px-6 sm:py-4 text-base sm:text-lg" title="Superficie disponibile in magazzino">Quantità (m²)</th>
+                    <th className="px-2 py-2 sm:px-6 sm:py-4 text-base sm:text-lg" title="Categoria del prodotto">Categoria</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sortedRows.map((r, i) => (
                     <tr
                       key={i}
-                      className={`transition ${i % 2 === 0 ? "bg-white" : "bg-neutral-50"} hover:bg-green-100 focus-within:ring-2 focus-within:ring-green-300 ${
-                        r.quantita < 51 ? "bg-red-100" : ""
-                      }`}
+                      className={`transition border-l-4 ${
+                        r.quantita < 51 ? "border-red-400" : "border-transparent"
+                      } ${i % 2 === 0 ? "bg-white" : "bg-neutral-50"} hover:bg-green-100 focus-within:ring-2 focus-within:ring-green-300`}
                     >
-                      <td className="px-6 py-3 border-b border-neutral-100 font-semibold text-black text-base">
+                      <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 font-semibold text-black text-sm sm:text-base break-words">
                         {r.nome}
                       </td>
-                      <td className={`px-6 py-3 border-b border-neutral-100 text-base font-semibold ${r.quantita < 51 ? "text-red-700" : "text-black"}`}>
+                      <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 text-sm sm:text-base text-black">
+                        {r.formato}
+                      </td>
+                      <td className={`px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 font-semibold text-sm sm:text-base ${r.quantita < 51 ? "text-red-700" : "text-black"}`}>
                         {r.quantita}
                         {r.quantita < 51 && (
                           <span title="Scorta bassa" className="ml-2 text-red-500 animate-pulse">⚠️</span>
                         )}
                       </td>
+                      <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 text-sm sm:text-base text-black">
+                        {r.categoria}
+                      </td>
                     </tr>
                   ))}
                   {sortedRows.length === 0 && (
                     <tr>
-                      <td colSpan={2} className="text-center text-neutral-400 py-8 text-lg">Nessun prodotto disponibile</td>
+                      <td colSpan={4} className="text-center text-neutral-400 py-8 text-lg">Nessun prodotto disponibile</td>
                     </tr>
                   )}
                 </tbody>

@@ -38,12 +38,27 @@ export default function InventoryAdmin() {
 
   // Calcoli dashboard
   const totaleProdotti = rows.length;
-  const totaleMq = rows.reduce((acc, r) => acc + (r.quantita || 0), 0);
+  const totaleMq = rows.reduce((acc, r) => {
+    const q = Number(r.quantita);
+    return acc + (Number.isFinite(q) ? q : 0);
+  }, 0);
   const filteredRows = rows.filter(r => r.nome.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#e8f0fe] via-white to-[#d1fae5] p-0 md:p-8">
       <div className="max-w-4xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-4 md:p-12 mt-8 border border-neutral-200">
+        {/* LOGO IN ALTO */}
+        <div className="flex flex-col items-center mb-8">
+          <a href="/" className="focus:outline-none" title="Torna alla home">
+            <img
+              src="/logo.png"
+              alt="Logo PiastrellaSassuolo"
+              className="h-16 w-16 rounded-full bg-white p-2 shadow border border-neutral-200 transition-transform hover:scale-105"
+              style={{ minWidth: 64 }}
+            />
+          </a>
+          <span className="font-bold text-2xl tracking-tight text-black mt-3">PiastrellaSassuolo</span>
+        </div>
         <div className="flex items-center gap-4 mb-10">
           <div className="bg-green-100 rounded-full p-3 shadow">
             <PackageSearch size={40} className="text-green-700" />
@@ -105,8 +120,9 @@ export default function InventoryAdmin() {
                       <td className="px-6 py-3 border-b border-neutral-100 font-semibold text-black text-base">
                         {r.nome}
                       </td>
-                      <td className="px-6 py-3 border-b border-neutral-100 text-black text-base">
+                      <td className={`px-6 py-3 border-b border-neutral-100 text-base font-semibold ${r.quantita < 51 ? "text-red-700" : "text-black"}`}>
                         {r.quantita}
+                        {r.quantita < 51 && <span title="Scorta bassa" className="ml-2 text-red-500">⚠️</span>}
                       </td>
                     </tr>
                   ))}

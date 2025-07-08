@@ -15,6 +15,7 @@ import {
   Mail,
   Lightbulb,
   PackageSearch,
+  Zap
 } from "lucide-react";
 import ProductSlider from "./components/ProductSlider";
 import StockChart from "./components/StockChart";
@@ -664,12 +665,12 @@ export default function LastraCeramicaLanding() {
         <>
           {/* Bottone visibile solo su mobile */}
           <button
-            className="fixed bottom-5 right-5 z-50 bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center md:hidden hover:bg-green-700 transition"
+            className="fixed bottom-5 right-5 z-50 bg-yellow-400 text-white rounded-full shadow-lg p-4 flex items-center justify-center md:hidden hover:bg-yellow-500 transition hover:scale-110 focus:scale-110"
             onClick={() => setShowQuickMenu(true)}
-            aria-label="Vai agli effetti"
+            aria-label="Menu rapido"
             type="button"
           >
-            <Lightbulb size={28} className="text-white" />
+            <Zap size={28} className="text-white drop-shadow-lg" />
           </button>
           <QuickMenuMobile
             show={showQuickMenu}

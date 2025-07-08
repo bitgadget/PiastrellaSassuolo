@@ -191,11 +191,11 @@ export default function InventoryAdmin() {
                       {/* Nome prodotto */}
                       <td className="px-2 py-2 sm:px-6 sm:py-3 border-b border-neutral-100 font-semibold text-black text-sm sm:text-base break-words">
                         <a
-                          href={`https://www.google.com/search?q=${encodeURIComponent(r.nome)}`}
+                          href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(r.nome)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="underline text-green-700 hover:text-green-900 transition-colors"
-                          title={`Cerca "${r.nome}" su Google`}
+                          title={`Cerca immagini di "${r.nome}" su Google`}
                         >
                           {r.nome}
                         </a>

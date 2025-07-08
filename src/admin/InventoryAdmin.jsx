@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
-import { PackageSearch, Loader2 } from "lucide-react";
+import { PackageSearch, Loader2, ArrowUpDown, BarChart3, Layers3, CalendarDays } from "lucide-react";
 
 export default function InventoryAdmin() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errore, setErrore] = useState(null);
   const [search, setSearch] = useState("");
+  const [sortOrder, setSortOrder] = useState(null); // null, "asc", "desc"
 
   useEffect(() => {
     fetch("/prodotti/prodotti.xlsx")
@@ -42,7 +43,24 @@ export default function InventoryAdmin() {
     const q = Number(r.quantita);
     return acc + (Number.isFinite(q) ? q : 0);
   }, 0);
+
   const filteredRows = rows.filter(r => r.nome.toLowerCase().includes(search.toLowerCase()));
+
+  // Ordinamento quantità
+  const sortedRows = React.useMemo(() => {
+    if (!sortOrder) return filteredRows;
+    return [...filteredRows].sort((a, b) =>
+      sortOrder === "asc"
+        ? a.quantita - b.quantita
+        : b.quantita - a.quantita
+    );
+  }, [filteredRows, sortOrder]);
+
+  const handleSort = () => {
+    setSortOrder(prev =>
+      prev === "asc" ? "desc" : prev === "desc" ? null : "asc"
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#e8f0fe] via-white to-[#d1fae5] p-0 md:p-8">
@@ -72,18 +90,35 @@ export default function InventoryAdmin() {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-          <div className="bg-gradient-to-br from-green-400/20 to-green-100 rounded-2xl p-6 flex flex-col items-center shadow border border-green-200">
-            <span className="text-xs text-green-800 font-semibold uppercase mb-1 tracking-widest">Prodotti</span>
-            <span className="text-3xl font-extrabold text-green-900">{totaleProdotti}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-10">
+          {/* CARD 1: Prodotti */}
+          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-green-200 rounded-3xl shadow-xl p-6 sm:p-8 mb-4 sm:mb-0 transition-transform hover:-translate-y-1 hover:shadow-2xl">
+            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-green-400 to-green-200 shadow-lg mb-3 sm:mb-4 animate-pulse-slow">
+              <Layers3 size={32} className="sm:size-40 text-white drop-shadow-lg" />
+            </div>
+            <div className="text-3xl sm:text-5xl font-black text-green-700 drop-shadow-lg mb-1 sm:mb-2">{totaleProdotti}</div>
+            <div className="text-sm sm:text-base font-bold text-green-900 tracking-wide uppercase mb-1">Prodotti</div>
+            <span className="px-2 py-0.5 sm:px-3 sm:py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold shadow">Totale articoli</span>
           </div>
-          <div className="bg-gradient-to-br from-blue-400/20 to-blue-100 rounded-2xl p-6 flex flex-col items-center shadow border border-blue-200">
-            <span className="text-xs text-blue-800 font-semibold uppercase mb-1 tracking-widest">Totale m²</span>
-            <span className="text-3xl font-extrabold text-blue-900">{totaleMq.toLocaleString("it-IT")}</span>
+
+          {/* CARD 2: Totale m² */}
+          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-blue-200 rounded-3xl shadow-xl p-6 sm:p-8 mb-4 sm:mb-0 transition-transform hover:-translate-y-1 hover:shadow-2xl">
+            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-200 shadow-lg mb-3 sm:mb-4 animate-pulse-slow">
+              <BarChart3 size={32} className="sm:size-40 text-white drop-shadow-lg" />
+            </div>
+            <div className="text-3xl sm:text-5xl font-black text-blue-700 drop-shadow-lg mb-1 sm:mb-2">{totaleMq.toLocaleString("it-IT")}</div>
+            <div className="text-sm sm:text-base font-bold text-blue-900 tracking-wide uppercase mb-1">Superficie</div>
+            <span className="px-2 py-0.5 sm:px-3 sm:py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold shadow">Totale m²</span>
           </div>
-          <div className="bg-gradient-to-br from-yellow-400/20 to-yellow-100 rounded-2xl p-6 flex flex-col items-center shadow border border-yellow-200">
-            <span className="text-xs text-yellow-800 font-semibold uppercase mb-1 tracking-widest">Ultimo aggiornamento</span>
-            <span className="text-base text-yellow-900">{new Date().toLocaleDateString()}</span>
+
+          {/* CARD 3: Ultimo aggiornamento */}
+          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-yellow-200 rounded-3xl shadow-xl p-6 sm:p-8 transition-transform hover:-translate-y-1 hover:shadow-2xl">
+            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-200 shadow-lg mb-3 sm:mb-4 animate-pulse-slow">
+              <CalendarDays size={32} className="sm:size-40 text-white drop-shadow-lg" />
+            </div>
+            <div className="text-lg sm:text-2xl font-black text-yellow-900 drop-shadow-lg mb-1 sm:mb-2">{new Date().toLocaleDateString()}</div>
+            <div className="text-sm sm:text-base font-bold text-yellow-900 tracking-wide uppercase mb-1">Ultimo aggiornamento</div>
+            <span className="px-2 py-0.5 sm:px-3 sm:py-1 bg-yellow-100 text-yellow-900 rounded-full text-xs font-semibold shadow">Data odierna</span>
           </div>
         </div>
         {loading && (
@@ -101,19 +136,46 @@ export default function InventoryAdmin() {
               onChange={e => setSearch(e.target.value)}
               className="mb-6 px-4 py-2 border rounded-lg w-full max-w-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 text-black"
             />
-            <div className="overflow-x-auto rounded-2xl border border-neutral-200 shadow-lg bg-white/95">
+            {search && (
+              <div className="mb-4 flex gap-6 items-center">
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                  Prodotti trovati: {filteredRows.length}
+                </span>
+                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+                  Totale m²: {filteredRows.reduce((acc, r) => acc + (Number.isFinite(Number(r.quantita)) ? Number(r.quantita) : 0), 0).toLocaleString("it-IT")}
+                </span>
+              </div>
+            )}
+            <div className="overflow-x-auto rounded-2xl border border-neutral-200 shadow-2xl bg-white/95">
               <table className="min-w-full bg-transparent">
                 <thead>
                   <tr className="bg-neutral-100 text-neutral-700">
-                    <th className="px-6 py-4 text-left font-bold text-black text-lg">Nome prodotto</th>
-                    <th className="px-6 py-4 text-left font-bold text-black text-lg">Quantità (m²)</th>
+                    <th
+                      className="px-6 py-4 text-left font-bold text-black text-lg cursor-pointer select-none flex items-center gap-2"
+                      onClick={handleSort}
+                      title="Ordina per quantità"
+                      style={{ userSelect: "none" }}
+                    >
+                      <span title="Nome commerciale del prodotto">Nome prodotto</span>
+                      <ArrowUpDown
+                        size={20}
+                        className={`inline transition-transform ${
+                          sortOrder === "asc"
+                            ? "rotate-180 text-green-700"
+                            : sortOrder === "desc"
+                            ? "text-green-700"
+                            : "text-neutral-400"
+                        }`}
+                      />
+                    </th>
+                    <th title="Superficie disponibile in magazzino">Quantità (m²)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredRows.map((r, i) => (
+                  {sortedRows.map((r, i) => (
                     <tr
                       key={i}
-                      className={`transition ${i % 2 === 0 ? "bg-white" : "bg-neutral-50"} hover:bg-green-50 ${
+                      className={`transition ${i % 2 === 0 ? "bg-white" : "bg-neutral-50"} hover:bg-green-100 focus-within:ring-2 focus-within:ring-green-300 ${
                         r.quantita < 51 ? "bg-red-100" : ""
                       }`}
                     >
@@ -122,11 +184,13 @@ export default function InventoryAdmin() {
                       </td>
                       <td className={`px-6 py-3 border-b border-neutral-100 text-base font-semibold ${r.quantita < 51 ? "text-red-700" : "text-black"}`}>
                         {r.quantita}
-                        {r.quantita < 51 && <span title="Scorta bassa" className="ml-2 text-red-500">⚠️</span>}
+                        {r.quantita < 51 && (
+                          <span title="Scorta bassa" className="ml-2 text-red-500 animate-pulse">⚠️</span>
+                        )}
                       </td>
                     </tr>
                   ))}
-                  {filteredRows.length === 0 && (
+                  {sortedRows.length === 0 && (
                     <tr>
                       <td colSpan={2} className="text-center text-neutral-400 py-8 text-lg">Nessun prodotto disponibile</td>
                     </tr>
@@ -143,3 +207,16 @@ export default function InventoryAdmin() {
     </div>
   );
 }
+
+/* Aggiungi questa animazione custom in CSS globale o tailwind.config.js */
+<style>
+{`
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s infinite;
+}
+`}
+</style>

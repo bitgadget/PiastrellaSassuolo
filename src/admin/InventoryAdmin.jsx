@@ -92,34 +92,34 @@ export default function InventoryAdmin() {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-8 mb-10">
           {/* CARD 1: Prodotti */}
-          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-green-200 rounded-3xl shadow-xl p-6 sm:p-8 mb-4 sm:mb-0 transition-transform hover:-translate-y-1 hover:shadow-2xl">
-            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-green-400 to-green-200 shadow-lg mb-3 sm:mb-4 animate-pulse-slow">
-              <Layers3 size={32} className="sm:size-40 text-white drop-shadow-lg" />
+          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-green-200 rounded-3xl shadow-xl p-4 sm:p-8 transition-transform hover:-translate-y-1 hover:shadow-2xl col-span-1">
+            <div className="flex items-center justify-center w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-green-400 to-green-200 shadow-lg mb-2 sm:mb-4 animate-pulse-slow">
+              <Layers3 size={24} className="sm:size-40 text-white drop-shadow-lg" />
             </div>
-            <div className="text-3xl sm:text-5xl font-black text-green-700 drop-shadow-lg mb-1 sm:mb-2">{totaleProdotti}</div>
-            <div className="text-sm sm:text-base font-bold text-green-900 tracking-wide uppercase mb-1">Prodotti</div>
+            <div className="text-2xl sm:text-5xl font-black text-green-700 drop-shadow-lg mb-1 sm:mb-2">{totaleProdotti}</div>
+            <div className="text-xs sm:text-base font-bold text-green-900 tracking-wide uppercase mb-1">Prodotti</div>
             <span className="px-2 py-0.5 sm:px-3 sm:py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold shadow">Totale articoli</span>
           </div>
 
           {/* CARD 2: Totale m² */}
-          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-blue-200 rounded-3xl shadow-xl p-6 sm:p-8 mb-4 sm:mb-0 transition-transform hover:-translate-y-1 hover:shadow-2xl">
-            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-200 shadow-lg mb-3 sm:mb-4 animate-pulse-slow">
-              <BarChart3 size={32} className="sm:size-40 text-white drop-shadow-lg" />
+          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-blue-200 rounded-3xl shadow-xl p-4 sm:p-8 transition-transform hover:-translate-y-1 hover:shadow-2xl col-span-1">
+            <div className="flex items-center justify-center w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-200 shadow-lg mb-2 sm:mb-4 animate-pulse-slow">
+              <BarChart3 size={24} className="sm:size-40 text-white drop-shadow-lg" />
             </div>
-            <div className="text-3xl sm:text-5xl font-black text-blue-700 drop-shadow-lg mb-1 sm:mb-2">{totaleMq.toLocaleString("it-IT")}</div>
-            <div className="text-sm sm:text-base font-bold text-blue-900 tracking-wide uppercase mb-1">Superficie</div>
+            <div className="text-2xl sm:text-5xl font-black text-blue-700 drop-shadow-lg mb-1 sm:mb-2">{totaleMq.toLocaleString("it-IT")}</div>
+            <div className="text-xs sm:text-base font-bold text-blue-900 tracking-wide uppercase mb-1">Superficie</div>
             <span className="px-2 py-0.5 sm:px-3 sm:py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold shadow">Totale m²</span>
           </div>
 
           {/* CARD 3: Ultimo aggiornamento */}
-          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-yellow-200 rounded-3xl shadow-xl p-6 sm:p-8 transition-transform hover:-translate-y-1 hover:shadow-2xl">
-            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-200 shadow-lg mb-3 sm:mb-4 animate-pulse-slow">
-              <CalendarDays size={32} className="sm:size-40 text-white drop-shadow-lg" />
+          <div className="relative flex flex-col items-center justify-center bg-white/60 backdrop-blur-lg border border-yellow-200 rounded-3xl shadow-xl p-4 sm:p-8 transition-transform hover:-translate-y-1 hover:shadow-2xl col-span-2 sm:col-span-1">
+            <div className="flex items-center justify-center w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-200 shadow-lg mb-2 sm:mb-4 animate-pulse-slow">
+              <CalendarDays size={24} className="sm:size-40 text-white drop-shadow-lg" />
             </div>
-            <div className="text-lg sm:text-2xl font-black text-yellow-900 drop-shadow-lg mb-1 sm:mb-2">{new Date().toLocaleDateString()}</div>
-            <div className="text-sm sm:text-base font-bold text-yellow-900 tracking-wide uppercase mb-1">Ultimo aggiornamento</div>
+            <div className="text-base sm:text-2xl font-black text-yellow-900 drop-shadow-lg mb-1 sm:mb-2">{new Date().toLocaleDateString()}</div>
+            <div className="text-xs sm:text-base font-bold text-yellow-900 tracking-wide uppercase mb-1">Ultimo aggiornamento</div>
             <span className="px-2 py-0.5 sm:px-3 sm:py-1 bg-yellow-100 text-yellow-900 rounded-full text-xs font-semibold shadow">Data odierna</span>
           </div>
         </div>

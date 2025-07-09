@@ -677,12 +677,13 @@ export default function LastraCeramicaLanding() {
         <>
           {/* Bottone visibile solo su mobile */}
           <button
-            className="fixed bottom-5 right-5 z-50 bg-yellow-400 text-white rounded-full shadow-lg p-4 flex items-center justify-center md:hidden hover:bg-yellow-500 transition hover:scale-110 focus:scale-110"
+            className="fixed bottom-4 right-4 z-50 bg-yellow-400 text-white rounded-full shadow-lg p-2 flex items-center justify-center md:hidden hover:bg-yellow-500 transition hover:scale-110 focus:scale-110"
             onClick={() => setShowQuickMenu(true)}
             aria-label="Menu rapido"
             type="button"
           >
-            <Zap size={28} className="text-white drop-shadow-lg" />
+            <Zap size={20} className="text-white drop-shadow-lg" />
+            <span className="ml-1 text-xs font-bold">CATEGORIE</span>
           </button>
           <QuickMenuMobile
             show={showQuickMenu}

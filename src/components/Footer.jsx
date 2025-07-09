@@ -44,6 +44,16 @@ export default function Footer() {
       </div>
       <div className="mt-8 text-center text-neutral-500 text-xs">
         &copy; {new Date().getFullYear()} PiastrellaSassuolo. Tutti i diritti riservati.
+        <br />
+        <a
+          href="https://www.instagram.com/sincera3d"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-400 hover:text-white font-semibold underline transition"
+          style={{ letterSpacing: "0.04em" }}
+        >
+          POWERED BY SINCERA STUDIO
+        </a>
       </div>
     </footer>
   );

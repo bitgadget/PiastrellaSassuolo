@@ -38,14 +38,18 @@ export default function ProductSlider({ products, onCardClick }) {
 
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 py-2"
-        style={{ scrollSnapType: "x mandatory" }}
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 py-2 pr-24 md:pr-4"
+        style={{
+          scrollSnapType: "x mandatory",
+          scrollPaddingRight: "96px", // aiuta lo snap sull'ultima card
+        }}
       >
         {products.map((prod, idx) =>
           prod.isWhatsAppCard ? (
             <div
               key={`wa-card-${idx}`}
-              className="min-w-[260px] max-w-[320px] flex flex-col items-center justify-center bg-green-50 border-2 border-green-200 rounded-2xl shadow-lg p-6 mx-2 my-4 hover:bg-green-100 transition cursor-pointer"
+              className={`min-w-[260px] max-w-[320px] flex flex-col items-center justify-center bg-green-50 border-2 border-green-200 rounded-2xl shadow-lg p-6 mx-2 my-4 hover:bg-green-100 transition cursor-pointer
+        ${idx === products.length - 1 ? "mr-16 md:mr-0 snap-end" : ""}`}
               onClick={() => {
                 window.open(
                   `https://wa.me/393493061878?text=${encodeURIComponent(prod.waMsg)}`,
@@ -68,7 +72,8 @@ export default function ProductSlider({ products, onCardClick }) {
           ) : (
             <motion.div
               key={prod.title + '-' + idx}
-              className="min-w-[270px] max-w-xs flex-1 snap-center bg-white border border-neutral-200 rounded-2xl shadow hover:shadow-xl hover:border-black transition flex flex-col cursor-pointer"
+              className={`min-w-[270px] max-w-xs flex-1 snap-center bg-white border border-neutral-200 rounded-2xl shadow hover:shadow-xl hover:border-black transition flex flex-col cursor-pointer
+        ${idx === products.length - 1 ? "mr-16 md:mr-0 snap-end" : ""}`}
               whileHover={{ scale: 1.03 }}
               onClick={() => onCardClick(prod)}
             >

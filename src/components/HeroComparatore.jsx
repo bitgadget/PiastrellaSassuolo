@@ -162,7 +162,7 @@ export default function HeroComparatore() {
           />
           <StatAnimated
             value={60}
-            label={<span style={{ color: "#fff", textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Risparmio massimo</span>}
+            label={<span style={{ color: "#fff", textShadow: "0 2px 12px #fff, 0 0 8px #fff" }}>Risparmio medio</span>}
             suffix="%"
             valueStyle={{ textShadow: "0 2px 12px #fff, 0 0 8px #fff", color: "#fff" }}
           />

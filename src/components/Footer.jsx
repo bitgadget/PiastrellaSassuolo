@@ -4,6 +4,18 @@ import { Mail, Phone, PackageSearch } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="relative z-10 px-2 py-8 bg-neutral-900 text-neutral-200 text-sm mt-8">
+      {/* POWERED BY SINCERA STUDIO */}
+      <div className="w-full flex justify-center mb-6">
+        <a
+          href="https://www.instagram.com/sincera3d"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-yellow-400 hover:text-yellow-300 font-extrabold tracking-widest text-base uppercase underline underline-offset-4 transition drop-shadow"
+          style={{ letterSpacing: "0.08em" }}
+        >
+          POWERED BY SINCERA STUDIO
+        </a>
+      </div>
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-8 md:gap-6 border-t border-neutral-800 pt-8">
         {/* Logo e claim */}
         <div className="flex-1 flex flex-col gap-3 items-center md:items-start text-center md:text-left">
@@ -44,16 +56,6 @@ export default function Footer() {
       </div>
       <div className="mt-8 text-center text-neutral-500 text-xs">
         &copy; {new Date().getFullYear()} PiastrellaSassuolo. Tutti i diritti riservati.
-        <br />
-        <a
-          href="https://www.instagram.com/sincera3d"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-neutral-400 hover:text-white font-semibold underline transition"
-          style={{ letterSpacing: "0.04em" }}
-        >
-          POWERED BY SINCERA STUDIO
-        </a>
       </div>
     </footer>
   );

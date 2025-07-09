@@ -62,6 +62,16 @@ export default function ProductSlider({ products, onCardClick }) {
                 {prod.title}
               </span>
               <p className="text-green-900 text-sm text-center mb-4">{prod.desc}</p>
+              {/* Testo centrale in nero e maiuscolo solo sull'ultima card, dinamico per categoria */}
+              {idx === products.length - 1 && (
+                <div className="my-4 text-black text-center font-extrabold text-base uppercase">
+                  {prod.category === "legno" && "+ DI 30 PAVIMENTI EFFETTO LEGNO"}
+                  {prod.category === "marmo" && "+ DI 20 PAVIMENTI EFFETTO MARMO"}
+                  {prod.category === "cemento" && "+ DI 15 PAVIMENTI EFFETTO CEMENTO"}
+                  {prod.category === "pietra" && "+ DI 10 PAVIMENTI EFFETTO PIETRA"}
+                  {/* Aggiungi altre categorie se necessario */}
+                </div>
+              )}
               <button
                 className="mt-auto px-6 py-2 rounded-full bg-green-600 text-white font-bold shadow hover:bg-green-700 transition"
                 type="button"

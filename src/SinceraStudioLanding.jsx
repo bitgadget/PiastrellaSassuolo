@@ -236,6 +236,15 @@ export default function LastraCeramicaLanding() {
               title: `Visualizza tutti i prodotti effetto ${cat.nome.replace("Effetto ", "")}`,
               desc: "Scrivici su WhatsApp per ricevere tutte le offerte disponibili in pronta consegna.",
               waMsg: `Ciao! Vorrei vedere tutti i prodotti effetto ${cat.nome.replace("Effetto ", "")} disponibili.`,
+              category: cat.nome.toLowerCase().includes("legno")
+                ? "legno"
+                : cat.nome.toLowerCase().includes("marmo")
+                ? "marmo"
+                : cat.nome.toLowerCase().includes("cemento")
+                ? "cemento"
+                : cat.nome.toLowerCase().includes("pietra")
+                ? "pietra"
+                : ""
             }
           ];
           return (

@@ -76,15 +76,6 @@ export default function Header({ setMobileMenuOpen, mobileMenuOpen }) {
             <a href="#prodotti" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Prodotti</a>
             <a href="#calcolatore" className="text-lg py-2 border-b border-neutral-200" onClick={() => setMobileMenuOpen(false)}>Calcolo spedizione</a>
             <a href="#contatti" className="text-lg py-2" onClick={() => setMobileMenuOpen(false)}>Contatti</a>
-            <a
-              href="https://wa.me/393493061878"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-block rounded-full border border-black px-6 py-2 text-sm hover:bg-black hover:text-white transition"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contattaci
-            </a>
           </nav>
         </div>
       )}

@@ -10,26 +10,12 @@ export default function InventoryAdmin() {
   const [sortOrder, setSortOrder] = useState(null); // null, "asc", "desc"
 
   useEffect(() => {
-    fetch("/prodotti/prodotti.xlsx")
+    fetch("/prodotti/prodotti.json")
       .then(res => {
         if (!res.ok) throw new Error("File non trovato");
-        return res.arrayBuffer();
+        return res.json();
       })
-      .then(buffer => {
-        const workbook = XLSX.read(buffer, { type: "array" });
-        const sheet = workbook.Sheets[workbook.SheetNames[0]];
-        let json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-        const dataRows = json
-          .slice(1)
-          .filter(row => row && row[0] && row[1] && Number.isFinite(Number(row[1])))
-          .map(row => ({
-            nome: row[0],
-            quantita: Number(row[1]),
-            formato: row[2] || "",
-            categoria: row[3] || ""
-          }));
-
+      .then(dataRows => {
         setRows(dataRows);
         setLoading(false);
       })

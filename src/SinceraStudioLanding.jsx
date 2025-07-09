@@ -137,20 +137,20 @@ export default function LastraCeramicaLanding() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "Lastra Ceramica",
-    "image": "https://piastrellasassuolo.vercel.app/logo.png",
+    "name": "Piastrella Sassuolo",
+    "image": "https://piastrellasassuolo.com/logo.png",
     "description": "Stock piastrelle Sassuolo: vendita piastrelle in pronta consegna, offerte su pavimenti e rivestimenti, spedizione rapida in tutta Italia.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Sassuolo",
       "addressCountry": "IT"
     },
-    "url": "https://piastrellasassuolo.vercel.app/"
+    "url": "https://piastrellasassuolo.com/"
   };
 
   return (
     <main id="top" className="pt-24 min-h-screen scroll-smooth bg-white text-black font-sans selection:bg-black/10 selection:text-black">
-      <title>Piastrelle Sassuolo: Stock Piastrelle in Pronta Consegna, Offerte e Spedizione - Lastra Ceramica</title>
+      <title>Piastrelle Sassuolo: Stock Piastrelle in Pronta Consegna, Offerte e Spedizione - Piastrella Sassuolo</title>
       <meta name="description" content="Acquista piastrelle a Sassuolo direttamente dal produttore. Stock in pronta consegna, offerte esclusive, spedizione rapida in tutta Italia. Scopri i nostri pavimenti effetto legno, marmo, cemento e pietra." />
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <Header setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />

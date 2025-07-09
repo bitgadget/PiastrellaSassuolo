@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, PackageSearch } from "lucide-react";
 
 export default function Footer() {
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showCookie, setShowCookie] = useState(false);
+
   return (
     <footer className="relative z-10 px-2 py-8 bg-neutral-900 text-neutral-200 text-sm mt-8">
       {/* POWERED BY SINCERA STUDIO */}
@@ -47,16 +50,75 @@ export default function Footer() {
             <Mail size={16} /> info@lastraceramica.it
           </a>
           <a href="tel:+390123456789" className="flex items-center gap-2 hover:underline hover:text-white transition">
-            <Phone size={16} /> +39 0123 456789
+            <Phone size={16} /> +39 349 306 1878
           </a>
           <a href="https://wa.me/393493061878" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:text-white transition">
             <PackageSearch size={16} /> WhatsApp
           </a>
         </div>
       </div>
-      <div className="mt-8 text-center text-neutral-500 text-xs">
-        &copy; {new Date().getFullYear()} PiastrellaSassuolo. Tutti i diritti riservati.
+      <div className="mt-8 text-center text-neutral-500 text-xs flex flex-col items-center gap-1">
+        <div>
+          &copy; {new Date().getFullYear()} PiastrellaSassuolo. Tutti i diritti riservati.
+        </div>
+        <div className="flex gap-3 justify-center mt-1">
+          <button
+            className="underline hover:text-white transition"
+            type="button"
+            onClick={() => setShowPrivacy(true)}
+          >
+            Privacy Policy
+          </button>
+          <span>|</span>
+          <button
+            className="underline hover:text-white transition"
+            type="button"
+            onClick={() => setShowCookie(true)}
+          >
+            Cookie Policy
+          </button>
+        </div>
       </div>
+
+      {/* Popup Privacy Policy */}
+      {showPrivacy && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+          <div className="bg-white text-black rounded-xl p-6 max-w-lg w-full shadow-2xl relative">
+            <button
+              className="absolute top-2 right-4 text-2xl font-bold"
+              onClick={() => setShowPrivacy(false)}
+              aria-label="Chiudi"
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-bold mb-4">Privacy Policy</h2>
+            <div className="text-sm max-h-[60vh] overflow-y-auto">
+              {/* Inserisci qui il testo della privacy policy */}
+              Questa è la Privacy Policy di PiastrellaSassuolo. I tuoi dati saranno trattati secondo la normativa vigente. Nessun dato sarà ceduto a terzi senza consenso. Per maggiori informazioni scrivici su Whatsapp.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Popup Cookie Policy */}
+      {showCookie && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+          <div className="bg-white text-black rounded-xl p-6 max-w-lg w-full shadow-2xl relative">
+            <button
+              className="absolute top-2 right-4 text-2xl font-bold"
+              onClick={() => setShowCookie(false)}
+              aria-label="Chiudi"
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-bold mb-4">Cookie Policy</h2>
+            <div className="text-sm max-h-[60vh] overflow-y-auto">
+              {/* Inserisci qui il testo della cookie policy */}
+              Questo sito utilizza solo cookie tecnici necessari al funzionamento. Nessun cookie di profilazione viene utilizzato. Per dettagli scrivici su Whatsapp.
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

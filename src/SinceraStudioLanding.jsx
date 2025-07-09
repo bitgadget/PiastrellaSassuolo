@@ -619,7 +619,7 @@ export default function LastraCeramicaLanding() {
             <Mail size={20} /> Email
           </a>
           <a
-            href="tel:+390123456789"
+            href="tel:+393493061878"
             className="inline-flex items-center gap-2 rounded-md px-6 py-3 border border-black text-black font-semibold hover:bg-black hover:text-white transition"
           >
             <Phone size={20} /> Telefono

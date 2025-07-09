@@ -177,34 +177,21 @@ export default function LastraCeramicaLanding() {
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2 sm:mb-4 text-black tracking-tight leading-tight">
-            Il meglio delle piastrelle di Sassuolo,<br />
-            <span className="text-green-700">
-              <Typewriter
-                words={[
-                  "subito.",
-                  "senza compromessi.",
-                  "a prezzi riservati.",
-                  "in pronta consegna."
-                ]}
-                loop={0}
-                cursor
-                cursorStyle="|"
-                typeSpeed={60}
-                deleteSpeed={40}
-                delaySpeed={1800}
-              />
-            </span>
+            Non il solito negozio di piastrelle a Sassuolo:<br />
+            la porta d’ingresso alle migliori occasioni di ceramiche e pavimenti.
           </h1>
-          <motion.p
-            className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Stock selezionati di pavimenti e rivestimenti effetto legno, marmo, cemento e pietra.<br />
-            Qualità, risparmio e spedizione rapida in tutta Italia.
-          </motion.p>
+          <p className="text-neutral-700 text-base sm:text-lg md:text-xl mb-4 sm:mb-8 font-semibold">
+            <span
+              className="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded-lg shadow-sm animate-pulse"
+              style={{ fontSize: "1.15em" }}
+            >
+              NON SERVE PIÙ SALTARE DA UN SITO ALL’ALTRO PER TROVARE LE MIGLIORI PIASTRELLE!
+            </span>
+            <br />
+            Qui trovi stock di piastrelle in pronta consegna a Sassuolo, offerte esclusive su pavimenti e rivestimenti effetto legno, marmo, cemento e pietra.<br />
+            Solo chi conosce davvero il settore ceramico può offrirti <span className="text-green-700 font-bold">prezzi riservati</span> e <span className="font-bold">stock reali</span>.<br />
+            <span className="text-black font-bold">Nessun compromesso: il meglio delle piastrelle di Sassuolo, subito, al miglior prezzo possibile.</span>
+          </p>
         </motion.div>
       </section>
 

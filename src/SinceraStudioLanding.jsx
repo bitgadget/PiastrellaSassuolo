@@ -227,17 +227,29 @@ export default function LastraCeramicaLanding() {
           </span>
         </div> */}
         {/* Effetto Legno */}
-        {categorie.map(cat => (
-          <div className="mb-12" id={cat.id} key={cat.id}>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 text-left text-black drop-shadow-sm tracking-tight uppercase">
-              {cat.nome}
-            </h2>
-            <ProductSlider
-              products={cat.prodotti}
-              onCardClick={setModalProdotto}
-            />
-          </div>
-        ))}
+        {categorie.map(cat => {
+          // Crea una copia dei prodotti e aggiungi la card "Visualizza tutti"
+          const prodottiConCard = [
+            ...cat.prodotti,
+            {
+              isWhatsAppCard: true,
+              title: `Visualizza tutti i prodotti effetto ${cat.nome.replace("Effetto ", "")}`,
+              desc: "Scrivici su WhatsApp per ricevere tutte le offerte disponibili in pronta consegna.",
+              waMsg: `Ciao! Vorrei vedere tutti i prodotti effetto ${cat.nome.replace("Effetto ", "")} disponibili.`,
+            }
+          ];
+          return (
+            <div className="mb-12" id={cat.id} key={cat.id}>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 text-left text-black drop-shadow-sm tracking-tight uppercase">
+                {cat.nome}
+              </h2>
+              <ProductSlider
+                products={prodottiConCard}
+                onCardClick={setModalProdotto}
+              />
+            </div>
+          );
+        })}
 
         {/* Modale prodotto */}
         {modalProdotto && (
